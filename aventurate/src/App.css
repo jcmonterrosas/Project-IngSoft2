@@ -1,17 +1,23 @@
+.bodyApp {
+  height: 100vh;
+}
+
 .App {
   text-align: center;
+  height: 100vh;
 }
 
-
-.tarjetaBoton{
-  border-style: none;
+.headerApp {
+  height: 100vh;
 }
 
-.textoBoton,.botonInicial{
-  color:black;
+.textoBoton,
+.botonInicial1,
+.botonInicial2 {
+  color: black;
 }
 
-.header-video{
+.header-video {
   position: absolute;
   top: 0;
   left: 0;
@@ -20,18 +26,27 @@
   overflow: hidden;
 }
 
-.header-video video{
+.header-video video {
   min-width: 100%;
   min-height: 100%;
 }
 
-.header-overlay{
+.header-overlay {
   height: 100vh;
   width: 100vw;
   position: absolute;
   top: 0;
   left: 0;
   background: #303952;
-  z-index: 1;
-  opacity: .50;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.containerInicial {
+  height: 100%;
+  align-items: center;
+}
+
+.filaLogo {
+  padding-top: 20%;
 }
