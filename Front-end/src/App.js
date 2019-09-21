@@ -1,62 +1,21 @@
 import React, { Component } from "react";
-import logo from "./img/logo.png";
-import "./App.css";
-import videoBackground from "./video/background.mp4";
-import Btnprincipal from "./componentes/btn-principal";
+import {
+  Route,
+  Switch
+} from "react-router-dom";
+import Home from './Home';
+import Test from './formularioPrueba';
 
 class App extends Component {
-
-  constructor() {
-    super();
-
-    this.state = {
-      buttontext:'',
-      cardtext: ''
-    };
-
-  }
-
-  buttonInformation=(buttontext,cardtext)=>{
-    this.setState({buttontext,cardtext});
-    console.log(buttontext);
-  }
-
   render() {
     return (
-      <div className="bodyApp">
-        <div className="App">
-          <header className="App-header headerApp">
-            <div className="header-video">
-              <video id="background-video" loop muted autoPlay>
-                <source src={videoBackground} type="video/mp4;" />
-                navegador no soporta la etiqueta video
-              </video>
-            </div>
-            <div class="header-overlay" />
-            <div className="container containerInicial">
-              <div className="row filaLogo">
-                <div className="col" />
-                <img src={logo} className="logo col" alt="logo" />
-                <div className="col" />
-              </div>
-              <div className="row ">
-                <div className="col">
-              <Btnprincipal 
-                buttontext='Hotel'
-                cardtext='¿Ya sabes a donde quieres ir?'
-                 />
-                 </div> 
-              <div className="col" />
-             <div className="col">
-              <Btnprincipal 
-                buttontext='Actividad'
-                cardtext='¿Quieres hacer algo, pero no sabes donde?'
-                 />
-                 </div>
-              </div>
-            </div>
-          </header>
-        </div>
+      <div>
+        <Route render={({ location }) => (
+          <Switch location={location}>
+            <Route exact path="/" component={Home} />
+            <Route path="/test" component={Test} />
+          </Switch>
+        )} />
       </div>
     );
   }

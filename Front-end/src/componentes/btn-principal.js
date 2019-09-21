@@ -1,16 +1,18 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom';
 
-export default class Btnprincipal extends Component {
-  constructor() {
-    super();
+class Btnprincipal extends Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
       hide: true,
-      card: false
+      card: false,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleOutputChange = this.handleOutputChange.bind(this);
+    this.onNavigate = this.onNavigate.bind(this);
   }
 
   handleInputChange(e, a) {
@@ -22,6 +24,12 @@ export default class Btnprincipal extends Component {
   handleOutputChange(e) {
     this.setState({ hide: true,  card: false });
   }
+
+  onNavigate(){
+    this.props.history.push(this.props.link);
+    console.log(this.props.link);
+  }
+
 
   render() {
     const style1 = this.state.hide ? { display: "none" } : {};
@@ -42,8 +50,10 @@ export default class Btnprincipal extends Component {
               className="botonInicial1 btn btn-warning btn-lg btn-block"
               onMouseOver={this.handleInputChange}
               onMouseOut={this.handleOutputChange}
+              onClick={this.onNavigate}
             >
              {this.props.buttontext}
+             
             </button>
             <div className="card-body" style={style1}>
               <p className="card-text textoBoton">
@@ -56,3 +66,5 @@ export default class Btnprincipal extends Component {
     );
   }
 }
+
+export default withRouter(Btnprincipal);
