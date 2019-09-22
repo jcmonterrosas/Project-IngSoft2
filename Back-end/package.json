@@ -4,6 +4,7 @@
   "description": "Ing. Soft 2",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
   "author": "",
