@@ -1,22 +1,23 @@
-const router = require("express").Router();
+const { Router } = require("express");
+const router = Router();
 
-const Hotel = require("../models/Hotel");
+const {
+  getHotels,
+  createHotel,
+  getHotel,
+  deleteHotel,
+  updateHotel
+} = require("../controllers/hotels.controller");
 
-router.get("/hotel/add", (req, res) => {
-  res.render("hotel/new-hotel");
-});
+router
+  .route("/")
+  .get(getHotels)
+  .post(createHotel);
 
-router.get("/hotel/new-hotel", async (req, res) => {
-  const newHotel = new Hotel({
-    hot_nombre: "test",
-    hot_direccion: "test",
-    hot_ciudad: "test",
-    tel_contacto: "test",
-    acomodacion: "test",
-    precio_persona: "test"
-  });
-  await newHotel.save();
-  res.redirect("/hotel/add");
-});
+router
+  .route("/:id")
+  .get(getHotel)
+  .put(updateHotel)
+  .delete(deleteHotel);
 
 module.exports = router;

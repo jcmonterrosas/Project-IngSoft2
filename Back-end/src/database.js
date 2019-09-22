@@ -1,8 +1,14 @@
 const mongoose = require("mongoose");
 
-mongoose
-  .connect("mongodb://localhost/test-tom", {
-    useNewUrlParser: true
-  })
-  .then(db => console.log("db connected"))
-  .catch(err => console.log(err));
+const URI = process.env.MONGODB_URI;
+mongoose.connect(URI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+});
+
+const connection = mongoose.connection;
+
+connection.once("open", () => {
+  console.log("DB is connected");
+});
