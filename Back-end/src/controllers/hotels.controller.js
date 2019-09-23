@@ -26,7 +26,7 @@ hotelsCtrl.getHotel = async (req, res) => {
   const hotel = await Hotel.findById(req.params.id);
   console.log(hotel);
 
-  res.json({ title: "Hotel" });
+  res.json({ hotel });
 };
 
 hotelsCtrl.updateHotel = async (req, res) => {
