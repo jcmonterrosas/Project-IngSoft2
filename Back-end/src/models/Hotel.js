@@ -3,7 +3,11 @@ const { Schema } = mongoose;
 
 const HotelSchema = new Schema({
   name: { type: String, required: true },
-  cedula: { type: String, required: true },
+  city: { type: String, required: true },
+  address: { type: String, required: true },
+  phone: { type: String, required: true },
+  price_per_person : {type: Double, required: true },
+  acommodation: { type: String, required: true },
   date: { type: Date, default: Date.now }
 });
 
