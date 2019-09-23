@@ -8,10 +8,14 @@ hotelsCtrl.getHotels = async (req, res) => {
 };
 
 hotelsCtrl.createHotel = async (req, res) => {
-  const { name, cedula } = req.body;
+  const { name, city, address, phone, price_per_person, acommodation } = req.body;
   const newHotel = new Hotel({
     name,
-    cedula
+    city, 
+    address,
+    phone,
+    price_per_person,
+    acommodation
   });
   await newHotel.save();
   console.log(newHotel);
@@ -22,24 +26,28 @@ hotelsCtrl.getHotel = async (req, res) => {
   const hotel = await Hotel.findById(req.params.id);
   console.log(hotel);
 
-  res.json({ title: "Note" });
+  res.json({ hotel });
 };
 
 hotelsCtrl.updateHotel = async (req, res) => {
-  const { name, cedula } = req.body;
+  const { name, city, address, phone, price_per_person, acommodation } = req.body;
   await Hotel.findOneAndUpdate(
     { _id: req.params.id },
     {
       name,
-      cedula
+      city, 
+      address,
+      phone,
+      price_per_person,
+      acommodation
     }
   );
-  res.json({ message: "Notes Updated" });
+  res.json({ message: "Hotel Updated" });
 };
 
 hotelsCtrl.deleteHotel = async (req, res) => {
   const hotel = await Hotel.findOneAndDelete(req.params.id);
-  res.json({ message: "Note deleted", hotel });
+  res.json({ message: "Hotel deleted", hotel });
 };
 
 module.exports = hotelsCtrl;
