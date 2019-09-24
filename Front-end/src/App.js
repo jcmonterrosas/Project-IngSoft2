@@ -7,6 +7,7 @@ import Home from './Home';
 import Test from './formularioPrueba';
 import BuscarHotel from './BuscarHotel';
 
+
 class App extends Component {
   render() {
     return (
