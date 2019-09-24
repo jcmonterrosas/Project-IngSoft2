@@ -9,11 +9,12 @@ userCtrl.getUsers = async (req, res) => {
 
 userCtrl.createUser = async (req, res) => {
   const { usr_nombre, usr_telefono, usr_correo, usr_pass, usr_tipo_doc, rol } = req.body;
+  const passwordHashed =  hex_md5(usr_pass); // probar esta funcion js
   const newUser = new User({
     usr_nombre,
     usr_telefono,
     usr_correo,
-    usr_pass, // tiene que ser "hasheado", para el login se hace hash de lo que ingrese y se compara.
+    passwordHashed, // tiene que ser "hasheado", para el login se hace hash de lo que ingrese y se compara. 
     usr_tipo_doc,
     rol
   });
