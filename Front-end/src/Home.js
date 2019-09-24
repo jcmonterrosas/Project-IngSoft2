@@ -45,7 +45,7 @@ class Home extends Component {
               <Btnprincipal 
                 buttontext='Hotel'
                 cardtext='¿Ya sabes a donde quieres ir?'
-                link="/test"
+                link="/Hotel"
                  />
                  </div> 
               <div className="col" />
@@ -53,6 +53,7 @@ class Home extends Component {
               <Btnprincipal 
                 buttontext='Actividad'
                 cardtext='¿Quieres hacer algo, pero no sabes donde?'
+                link="/test"
                  />
                  </div>
               </div>

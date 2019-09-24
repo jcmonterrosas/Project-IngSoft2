@@ -5,6 +5,8 @@ import {
 } from "react-router-dom";
 import Home from './Home';
 import Test from './formularioPrueba';
+import BuscarHotel from './BuscarHotel';
+
 
 class App extends Component {
   render() {
@@ -13,6 +15,7 @@ class App extends Component {
         <Route render={({ location }) => (
           <Switch location={location}>
             <Route exact path="/" component={Home} />
+            <Route path="/Hotel" component={BuscarHotel} />
             <Route path="/test" component={Test} />
           </Switch>
         )} />
