@@ -50,4 +50,14 @@ hotelsCtrl.deleteHotel = async (req, res) => {
   res.json({ message: "Hotel deleted", hotel });
 };
 
+hotelsCtrl.getHotelByCity = async (req, res) => {
+  const hotels = await Hotel.find( {city : req.params.ciudad});
+  res.json(hotels);
+};
+
+activitiesCtrl.getActivityByPriceInRange = async (req, res) => {
+  const hotels = await Hotel.find( { price_per_person: { $gt: req.params.mayorque, $lt: req.params.menorque } });
+  res.json(hotels );
+};
+
 module.exports = hotelsCtrl;
