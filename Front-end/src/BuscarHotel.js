@@ -46,23 +46,31 @@ class App extends Component {
         pagina: 1
       },
       () => {
-        this.consultarApi();
+        this.consultarApiHotel();
       }
     );
   };
 
-  consultarApi = async () => {
-    const pagina = this.state.pagina;
-    const url = `https://pixabay.com/api/?key=13669805-f32c8cf3c97ec348e21458fac&q=
-    ${this.state.termino}&per_page=30&page=${pagina}`;
+  consultarApiHotel = async () => {
+    const res = await axios.get(
+      `https://api-aventurate.herokuapp.com/hotels/name/${this.state.termino}`
+    );
+    this.setState({ hoteles: res.data });
+    console.log(this.state.hoteles);
+  };
 
-    const res = await axios.get("https://api-aventurate.herokuapp.com/hotels");
+  consultarApi = async () => {
+    /*const pagina = this.state.pagina;
+    const url = `https://pixabay.com/api/?key=13669805-f32c8cf3c97ec348e21458fac&q=
+    ${this.state.termino}&per_page=30&page=${pagina}`;*/
+
+    const res = await axios.get(`https://api-aventurate.herokuapp.com/hotels`);
     this.setState({ hoteles: res.data });
     console.log(this.state.hoteles);
 
-    fetch(url)
+    /*fetch(url)
       .then(respuesta => respuesta.json())
-      .then(resultado => this.setState({ imagenes: resultado.hits }));
+      .then(resultado => this.setState({ imagenes: resultado.hits }));*/
   };
 
   render() {
@@ -81,6 +89,7 @@ class App extends Component {
             </button>
           </div>
           <Resultado
+            hoteles={this.state.hoteles}
             imagenes={this.state.imagenes}
             paginaAnterior={this.paginaAnterior}
             paginaSiguiente={this.paginaSiguiente}

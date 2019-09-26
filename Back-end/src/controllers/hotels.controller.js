@@ -64,6 +64,11 @@ hotelsCtrl.deleteHotel = async (req, res) => {
   res.json({ message: "Hotel deleted", hotel });
 };
 
+hotelsCtrl.getHotelByName = async (req, res) => {
+  const hotels = await Hotel.find({ name: req.params.name });
+  res.json(hotels);
+};
+
 hotelsCtrl.getHotelByCity = async (req, res) => {
   const hotels = await Hotel.find({ city: req.params.ciudad });
   res.json(hotels);
