@@ -46,17 +46,9 @@ class App extends Component {
         pagina: 1
       },
       () => {
-        this.consultarApiHotel();
+        this.consultarApi();
       }
     );
-  };
-
-  consultarApiHotel = async () => {
-    const res = await axios.get(
-      `https://api-aventurate.herokuapp.com/hotels/name/${this.state.termino}`
-    );
-    this.setState({ hoteles: res.data });
-    console.log(this.state.hoteles);
   };
 
   consultarApi = async () => {
@@ -64,7 +56,9 @@ class App extends Component {
     const url = `https://pixabay.com/api/?key=13669805-f32c8cf3c97ec348e21458fac&q=
     ${this.state.termino}&per_page=30&page=${pagina}`;*/
 
-    const res = await axios.get(`https://api-aventurate.herokuapp.com/hotels`);
+    const res = await axios.get(
+      `https://api-aventurate.herokuapp.com/hotels/${this.state.termino}`
+    );
     this.setState({ hoteles: res.data });
     console.log(this.state.hoteles);
 

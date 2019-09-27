@@ -16,11 +16,9 @@ router
   .post(createHotel);
 
 router
-  .route("/:id")
-  .get(getHotel)
+  .route("/:name")
+  .get(getHotelByName)
   .put(updateHotel)
   .delete(deleteHotel);
-
-router.route("/name/:name").get(getHotelByName);
 
 module.exports = router;
