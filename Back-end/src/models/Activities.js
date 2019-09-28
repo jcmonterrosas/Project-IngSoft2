@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-
 const ActSchema = new Schema({
   act_nombre: { type: String, required: true },
   act_descripcion: { type: String, required: true },
