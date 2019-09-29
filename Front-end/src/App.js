@@ -7,6 +7,8 @@ import Home from './Home';
 // import Test from './formularioPrueba';
 import BuscarHotel from './BuscarHotel';
 import FiltrarActividades from './actividades/SearchActivities';
+import BuscarActividad from './BuscarActividad'
+
 
 
 class App extends Component {
@@ -18,6 +20,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/SearchHotel" component={BuscarHotel} />
             <Route path="/SearchActivities" component={FiltrarActividades} />
+            <Route path="/SearchActivity" component={BuscarActividad} />
           </Switch>
         )} />
       </div>

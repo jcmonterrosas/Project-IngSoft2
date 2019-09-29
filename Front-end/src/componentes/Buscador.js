@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Buscador.css";
 
 export default class Buscador extends Component {
   busquedaRef = React.createRef();
@@ -12,16 +13,16 @@ export default class Buscador extends Component {
   render() {
     return (
       <form onSubmit={this.ObtenerDatos}>
-        <div className="row">
+        <div className="row filaBuscador">
           <div className="form-group col">
             <input
               ref={this.busquedaRef}
               type="text"
-              className="form-control"
-              placeholder="Busca tu Imagen. Ejemplo: Futbol"
+              className="form-control Buscador "
+              placeholder="Busca Hoteles en tu destino. Ejemplo: Santa Marta"
             ></input>
           </div>
-          <div className="col">
+          <div className="col input-group date">
             <input type="date" className="form-control"></input>
           </div>
           <div className="col">
