@@ -4,8 +4,9 @@ import {
   Switch
 } from "react-router-dom";
 import Home from './Home';
-import Test from './formularioPrueba';
+// import Test from './formularioPrueba';
 import BuscarHotel from './BuscarHotel';
+import FiltrarActividades from './actividades/SearchActivities';
 
 
 class App extends Component {
@@ -15,8 +16,8 @@ class App extends Component {
         <Route render={({ location }) => (
           <Switch location={location}>
             <Route exact path="/" component={Home} />
-            <Route path="/Hotel" component={BuscarHotel} />
-            <Route path="/test" component={Test} />
+            <Route path="/SearchHotel" component={BuscarHotel} />
+            <Route path="/SearchActivities" component={FiltrarActividades} />
           </Switch>
         )} />
       </div>

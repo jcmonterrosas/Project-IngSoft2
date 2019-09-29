@@ -1,5 +1,6 @@
 .bodyHome {
   height: 100vh;
+  overflow: hidden;
 }
 
 .Home {
@@ -14,7 +15,7 @@
 .textoBoton,
 .botonInicial1,
 .botonInicial2 {
-  color: black;
+  color: black;  
 }
 
 .header-video {
@@ -48,5 +49,5 @@
 }
 
 .filaLogo {
-  padding-top: 20%;
+  padding-top: 15%;
 }
