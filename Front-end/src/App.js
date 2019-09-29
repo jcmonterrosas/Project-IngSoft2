@@ -10,6 +10,7 @@ import FiltrarActividades from './actividades/SearchActivities';
 import BuscarActividad from './BuscarActividad'
 
 
+
 class App extends Component {
   render() {
     return (
