@@ -25,7 +25,6 @@ class SearchActivities extends Component {
     render() {
         const { properties } = this.state;
         return (
-
             <div className ="page">
                 <div>
                     <h1>Dinos lo que te gustaría hacer</h1>
@@ -35,11 +34,10 @@ class SearchActivities extends Component {
                     properties.map(property => <div key={property._id}><Card property={property} /></div>)
                 }
                 </div>
-                <div>
-                    <Pagination/>
-                </div>
-            </div>
 
+                    <Pagination/>
+
+            </div>
         );
     }
 }

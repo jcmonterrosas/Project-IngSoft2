@@ -6,7 +6,7 @@ import {
 import Home from './Home';
 // import Test from './formularioPrueba';
 import BuscarHotel from './BuscarHotel';
-import FiltrarActividades from './actividades/SearchActivities'
+import FiltrarActividades from './actividades/SearchActivities';
 
 
 class App extends Component {
