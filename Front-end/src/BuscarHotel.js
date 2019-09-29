@@ -1,7 +1,23 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+/*import {
+   // DropdownButton,
+    Dropdown
+  } from "react-dropdown"; */
+
+//import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import './BuscarHotel.css';
 import Buscador from './componentes/Buscador';
+import HotelesActividades from './componentes/Buscar_Hotel_Actividad';
 import Resultado from './componentes/Resultado';
+import FiltroHotel from './componentes/FiltroHotel';
+import FiltroActividad from './componentes/FiltroActividad';
+import './componentes/Filtros.css';
+
+
+
+import filtro from "./img/filtro.png";
+import logo from "./img/Logo_PRINCIPAL.png"
 
 class App extends Component {
 
@@ -13,9 +29,9 @@ class App extends Component {
 
     paginaAnterior = () => {
         let pagina = this.state.pagina;
-        if (pagina != 1) 
+        if (pagina !== 1)
             pagina--;
-        else 
+        else
             return null;
         this.setState({
             pagina
@@ -52,26 +68,55 @@ class App extends Component {
 
         fetch(url)
             .then(respuesta => respuesta.json())
-            .then(resultado => this.setState({imagenes: resultado.hits}))
+            .then(resultado => this.setState({ imagenes: resultado.hits }))
 
     }
+
+    function() {
+        "#Filtros".click(function () {
+            this.next('#Filtros_content').slideToggle();
+            this.ToggleClass('active');
+
+        });
+    }
+
 
     render() {
         return (
             <div className="Hotel container">
                 <div className="jumbotron">
-                    <Buscador datosBusqueda={this.datosBusqueda}/>
+                    
+                    <img  src={logo} height="30%" width="30%" alt="Logo" />
+                    <Buscador datosBusqueda={this.datosBusqueda} />
+                </div>
+                <div className="row">
+
+                    <div className="col-1"></div>
+                    <div className="col-9" align="right">
+                        <HotelesActividades />
+                        {/*<button type="button" className="btn btn-warning">Hotel</button>
+                        <button type="button" className="btn btn-warning" align="right">Actividad</button>*/}
+                    </div>
+
+                    <div className="col-2" align="right">
+                        <UncontrolledDropdown direction="left" isOpen={this.state.btnDropleft} toggle={() => { this.setState({ btnDropleft: !this.state.btnDropleft }); }}>
+                            <DropdownToggle caret>
+                                <img type="button" className="btn btn-warning" src={filtro} height="50px" width="50" alt="Filtro" />
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem><FiltroHotel /></DropdownItem>
+                                <DropdownItem><FiltroActividad /></DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
+                    </div>
                 </div>
                 <div className="row justify-content-center">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-warning">Hotel</button>
-                        <button type="button" class="btn btn-warning">Actividad</button>
-                    </div>
                     <Resultado
                         imagenes={this.state.imagenes}
                         paginaAnterior={this.paginaAnterior}
-                        paginaSiguiente={this.paginaSiguiente}/>
+                        paginaSiguiente={this.paginaSiguiente} />
                 </div>
+
             </div>
         );
     }

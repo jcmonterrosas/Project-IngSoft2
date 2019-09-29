@@ -1,0 +1,24 @@
+.Hotel_container{
+    margin-top: 0%;
+    margin-right: 0%;
+    margin-left: 0%;
+    padding: 0%;
+    height: 50%;
+    width: 400px;
+     
+}
+
+nav.acceder #Filtros_content{
+    height: 50%;
+    width: 400px;
+    display: none;
+}
+
+#botones{
+    height: 20px;
+    width: 90%;
+}
+
+nav.acceder #Filtros{
+    display: inline-block;
+}

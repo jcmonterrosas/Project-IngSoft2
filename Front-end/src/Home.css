@@ -47,6 +47,12 @@
   align-items: center;
 }
 
+div.filaLogo img #LogoSize {
+  height: 50px !important;
+  width: 50px !important;
+  align-items: center;
+}
+
 .filaLogo {
   padding-top: 20%;
 }

@@ -25,7 +25,7 @@ const Imagen=(props)=>{
                     <div className="container">
                     <p className="row">$ {likes}</p>
                     <p className="row">para {views} personas</p>
-                    <a href={largeImageURL} target="_blank" className="btn btn-primary btn-block row"> Ver detalles</a>
+                    <a rel="noopener noreferrer" href={largeImageURL} target="_blank"  className="btn btn-primary btn-block row"> Ver detalles</a>
                     </div>
                 </div>
                 </div>

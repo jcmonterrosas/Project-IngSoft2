@@ -3,9 +3,9 @@ import {
   Route,
   Switch
 } from "react-router-dom";
-import Home from './FiltroHotel';
-/* import Test from './formularioPrueba';
-import BuscarHotel from './BuscarHotel';*/
+import Home from './Home';
+import Test from './formularioPrueba';
+import BuscarHotel from './BuscarHotel';
 
 
 class App extends Component {
@@ -14,29 +14,14 @@ class App extends Component {
       <div>
         <Route render={({ location }) => (
           <Switch location={location}>
-            
+            <Route exact path="/" component={Home} />
+            <Route path="/Hotel" component={BuscarHotel} />
+            <Route path="/test" component={Test} />
           </Switch>
         )} />
       </div>
     );
   }
 }
-
-
-/* class App extends Component {
-  render() {
-    return (
-      <div>
-        <Route render={({ location }) => (
-          <Switch location={location}>
-            <Route exact path="/" component={FiltroHotel} />
-            <Route path="/Hotel" component={BuscarHotel} />
-            <Route path="/test" component={Test} />  
-          </Switch>
-        )} />
-      </div>
-    );
-  }
-}  */
 
 export default App;
