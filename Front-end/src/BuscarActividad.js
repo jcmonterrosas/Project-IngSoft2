@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import "./BuscarHotel.css";
+import "./BuscarActividad.css";
 import Buscador from "./componentes/Buscador";
 import Resultado from "./componentes/Resultado";
-import Btncambio from "./componentes/btn-cambio"
 import axios from "axios";
+import Btncambio from "./componentes/btn-cambio";
+
 
 class App extends Component {
   state = {
@@ -12,6 +13,7 @@ class App extends Component {
     imagenes: [],
     pagina: ""
   };
+
 
   paginaAnterior = () => {
     let pagina = this.state.pagina;
@@ -70,7 +72,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="Hotel container">
+      <div className="Actividad container">
         <div className="jumbotron">
           <Buscador datosBusqueda={this.datosBusqueda} />
         </div>
@@ -78,11 +80,11 @@ class App extends Component {
           <div class="btn-group" role="group" aria-label="Basic example">
           <Btncambio 
                 buttontext="Hoteles"
-                disabled="true"
                 link="/Hotel"
               />
             <Btncambio 
                 buttontext="Actividades"
+                disabled="true"
                 link="/Actividad"
               />
           </div>

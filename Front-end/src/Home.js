@@ -53,7 +53,7 @@ class Home extends Component {
               <Btnprincipal 
                 buttontext='Actividad'
                 cardtext='¿Quieres hacer algo, pero no sabes donde?'
-                link="/test"
+                link="/Actividad"
                  />
                  </div>
               </div>
