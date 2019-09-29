@@ -8,13 +8,10 @@ class Btncambio extends Component {
     this.onNavigate = this.onNavigate.bind(this);
   }
 
- 
-
   onNavigate(){
     this.props.history.push(this.props.link);
     console.log(this.props.link);
   }
-
 
   render() {
     

@@ -80,12 +80,12 @@ class App extends Component {
           <div class="btn-group" role="group" aria-label="Basic example">
           <Btncambio 
                 buttontext="Hoteles"
-                link="/Hotel"
+                link="/SearchHotel"
               />
             <Btncambio 
                 buttontext="Actividades"
                 disabled="true"
-                link="/Actividad"
+                link="/SearchActivity"
               />
           </div>
           <Resultado

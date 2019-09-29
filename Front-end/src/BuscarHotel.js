@@ -79,11 +79,11 @@ class App extends Component {
           <Btncambio 
                 buttontext="Hoteles"
                 disabled="true"
-                link="/Hotel"
+                link="/SearchHotel"
               />
             <Btncambio 
                 buttontext="Actividades"
-                link="/Actividad"
+                link="/SearchActivity"
               />
           </div>
           <Resultado
