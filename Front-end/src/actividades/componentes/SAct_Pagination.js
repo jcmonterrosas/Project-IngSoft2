@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import './SAct_Pagination.css';
 
+
+
 class SAct_Pagination extends Component {
+
+    onNavigate(){
+        const link="/SearchActivity"
+        this.props.history.push(this.link);
+        console.log(link);
+      }
 
     render() {
         return (
@@ -18,7 +26,7 @@ class SAct_Pagination extends Component {
                     <label htmlFor="seventyfive" className="label">Fechas</label>
 
                     <input type="radio" className="radio" name="progress" value="onehundred" id="onehundred" />
-                    <label htmlFor="onehundred" className="label">Buscar</label>
+                    <label htmlFor="onehundred" className="label" onClick={this.onNavigate}>Buscar</label>
 
                     <div className="progress">
                         <div className="progress-bar"></div>

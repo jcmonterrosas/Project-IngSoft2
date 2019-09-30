@@ -17,7 +17,7 @@ class Btncambio extends Component {
     
     return (
       <div className="button">
-          <button type="button" class="btn btn-warning" disabled={this.props.disabled} onClick={this.onNavigate}>
+          <button type="button" className="btn btn-warning" disabled={this.props.disabled} onClick={this.onNavigate}>
              {this.props.buttontext}
             </button>
       </div>

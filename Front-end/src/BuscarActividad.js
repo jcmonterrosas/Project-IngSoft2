@@ -84,7 +84,7 @@ class App extends Component {
               />
             <Btncambio 
                 buttontext="Actividades"
-                disabled="true"
+                disabled={true}
                 link="/SearchActivity"
               />
           </div>

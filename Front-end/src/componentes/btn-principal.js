@@ -15,7 +15,7 @@ class Btnprincipal extends Component {
     this.onNavigate = this.onNavigate.bind(this);
   }
 
-  handleInputChange(e, a) {
+  handleInputChange(e) {
     
       this.setState({ hide: false,card:true});
    
