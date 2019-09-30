@@ -17,7 +17,7 @@ class App extends Component {
 
   paginaAnterior = () => {
     let pagina = this.state.pagina;
-    if (pagina != 1) pagina--;
+    if (pagina !== 1) pagina--;
     else return null;
     this.setState(
       {
@@ -77,7 +77,7 @@ class App extends Component {
           <Buscador datosBusqueda={this.datosBusqueda} />
         </div>
         <div className="row justify-content-center">
-          <div class="btn-group" role="group" aria-label="Basic example">
+          <div className="btn-group" role="group" aria-label="Basic example">
           <Btncambio 
                 buttontext="Hoteles"
                 link="/SearchHotel"

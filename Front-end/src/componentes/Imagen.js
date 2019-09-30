@@ -24,7 +24,7 @@ const Imagen = props => {
             <a
               href="#"
               target="_blank"
-              className="btn btn-primary btn-block row"
+              className="btn btn-lg btn-warning btn-block"
             >
               {" "}
               Ver detalles

@@ -16,7 +16,7 @@ class App extends Component {
 
   paginaAnterior = () => {
     let pagina = this.state.pagina;
-    if (pagina != 1) pagina--;
+    if (pagina !== 1) pagina--;
     else return null;
     this.setState(
       {
