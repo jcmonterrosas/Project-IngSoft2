@@ -4,6 +4,23 @@
     justify-content: space-between;
 }
 
-.BuscadorHotel{
-    width: 200px;
+.cancelBtn{
+    visibility: hidden;
 }
+
+.opensright{
+    margin-top:-45px;
+}
+
+@media (min-width: 1150px) {
+    .opensright{
+        width: 83vh;
+        margin-top:-45px;
+    }
+  }
+
+  @media (max-width: 580px) {
+    .opensright{
+        visibility: hidden;
+    }
+  }

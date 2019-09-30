@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./BuscarHotel.css";
+
 import Buscador from "./componentes/Buscador";
 import Resultado from "./componentes/Resultado";
 import Btncambio from "./componentes/btn-cambio"
@@ -75,10 +76,10 @@ class App extends Component {
           <Buscador datosBusqueda={this.datosBusqueda} />
         </div>
         <div className="row justify-content-center">
-          <div class="btn-group" role="group" aria-label="Basic example">
+          <div className="btn-group" role="group" aria-label="Basic example">
           <Btncambio 
                 buttontext="Hoteles"
-                disabled="true"
+                disabled={true}
                 link="/SearchHotel"
               />
             <Btncambio 
