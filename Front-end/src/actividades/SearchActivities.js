@@ -11,7 +11,11 @@ class SearchActivities extends Component {
         super(props);
         this.state = {
             properties: data.properties,
-            property: data.properties[0]
+            property: data.properties[0],
+            type: "",
+            persons: "",
+            date: "",
+            done: ""
         }
     }
 
@@ -35,7 +39,12 @@ class SearchActivities extends Component {
                 }
                 </div>
 
-                    <Pagination/>
+                <Pagination 
+                    type =  "/SearchActivities"
+                    persons = "/SearchActivities/Personas"
+                    date = "/SearchActivities/Dias"
+                    done = "/SearchActivity"
+                />
 
             </div>
         );
