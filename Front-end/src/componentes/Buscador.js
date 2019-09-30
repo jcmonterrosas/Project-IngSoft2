@@ -19,7 +19,7 @@ export default class Buscador extends Component {
               ref={this.busquedaRef}
               type="text"
               className="form-control Buscador "
-              placeholder="Busca Hoteles en tu destino. Ejemplo: Santa Marta"
+              placeholder="Destino"
             ></input>
           </div>
           <div className="col input-group date">
