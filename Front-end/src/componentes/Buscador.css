@@ -1,0 +1,8 @@
+.filaBuscador{
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.BuscadorHotel{
+    width: 200px;
+}
