@@ -1,9 +1,11 @@
 .Hotel {
   text-align: center;
+  padding: 5vh;
 }
 
 .containerHotel{
   border:2px solid rgba(0,0,0,.5);
+  background-color: #e9ecef;
   margin-top:10px;
   margin-bottom: 10px;
 }
