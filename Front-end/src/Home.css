@@ -48,6 +48,17 @@
   align-items: center;
 }
 
+.links {
+  margin-top: 10%;
+}
+a{
+ color: white;
+}
+
+a:hover{
+ color:red;
+}
+
 .filaLogo {
   padding-top: 15%;
 }
