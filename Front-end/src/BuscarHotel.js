@@ -84,7 +84,7 @@ class App extends Component {
               />
             <Btncambio 
                 buttontext="Actividades"
-                link="/SearchActivity"
+                link="/SearchActivities"
               />
           </div>
           <Resultado
