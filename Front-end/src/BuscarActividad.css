@@ -1,0 +1,20 @@
+.Actividad {
+  text-align: center;
+  padding: 5vh;
+}
+
+.containerActividad{
+  border:2px solid rgba(0,0,0,.5);
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+
+.colPrices{
+  border-left: 1px solid rgba(0,0,0,.5);
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.priceInformation{
+  height: 100%;
+}
