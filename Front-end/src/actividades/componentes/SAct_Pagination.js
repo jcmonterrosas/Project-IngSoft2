@@ -9,7 +9,7 @@ class SAct_Pagination extends Component {
             <div className="act-paginacion">
                 <div className="container">
                     <input type="radio" className="radio" name="progress" value="twentyfive" id="twentyfive" defaultChecked />
-                    <label htmlFor="twentyfive" className="label">Actividades</label>
+                    <label  htmlFor="twentyfive" className="label">Actividades</label>
 
                     <input type="radio" className="radio" name="progress" value="fifty" id="fifty" />
                     <label htmlFor="fifty" className="label">Personas</label>
