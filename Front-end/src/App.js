@@ -13,7 +13,7 @@ import Home from './Home';
 import BuscarHotel from './BuscarHotel';
 import FiltrarActividades from './actividades/SearchActivities';
 import FilActPersonas from './actividades/SAct_Personas'
-
+import BuscarActividad from './BuscarActividad'
 
 class App extends Component {
   render() {
@@ -31,6 +31,7 @@ class App extends Component {
                 <Route path="/SearchHotel" component={BuscarHotel} />
                 <Route exact path="/SearchActivities" component={FiltrarActividades} />
                 <Route path="/SearchActivities/Personas" component={FilActPersonas} />
+                <Route path="/SearchActivity" component={BuscarActividad} />
               </Switch>
             </CSSTransition>
           </TransitionGroup>

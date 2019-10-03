@@ -6,7 +6,8 @@ const {
   createHotel,
   getHotel,
   deleteHotel,
-  updateHotel
+  updateHotel,
+  getHotelByName
 } = require("../controllers/hotels.controller");
 
 router
@@ -15,8 +16,8 @@ router
   .post(createHotel);
 
 router
-  .route("/:id")
-  .get(getHotel)
+  .route("/:name")
+  .get(getHotelByName)
   .put(updateHotel)
   .delete(deleteHotel);
 
