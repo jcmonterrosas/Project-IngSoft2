@@ -56,13 +56,13 @@ export default class Buscador extends Component {
             : {};
         return (
           
-            <form onSubmit={this.ObtenerDatos}>
+            <form className="Buscador container" onSubmit={this.ObtenerDatos}>
                 <div className="form-group row justify-content-between filaBuscador">
                     <div className="col-6">
                         <input
                             ref={this.busquedaRef}
                             type="text"
-                            className="form-control Buscador "
+                            className="form-control "
                             placeholder="Ej: Santa Marta" 
                             onClick={this.hideCalendar} readonly></input>
                     </div>
