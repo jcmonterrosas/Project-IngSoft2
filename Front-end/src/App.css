@@ -1,10 +1,15 @@
+.App{
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
 .page{
     position: absolute;
     left: 0;
     right: 0;
 }
 
-.bodyHome{
+.Home{
     position: absolute;
     left: 0;
     right: 0;

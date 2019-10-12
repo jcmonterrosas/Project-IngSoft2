@@ -8,6 +8,7 @@ import {
   TransitionGroup,
 } from 'react-transition-group';
 import './App.css';
+import Header from './componentes/Header';
 import Home from './Home';
 // import Test from './formularioPrueba';
 import BuscarHotel from './BuscarHotel';
@@ -16,26 +17,38 @@ import FilActPersonas from './actividades/SAct_Personas'
 import BuscarActividad from './BuscarActividad'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      home: "",
+      login: "",
+      signin: ""
+    }
+  }
+
   render() {
     return (
-      <div>
-        <Route render={({ location }) => (
-          <TransitionGroup>
-            <CSSTransition
-              key={location.key}
-              timeout={400}
-              classNames="fade"
-            >
-              <Switch location={location}>
-                <Route exact path="/" component={Home} />
-                <Route path="/SearchHotel" component={BuscarHotel} />
-                <Route exact path="/SearchActivities" component={FiltrarActividades} />
-                <Route path="/SearchActivities/Personas" component={FilActPersonas} />
-                <Route path="/SearchActivity" component={BuscarActividad} />
-              </Switch>
-            </CSSTransition>
-          </TransitionGroup>
-        )} />
+      <div className="App">
+        <Header home="/" login="/" signin="/" />
+        <div className="AllRoutes">
+          <Route render={({ location }) => (
+            <TransitionGroup>
+              <CSSTransition
+                key={location.key}
+                timeout={400}
+                classNames="fade"
+              >
+                <Switch location={location}>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/SearchHotel" component={BuscarHotel} />
+                  <Route exact path="/SearchActivities" component={FiltrarActividades} />
+                  <Route path="/SearchActivities/Personas" component={FilActPersonas} />
+                  <Route path="/SearchActivity" component={BuscarActividad} />
+                </Switch>
+              </CSSTransition>
+            </TransitionGroup>
+          )} />
+        </div>
       </div>
     );
   }
