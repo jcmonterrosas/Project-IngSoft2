@@ -1,0 +1,23 @@
+{
+  "name": "project-ingsoft2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "pure-md5": "^0.1.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcmonterrosas/Project-IngSoft2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcmonterrosas/Project-IngSoft2/issues"
+  },
+  "homepage": "https://github.com/jcmonterrosas/Project-IngSoft2#readme"
+}
