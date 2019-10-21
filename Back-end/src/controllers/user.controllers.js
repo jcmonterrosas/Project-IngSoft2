@@ -164,16 +164,19 @@ userCtrl.verify = async (req, res) => {
 
   if(userSession && !userSession.isDeleted)
   {
+    const user = await User.findById(userSession.usr_id);
     res.json({ 
-        UserLogon : true
+        UserLogon : true,
+        User: user
     });
 
   }
   else
   {
     res.json({ 
-      UserLogon : false
-  });
+      UserLogon : false,
+      User : null
+    });
   }
 };
 
