@@ -3,7 +3,7 @@ import "./Login.css";
 import backgroundlogin from "./img/Background_login.jpg";
 import Btnprincipal from "./componentes/btn-cambio";
 
-class App extends Component {
+class Login extends Component {
     state = {
         User: String,
         Password: String,
@@ -71,4 +71,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Login;
