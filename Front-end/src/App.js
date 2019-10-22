@@ -16,6 +16,7 @@ import BuscarHotel from './BuscarHotel';
 import FiltrarActividades from './actividades/SearchActivities';
 import FilActPersonas from './actividades/SAct_Personas'
 import BuscarActividad from './BuscarActividad'
+import Login from './Login'
 
 class App extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header home="/" login="/" signin="/" />
+        <Header home="/" login="/Login" signin="/" />
         <div className="AllRoutes">
           <Route render={({ location }) => (
             <TransitionGroup>

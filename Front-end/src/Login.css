@@ -1,0 +1,13 @@
+.bodylogin{
+    height: 50vh;
+}
+
+.background_login{
+    height: 195%;
+    width: 100%;
+}
+
+.backlog{
+    background: gray;
+    backface-visibility: hidden;
+}

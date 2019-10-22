@@ -6,6 +6,8 @@ import Resultado from "./componentes/Resultado";
 import Btncambio from "./componentes/btn-cambio"
 import axios from "axios";
 
+import logo from "./img/Logo_PRINCIPAL.png"
+
 class App extends Component {
   state = {
     termino: "",
@@ -73,6 +75,7 @@ class App extends Component {
     return (
       <div className="Hotel container">
         <div className="jumbotron">
+          <img src={logo} height="30%" width="30%" alt="Logo" />
           <Buscador datosBusqueda={this.datosBusqueda} />
         </div>
         <div className="row justify-content-center">
