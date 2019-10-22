@@ -9,6 +9,7 @@ import {
 } from 'react-transition-group';
 import './App.css';
 import Header from './componentes/Header';
+import Footer from './componentes/Footer';
 import Home from './Home';
 // import Test from './formularioPrueba';
 import BuscarHotel from './BuscarHotel';
@@ -49,6 +50,7 @@ class App extends Component {
             </TransitionGroup>
           )} />
         </div>
+        <Footer/>
       </div>
     );
   }

@@ -3,9 +3,10 @@
     display: grid;
     grid-template-areas: "logo nav";
     padding: 2vh 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
 }
 
-.Nav {
+.Header .Nav {
     grid-area: nav;
     display: grid;
     grid-template-columns: repeat(3, auto);
