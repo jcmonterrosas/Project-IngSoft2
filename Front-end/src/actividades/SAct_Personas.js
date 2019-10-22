@@ -13,7 +13,11 @@ class SAct_Personas extends Component {
             properties: data.properties,
             property: data.properties[0],
             name: "",
-            isToggleOn: true
+            isToggleOn: true,
+            type: "",
+            persons: "",
+            date: "",
+            done: ""
         }
 
         this.handleClick = this.handleClick.bind(this);
@@ -48,7 +52,12 @@ class SAct_Personas extends Component {
                         </div>)
                     }
                 </div>
-                <Pagination />
+                <Pagination
+                    type="/SearchActivities"
+                    persons="/SearchActivities/Personas"
+                    date="/SearchActivities/Dias"
+                    done="/SearchActivity"
+                />
             </div>
         );
     }

@@ -1,17 +1,22 @@
+.App{
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+}
+
 .page{
-    position: absolute;
+    position: relative;
     left: 0;
     right: 0;
 }
 
-.bodyHome{
-    position: absolute;
+.Home{
+    position: relative;
     left: 0;
     right: 0;
 }
 
 .Hotel{
-    position: absolute;
+    position: relative;
     left: 0;
     right: 0;
 }
