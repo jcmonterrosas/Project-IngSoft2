@@ -5,15 +5,14 @@ const {
   getRol,
   createRol,
   deleteRol,
-  updateRol,
-  getRolId
+  updateRol
 } = require("../controllers/rol.controller");
 
-router.route("/").get(getRol).post(createRol);
+router.route("/").post(createRol);
 
 router
   .route("/:id")
-  .get(getRolId)
+  .get(getRol)
   .put(updateRol)
   .delete(deleteRol);
 

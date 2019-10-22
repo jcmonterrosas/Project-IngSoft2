@@ -7,15 +7,10 @@ rolCtrl.getRol = async (req, res) => {
   res.json(roles);
 };
 
-rolCtrl.getRolId = async (req, res) => {
-  const roles = await Rol.find({ _id: req.params.id }); //Devuelve un arreglo [{}, {}]
-  res.json(roles);
-};
-
 rolCtrl.createRol = async (req, res) => {
-  const { rol_name } = req.body;
+  const { name } = req.body;
   const newRol = new Rol({
-    rol_name
+    name
   });
   await newRol.save();
   console.log(newRol);
@@ -24,11 +19,11 @@ rolCtrl.createRol = async (req, res) => {
 
 
 rolCtrl.updateRol = async (req, res) => {
-  const { rol_name } = req.body;
+  const { name } = req.body;
   await Rol.findOneAndUpdate(
     { _id: req.params.id },
     {
-      rol_name
+      name
     }
   );
   res.json({ message: "Rol Updated" });
