@@ -16,22 +16,18 @@ class SAct_Pagination extends Component {
 
     onNavigateType() {
         this.props.history.push(this.props.type);
-        console.log(this.props.tipo);
     }
 
     onNavigatePersons() {
         this.props.history.push(this.props.persons);
-        console.log(this.props.personas);
     }
 
     onNavigateDate() {
         this.props.history.push(this.props.date);
-        console.log(this.props.dias);
     }
 
     onNavigateDone() {
         this.props.history.push(this.props.done);
-        console.log(this.props.done);
     }
 
     render() {

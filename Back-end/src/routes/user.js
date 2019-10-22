@@ -3,21 +3,33 @@ const router = Router();
 
 const {
   getUsers,
-  createUser,
+  register,
   getUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  login,
+  logout,
+  verify
 } = require("../controllers/user.controllers");
 
 router
   .route("/")
   .get(getUsers)
-  .post(createUser);
+  .post(register);
 
 router
   .route("/:id")
   .get(getUser)
   .put(updateUser)
   .delete(deleteUser);
+
+router.route("/login")
+    .post(login);
+
+router.route("/logout/:token")
+    .get(logout);
+
+router.route("/verify/:token")
+    .get(verify);
 
 module.exports = router;
