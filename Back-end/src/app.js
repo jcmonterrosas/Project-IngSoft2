@@ -14,8 +14,6 @@ app.use("/hotels", require("./routes/hotel"));
 app.use("/activity", require("./routes/activities"));
 app.use("/reserva", require("./routes/reserva"));
 app.use("/user", require("./routes/user"));
-app.use("/rol", require("./routes/rol"));
-
 
 
 module.exports = app;

@@ -8,7 +8,7 @@ const UserSchema = new Schema({
   usr_pass: { type: String, required: true },
   usr_tipo_doc: { type: String, required: true },
   usr_identificacion: {type: String, required: true},
-  rol_id: { type: String, required: true },
+  usr_rol: { type: String, required: true },
   date: { type: Date, default: Date.now }
 });
 
