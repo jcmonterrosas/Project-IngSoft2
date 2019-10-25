@@ -159,7 +159,7 @@ userCtrl.logout = async (req, res) => {
       isDeleted : true
     }
   );
-  res.json({ message: "User logout" });
+  res.json({ message: "User logout, succesfull" });
 };
 
 userCtrl.verify = async (req, res) => {
