@@ -9,6 +9,7 @@ class Login extends Component {
     Password: String
   };
 
+
   valueToState = ({ value, id }) => {
     switch (id) {
       case "User":
