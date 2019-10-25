@@ -8,7 +8,7 @@ class Login extends Component {
         Password: String,
     };
 
-    valueToState = ({ name, value, checked, type }) => {
+    valueToState = ({ name, value, checked, type,id }) => {
         this.setState(() => {
             return { [name]: type === "checkbox" ? checked : value };
         });

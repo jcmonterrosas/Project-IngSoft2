@@ -1,0 +1,77 @@
+.Register{
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-content: center;
+}
+
+.Register .row{
+    margin: 0; 
+}
+
+.Register .campos{
+    padding: 4vh 0;
+    width: 120vh;
+}
+
+.jumbotron{
+    box-shadow: 0 4px 8px 0 rgba(0.5, 0.5, 0.5, 0.5);
+}
+
+.inp {
+    position: relative;
+    margin: auto;
+    width: 100%;
+
+  }
+  .inp .label {
+    position: absolute;
+    /* top: 16px; */
+    left: 0;
+    font-size: 16px;
+    /* color: #9098a9; */
+    font-weight: 500;
+    transform-origin: 0 0;
+    transition: all 0.2s ease;
+  }
+  .inp .border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: #f0ad4e;
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    transition: all 0.15s ease;
+  }
+  .inp input {
+    -webkit-appearance: none;
+    width: 100%;
+    border: 0;
+    font-family: inherit;
+    padding: 12px 0;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 2px solid #c8ccd4;
+    background: none;
+    border-radius: 0;
+    transition: all 0.15s ease;
+  }
+  .inp input:not(:placeholder-shown) + span {
+    color: #5a667f;
+    transform: translateY(-26px) scale(0.75);
+  }
+  .inp input:focus {
+    background: none;
+    outline: none;
+  }
+  .inp input:focus + span {
+    color: #f0ad4e;
+    transform: translateY(-26px) scale(0.75);
+  }
+  .inp input:focus + span + .border {
+    transform: scaleX(1);
+  }
