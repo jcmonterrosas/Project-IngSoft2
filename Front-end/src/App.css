@@ -21,6 +21,12 @@
     right: 0;
 }
 
+.Login{
+    position: relative;
+    left: 0;
+    right: 0;
+}
+
 .fade-appear,
 .fade-enter{
     opacity: 0;
