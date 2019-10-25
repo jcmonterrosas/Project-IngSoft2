@@ -19,19 +19,10 @@ import BuscarActividad from './BuscarActividad'
 import Login from './Login'
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      home: "",
-      login: "",
-      signin: ""
-    }
-  }
-
   render() {
     return (
       <div className="App">
-        <Header home="/" login="/Login" signin="/" />
+        <Header/>
         <div className="AllRoutes">
           <Route render={({ location }) => (
             <TransitionGroup>
@@ -46,6 +37,7 @@ class App extends Component {
                   <Route exact path="/SearchActivities" component={FiltrarActividades} />
                   <Route path="/SearchActivities/Personas" component={FilActPersonas} />
                   <Route path="/SearchActivity" component={BuscarActividad} />
+                  <Route path="/Login" component={Login} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

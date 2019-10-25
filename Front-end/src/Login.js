@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Login.css";
-import backgroundlogin from "./img/Background_login.jpg";
 import Btnprincipal from "./componentes/btn-cambio";
 
 class Login extends Component {
@@ -17,56 +16,49 @@ class Login extends Component {
 
     render() {
         return (
-
-            <form>
-                <div className="bodylogin">
-                    <img className="background_login" src={backgroundlogin} alt="Background_Login" />
-                </div>
+            <div className="Login">
                 <div className="row">
-                    <div className="col-4" />
-                    <div className="backlog col-4" align="center">
+                    <div className="jumbotron" align="center">
                         <div className="row">
+                            <div className="col-12" align="center">
+                                <h1>Bienvenido</h1>
+                            </div>
+                        </div>
+                        <div className="row campos">
                             <div className="col-2" />
                             <div className="col-8" align="center">
-                                <label htmlFor="User">User: </label>
-                                <input
-                                    name="User"
-                                    type="String"
-                                    className="form-control"
-                                    placeholder="User"
-                                    onChange={event => this.valueToState(event.target)}
-                                />
+                                <label for="inp" class="inp">
+                                    <input type="text" id="inp" placeholder="&nbsp;" onChange={event => this.valueToState(event.target)} />
+                                    <span class="label">Nombre de usuario</span>
+                                    <span class="border"></span>
+                                </label>
                             </div>
                             <div className="col-2" />
                         </div>
-                        <div className="row">
+                        <div className="row campos">
                             <div className="col-2" />
                             <div className="col-8" align="center">
-                                <label htmlFor="Password">Password: </label>
-                                <input
-                                    name="Password"
-                                    type="String"
-                                    className="form-control"
-                                    placeholder="Password"
-                                    onChange={event => this.valueToState(event.target)}
-                                />
+                                <label for="inp" class="inp">
+                                    <input type="password" id="inp" placeholder="&nbsp;" onChange={event => this.valueToState(event.target)} />
+                                    <span class="label">Contraseña</span>
+                                    <span class="border"></span>
+                                </label>
                             </div>
                             <div className="col-2" />
                         </div><br />
                         <div className="row" align="center">
-
-                            <div className="col-12" >
+                            <div className="col-2" />
+                            <div className="col-8" >
                                 <Btnprincipal
-                                    buttontext='Login'
-                                    link="/Login"
+                                    buttontext='Iniciar sesión'
+                                    link="/"
                                 />
+                                <div className="col-2" />
                             </div>
-
                         </div>
                     </div>
-                    <div className="col-4" />
                 </div>
-            </form>
+            </div>
         );
     }
 }

@@ -40,7 +40,7 @@ export default function Header() {
                 unmountOnExit
             >
                 <nav className="Nav">
-                    <a href="/">Iniciar sesión</a>
+                    <a href="/Login">Iniciar sesión</a>
                     <a href="/">Mis viajes</a>
                     <a href="/">Registrarse</a>
                 </nav>
