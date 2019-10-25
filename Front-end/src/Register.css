@@ -12,11 +12,16 @@
 
 .Register .campos{
     padding: 4vh 0;
-    width: 120vh;
+    width: 100%;
 }
 
-.jumbotron{
-    box-shadow: 0 4px 8px 0 rgba(0.5, 0.5, 0.5, 0.5);
+.Register .col-6{
+  padding: 0 4vw;
+}
+
+.Registerbody{
+  padding: 4%;
+  box-shadow: 0 4px 8px 0 rgba(0.5, 0.5, 0.5, 0.5);
 }
 
 .inp {
