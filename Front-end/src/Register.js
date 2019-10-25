@@ -122,10 +122,6 @@ class Register extends Component {
                             </div>
                             <div />
                         </div>
-
-
-
-                        <br />
                         <div className="row">
                             <div className="input-group mb-3 col-6">
                                 <button
