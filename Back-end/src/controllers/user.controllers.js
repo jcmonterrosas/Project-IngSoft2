@@ -7,7 +7,10 @@ const UserSession = require("../models/UserSession");
 
 
 userCtrl.getUsers = async (req, res) => {
-  const user = await User.find(); //Devuelve un arreglo [{}, {}]
+  console.log("si");
+
+  const user = await User.find(); 
+  console.log(user);
   res.json(user);
 };
 
@@ -19,7 +22,7 @@ userCtrl.register = async (req, res) => {
     usr_pass,
     usr_tipo_doc,
     usr_identificacion,
-    rol_id
+    usr_rol
   } = req.body;
   const passwordHashed = MD5.md5(usr_pass);
   const newUser = new User({
@@ -29,7 +32,7 @@ userCtrl.register = async (req, res) => {
     usr_pass : passwordHashed, 
     usr_tipo_doc,
     usr_identificacion,
-    rol_id
+    usr_rol
   });
 
   const user = await User.find({ usr_correo: req.body.usr_correo });
@@ -65,7 +68,7 @@ userCtrl.updateUser = async (req, res) => {
     usr_pass, 
     usr_tipo_doc,
     usr_identificacion,
-    rol_id
+    usr_rol
   } = req.body;
 
   const passwordHashed = MD5.md5(usr_pass);
@@ -79,7 +82,7 @@ userCtrl.updateUser = async (req, res) => {
       usr_pass : passwordHashed, 
       usr_tipo_doc,
       usr_identificacion,
-      rol_id
+      usr_rol
     }
   );
   res.json({ message: "User Updated" });
@@ -130,7 +133,7 @@ userCtrl.login = async (req, res) => {
     {
       res.json( { 
         Error : true,
-        ErrorMsg : 'Contraseña incorrecta',
+        ErrorMsg : 'Contraseña incorrecta!',
         User: null,
         Token : null
       });
@@ -141,7 +144,7 @@ userCtrl.login = async (req, res) => {
   {
     res.json( { 
       Error : true,
-      ErrorMsg: 'Usuario no encontrado',
+      ErrorMsg: 'Usuario no encontrado!',
       User: null,
       Token : null
     });
