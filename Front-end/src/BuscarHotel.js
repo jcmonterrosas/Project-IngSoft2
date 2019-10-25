@@ -1,11 +1,12 @@
 import React, {Component} from "react";
 import "./BuscarHotel.css";
-import logo from "./img/logo.png";
 
 import Buscador from "./componentes/Buscador";
 import Resultado from "./componentes/Resultado";
 import Btncambio from "./componentes/btn-cambio"
 import axios from "axios";
+
+import logo from "./img/Logo_PRINCIPAL.png"
 
 class App extends Component {
     state = {
@@ -65,50 +66,60 @@ class App extends Component {
 
     render() {
         const style = this.state.click
-            ? {}
-            : {
-                display: "none"
+          ? {}
+          : {
+              display: "none"
             };
-            const style1 = this.state.click
-            ? { marginTop:"-50px"}
-            : {width:'100% ',
-            border:"none",
-             display: "flex",
-             justifyContent: "center",
-             alignItems:"center"            
+        const style1 = this.state.click
+          ? { marginTop: "20px" }
+          : {
+              width: "100% ",
+              border: "none",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             };
-            const style2 = this.state.click
-            ? {}
-            : {width:'100%',
-            height:'100%'
+        const style2 = this.state.click
+          ? {}
+          : {
+              width: "100%",
+              height: "100%"
             };
-            
-            const classN = this.state.click
-            ? "jumbotron col" : "jumbotron-fluid col";
+        const style3 = this.state.click
+            ? {display: "none"}
+            : {};
+    
+        const classN = this.state.click ? "jumbotron col" : "jumbotron-fluid col";
         return (
-            <div style={style2} className="Hotel container">
-              <div className="row ">
-                <div className="col" />
-                <img src={logo} className="logo col" alt="logo" />
-                <div className="col" />
-              </div>
-                <div style={style1} className={classN}>
-                    <Buscador datosBusqueda={this.datosBusqueda} />
-                </div>
-                <div style={style} className="row justify-content-center " >
-                    <div className="btn-group" role="group" aria-label="Basic example">
-                        <Btncambio buttontext="Hoteles" disabled={true} link="/SearchHotel"/>
-                        <Btncambio buttontext="Actividades" link="/SearchActivities"/>
-                    </div>
-                    <Resultado
-                        resultados={this.state.resultados}
-                        imagenes={this.state.imagenes}
-                        paginaAnterior={this.paginaAnterior}
-                        paginaSiguiente={this.paginaSiguiente}/>
-                </div>
+          <div style={style2} className="Hotel container">
+            <div className="row ">
+              <div className="col" />
+              <img src={logo} height="40%" width="40%" alt="Logo" style={style3}/>
+              <div className="col" />
             </div>
+            <div style={style1} className={classN}>
+              <Buscador datosBusqueda={this.datosBusqueda} />
+            </div>
+            <div style={style} className="row justify-content-center ">
+              <div className="btn-group" role="group" aria-label="Basic example">
+                <Btncambio
+                  buttontext="Hoteles"
+                  disabled={true}
+                  link="/SearchHotel"
+                />
+                <Btncambio buttontext="Actividades" link="/SearchActivities" />
+              </div>
+              <Resultado
+                resultados={this.state.resultados}
+                imagenes={this.state.imagenes}
+                paginaAnterior={this.paginaAnterior}
+                paginaSiguiente={this.paginaSiguiente}
+              />
+            </div>
+          </div>
         );
+      }
     }
-}
-
-export default App;
+    
+    export default App;
+    

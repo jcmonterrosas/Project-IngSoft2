@@ -1,32 +1,31 @@
-
-.filaBuscador{
+.filaBuscador {
     flex-direction: row;
     justify-content: space-between;
-}
-
-.cancelBtn{
+  }
+  
+  .cancelBtn {
     visibility: hidden;
-}
-
-.opensright{
-    margin-top:-45px;
-}
-
-@media (min-width: 1150px) {
-    .opensright{
-        width: 83vh;
-        margin-top:-45px;
-    }
   }
-
-  @media (max-width: 580px) {
-    .opensright{
-        visibility: hidden;
-    }
+  
+  .daterangepicker .drp-buttons .btn {
+    text-indent: -9999px !important;
+    line-height: 0 !important;
   }
-
-  .Buscador{
+  
+  .daterangepicker .drp-buttons .btn::after {
+    content: "Aplicar";
+    text-indent: 0 !important;
+    display: block !important;
+    line-height: initial !important;
+  }
+  
+  .opensright {
+    margin-top: -45px;
+  }
+  
+  .Buscador {
     width: 100%;
     align-items: center;
     justify-content: center;
   }
+  
