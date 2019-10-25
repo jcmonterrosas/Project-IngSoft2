@@ -42,7 +42,7 @@ export default function Header() {
                 <nav className="Nav">
                     <a href="/Login">Iniciar sesión</a>
                     <a href="/">Mis viajes</a>
-                    <a href="/">Registrarse</a>
+                    <a href="/Register">Registrarse</a>
                 </nav>
             </CSSTransition>
             <button onClick={toggleNav} className="Burger">

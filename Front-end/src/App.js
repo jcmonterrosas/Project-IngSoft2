@@ -17,6 +17,7 @@ import FiltrarActividades from './actividades/SearchActivities';
 import FilActPersonas from './actividades/SAct_Personas'
 import BuscarActividad from './BuscarActividad'
 import Login from './Login'
+import Register from './Register'
 
 class App extends Component {
   render() {
@@ -38,6 +39,7 @@ class App extends Component {
                   <Route path="/SearchActivities/Personas" component={FilActPersonas} />
                   <Route path="/SearchActivity" component={BuscarActividad} />
                   <Route path="/Login" component={Login} />
+                  <Route path="/Register" component={Register} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>
