@@ -18,3 +18,24 @@
 .priceInformation{
   height: 100%;
 }
+
+.logo{
+  -webkit-appearance: none;
+  overflow: hidden;
+  transition: all 1s linear;
+  margin-top: 50px;
+}
+
+.Information{
+  -webkit-appearance: none;
+  overflow: hidden;
+  transition: all 1s ease-out;
+}
+
+.Buscador{
+  display: table;
+  -webkit-appearance: none;
+  overflow: hidden;
+  transition: all 0.5s ease-in;
+  height: 100%;
+}

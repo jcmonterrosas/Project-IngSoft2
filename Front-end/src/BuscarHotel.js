@@ -6,7 +6,7 @@ import Resultado from "./componentes/Resultado";
 import Btncambio from "./componentes/btn-cambio"
 import axios from "axios";
 
-import logo from "./img/Logo_PRINCIPAL.png"
+import logo from "./img/Logo.svg"
 
 class App extends Component {
     state = {
@@ -71,13 +71,17 @@ class App extends Component {
               display: "none"
             };
         const style1 = this.state.click
-          ? { marginTop: "20px" }
+          ? {  
+              display:"flex",
+              justifyContent: "center",
+              alignItems: "center"
+          }
           : {
+              height:"60vh",
               width: "100% ",
               border: "none",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
+              display: "table",
+              marginBottom:"50px"
             };
         const style2 = this.state.click
           ? {}
@@ -86,21 +90,21 @@ class App extends Component {
               height: "100%"
             };
         const style3 = this.state.click
-            ? {display: "none"}
-            : {};
-    
-        const classN = this.state.click ? "jumbotron col" : "jumbotron-fluid col";
+            ? {height: "0"}
+            : {height: "200px"};
+            
+        const classN = this.state.click ? "jumbotron " : "jumbotron-fluid ";
         return (
           <div style={style2} className="Hotel container">
-            <div className="row ">
+            <div className="row logo" style={style3}>
               <div className="col" />
-              <img src={logo} height="40%" width="40%" alt="Logo" style={style3}/>
+              <img  clasName="logo" src={logo} height="200px" alt="Logo" />
               <div className="col" />
             </div>
-            <div style={style1} className={classN}>
+            <div style={style1} className={classN+"col Buscador"}>
               <Buscador datosBusqueda={this.datosBusqueda} />
             </div>
-            <div style={style} className="row justify-content-center ">
+            <div style={style} className="Informacion row justify-content-center ">
               <div className="btn-group" role="group" aria-label="Basic example">
                 <Btncambio
                   buttontext="Hoteles"
