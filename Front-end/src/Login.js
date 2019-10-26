@@ -9,7 +9,6 @@ class Login extends Component {
     Password: String
   };
 
-
   valueToState = ({ value, id }) => {
     switch (id) {
       case "User":
@@ -21,6 +20,8 @@ class Login extends Component {
     }
     console.log(this.state);
   };
+
+  onNavigate() {}
 
   consultarApi = async () => {
     axios
@@ -34,7 +35,8 @@ class Login extends Component {
             "Ususario no existe o contraseña incorrecta, crear uno nuevo"
           );
         } else {
-          console.log("Usuario existe");
+          this.props.history.push("/Perfil");
+          console.log("/Perfil");
         }
       })
       .catch(error => {
