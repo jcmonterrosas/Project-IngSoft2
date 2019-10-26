@@ -16,13 +16,14 @@
     "prop-types": "^15.7.2",
     "rb-datepicker": "0.0.5",
     "rc-datetime-picker": "^1.6.1",
-    "react": "^16.8.6",
+    "react": "^16.11.0",
     "react-bootstrap-date-picker": "^5.1.0",
     "react-calendar": "^2.19.2",
-    "react-dom": "16.8.6",
+    "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "react-transition-group": "^4.3.0"
+    "react-transition-group": "^4.3.0",
+    "reactstrap": "^8.1.1"
   },
   "devDependencies": {
     "typescript": "3.3.3"
