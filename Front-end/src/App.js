@@ -14,10 +14,11 @@ import Home from './Home';
 // import Test from './formularioPrueba';
 import BuscarHotel from './BuscarHotel';
 import FiltrarActividades from './actividades/SearchActivities';
-import FilActPersonas from './actividades/SAct_Personas'
-import BuscarActividad from './BuscarActividad'
-import Login from './Login'
-import Register from './Register'
+import FilActPersonas from './actividades/SAct_Personas';
+import BuscarActividad from './BuscarActividad';
+import Login from './Login';
+import Register from './Register';
+import Perfil from './componentes/Perfil';
 
 class App extends Component {
   render() {
@@ -40,6 +41,7 @@ class App extends Component {
                   <Route path="/SearchActivity" component={BuscarActividad} />
                   <Route path="/Login" component={Login} />
                   <Route path="/Register" component={Register} />
+                  <Route path="/Perfil" component={Perfil} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>
