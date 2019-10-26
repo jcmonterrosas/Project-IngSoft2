@@ -86,21 +86,21 @@ class App extends Component {
               height: "100%"
             };
         const style3 = this.state.click
-            ? {display: "none"}
-            : {};
-    
-        const classN = this.state.click ? "jumbotron col" : "jumbotron-fluid col";
+            ? {height: "0"}
+            : {height: "300px"};
+            
+        const classN = this.state.click ? "jumbotron " : "jumbotron-fluid ";
         return (
           <div style={style2} className="Hotel container">
-            <div className="row ">
+            <div className="row logo" style={style3}>
               <div className="col" />
-              <img src={logo} height="40%" width="40%" alt="Logo" style={style3}/>
+              <img  src={logo} width="40%" alt="Logo" />
               <div className="col" />
             </div>
-            <div style={style1} className={classN}>
+            <div style={style1} className={classN+"col Buscador"}>
               <Buscador datosBusqueda={this.datosBusqueda} />
             </div>
-            <div style={style} className="row justify-content-center ">
+            <div style={style} className="Informacion row justify-content-center ">
               <div className="btn-group" role="group" aria-label="Basic example">
                 <Btncambio
                   buttontext="Hoteles"
