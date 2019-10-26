@@ -37,7 +37,7 @@ class Home extends Component {
             <div className="container containerInicial">
               <div className="row filaLogo">
                 <div className="col" />
-                <a href="/"><img src={logo} className="logo col" alt="logo" /></a>
+                <img src={logo} className="logoHome col" alt="logo" />
                 <div className="col" />
               </div>
               <div className="row ">
@@ -59,13 +59,7 @@ class Home extends Component {
               </div>
 
             </div>
-            <div className="row links">
-              <div className="col">
-                <a className="link" target="blank" href="https://github.com/jcmonterrosas/Project-IngSoft2"><h2>GitHub</h2></a>
-                <a className="link" target="blank" href="https://trello.com/b/iqyc9vN4"> <h2> Trello </h2></a>
-                <a className="link" target="blank" href="https://mern.io/"> <h2> Tecnology Stack </h2></a>
-              </div>
-            </div>
+            
 
           </header>
         </div>

@@ -22,7 +22,8 @@
 .logo{
   -webkit-appearance: none;
   overflow: hidden;
-  transition: height 0.6s ease-in;
+  transition: all 1s linear;
+  margin-top: 50px;
 }
 
 .Information{
@@ -32,7 +33,9 @@
 }
 
 .Buscador{
+  display: table;
   -webkit-appearance: none;
   overflow: hidden;
   transition: all 0.5s ease-in;
+  height: 100%;
 }
