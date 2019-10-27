@@ -6,8 +6,6 @@ import axios from "axios";
 import Btncambio from "./componentes/btn-cambio";
 import logo from "./img/Logo.svg"
 
-
-
 class App extends Component {
   state = {
     termino: "",

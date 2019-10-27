@@ -5,7 +5,6 @@ import Buscador from "./componentes/Buscador";
 import Resultado from "./componentes/Resultado";
 import Btncambio from "./componentes/btn-cambio"
 import axios from "axios";
-
 import logo from "./img/Logo.svg"
 
 class App extends Component {
@@ -126,4 +125,3 @@ class App extends Component {
     }
     
     export default App;
-    

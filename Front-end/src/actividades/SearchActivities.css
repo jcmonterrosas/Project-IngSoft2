@@ -36,6 +36,7 @@
   width: 100%;
   height: 100%;
 }
+
 .page .card_act {
   display: flex;
   flex-direction: column;

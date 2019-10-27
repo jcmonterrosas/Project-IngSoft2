@@ -73,4 +73,3 @@
 
 >### [Prueba de rendimiento](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Faventurate.herokuapp.com%2F&tab=desktop)
 
-

@@ -51,7 +51,6 @@ userCtrl.register = async (req, res) => {
     console.log(newUser);
     res.json({ message: "User Saved" });
   }
-  
 };
 
 userCtrl.getUser = async (req, res) => {
@@ -72,7 +71,7 @@ userCtrl.updateUser = async (req, res) => {
   } = req.body;
 
   const passwordHashed = MD5.md5(usr_pass);
-
+  
   await User.findOneAndUpdate(
     { _id: req.params.id },
     {
@@ -182,7 +181,5 @@ userCtrl.verify = async (req, res) => {
     });
   }
 };
-
-
 
 module.exports = userCtrl;

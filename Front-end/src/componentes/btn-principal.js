@@ -16,9 +16,7 @@ class Btnprincipal extends Component {
   }
 
   handleInputChange(e) {
-
     this.setState({ hide: false, card: true });
-
   }
 
   handleOutputChange(e) {
@@ -53,7 +51,6 @@ class Btnprincipal extends Component {
               onClick={this.onNavigate}
             >
               {this.props.buttontext}
-
             </button>
             <div className="card-body" style={style1}>
               <p className="card-text textoBoton">

@@ -15,5 +15,4 @@ app.use("/activity", require("./routes/activities"));
 app.use("/reserva", require("./routes/reserva"));
 app.use("/user", require("./routes/user"));
 
-
 module.exports = app;

@@ -44,8 +44,6 @@ class SearchActivities extends Component {
                     date = "/SearchActivities/Dias"
                     done = "/SearchActivity"
                 />
-
-
             </div>
         );
     }

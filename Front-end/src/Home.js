@@ -57,15 +57,9 @@ class Home extends Component {
                   />
                 </div>
               </div>
-
             </div>
-            
-
           </header>
         </div>
-        <footer>
-
-        </footer>
       </div>
     );
   }
