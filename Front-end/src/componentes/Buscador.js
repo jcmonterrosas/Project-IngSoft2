@@ -4,6 +4,7 @@ import "bootstrap-daterangepicker/daterangepicker.css";
 import "./Buscador.css";
 
 export default class Buscador extends Component {
+
   busquedaRef = React.createRef();
 
   constructor(props) {
@@ -11,7 +12,8 @@ export default class Buscador extends Component {
 
     this.state = {
       hide: true,
-      date: "Fecha de llegada->Fecha de salida"
+      date: "Fecha de llegada->Fecha de salida",
+      style2:{top:this.props.top}
     };
 
     this.showCalendar = this.showCalendar.bind(this);
@@ -48,6 +50,8 @@ export default class Buscador extends Component {
     e.preventDefault();
     const termino = this.busquedaRef.current.value;
     this.props.datosBusqueda(termino);
+    const tops=this.props.top=="300px"?"143px":"265px";
+    this.setState({ style2: {top:tops}});
   };
 
   render() {
@@ -56,8 +60,9 @@ export default class Buscador extends Component {
           display: "none"
         }
       : {};
+      
     return (
-      <form className="Buscador container" onSubmit={this.ObtenerDatos}>
+      <form style={this.state.style2} className="Buscador2 container" onSubmit={this.ObtenerDatos}>
         <div className="form-group row justify-content-between filaBuscador">
           <div className="col-6">
             <input
@@ -98,7 +103,7 @@ export default class Buscador extends Component {
         <div className="form-group row justify-content-end">
           <input
             type="submit"
-            className="col-2 align-self-end btn btn-warning "
+            className="Buscar col-2 align-self-end btn btn-warning "
             value="Buscar"
           />
         </div>

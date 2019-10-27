@@ -73,10 +73,11 @@ class App extends Component {
           ? {  
               display:"flex",
               justifyContent: "center",
-              alignItems: "center"
+              alignItems: "center",
+              height:"300px"
           }
           : {
-              height:"60vh",
+              height:"45vh",
               width: "100% ",
               border: "none",
               display: "table",
@@ -91,7 +92,7 @@ class App extends Component {
         const style3 = this.state.click
             ? {height: "0"}
             : {height: "200px"};
-            
+         
         const classN = this.state.click ? "jumbotron " : "jumbotron-fluid ";
         return (
           <div style={style2} className="Hotel container">
@@ -101,8 +102,8 @@ class App extends Component {
               <div className="col" />
             </div>
             <div style={style1} className={classN+"col Buscador"}>
-              <Buscador datosBusqueda={this.datosBusqueda} />
             </div>
+            <Buscador top="300px" datosBusqueda={this.datosBusqueda} />
             <div style={style} className="Informacion row justify-content-center ">
               <div className="btn-group" role="group" aria-label="Basic example">
                 <Btncambio
