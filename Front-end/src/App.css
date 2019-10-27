@@ -1,0 +1,49 @@
+.App{
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+}
+
+.page{
+    position: relative;
+    left: 0;
+    right: 0;
+}
+
+.Home{
+    position: relative;
+    left: 0;
+    right: 0;
+}
+
+.Hotel{
+    position: relative;
+    left: 0;
+    right: 0;
+}
+
+.Login{
+    position: relative;
+    left: 0;
+    right: 0;
+}
+
+.fade-appear,
+.fade-enter{
+    opacity: 0;
+    z-index: 1;
+}
+
+.fade-appear-active,
+.fade-enter.fade-enter-acive{
+    opacity: 1;
+    transition: opacity 400ms linear 200ms;
+}
+
+.fade-exit{
+    opacity: 1;
+}
+
+.fade-exit.fade-exit-active{
+    opacity: 0;
+    transition: opacity 150ms linear;
+}

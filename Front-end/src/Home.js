@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "./img/logo.png";
+import logo from "./img/Logo_P50.png";
 import "./Home.css";
 import videoBackground from "./video/background.mp4";
 import Btnprincipal from "./componentes/btn-principal";
@@ -10,15 +10,15 @@ class Home extends Component {
     super();
 
     this.state = {
-      buttontext:'',
+      buttontext: '',
       cardtext: '',
       link: ''
     };
 
   }
 
-  buttonInformation=(buttontext,cardtext)=>{
-    this.setState({buttontext,cardtext});
+  buttonInformation = (buttontext, cardtext) => {
+    this.setState({ buttontext, cardtext });
     console.log(buttontext);
   }
 
@@ -37,41 +37,29 @@ class Home extends Component {
             <div className="container containerInicial">
               <div className="row filaLogo">
                 <div className="col" />
-                <img src={logo} className="logo col" alt="logo" />
+                <img src={logo} className="logoHome col" alt="logo" />
                 <div className="col" />
               </div>
               <div className="row ">
                 <div className="col">
-              <Btnprincipal 
-                buttontext='Hotel'
-                cardtext='¿Ya sabes a donde quieres ir?'
-                link="/SearchHotel"
-                 />
-                 </div> 
-              <div className="col" />
-             <div className="col">
-              <Btnprincipal 
-                buttontext='Actividad'
-                cardtext='¿Quieres hacer algo, pero no sabes donde?'
-                link="/SearchActivities"
-                 />
-                 </div>
-              </div>
-              
-            </div>
-            <div className="row links">
-              <div className="col">
-                  <a className="link" target="blank" href="https://github.com/jcmonterrosas/Project-IngSoft2"><h2>GitHub</h2></a>
-                  <a className="link" target="blank" href="https://trello.com/b/iqyc9vN4"> <h2> Trello </h2></a>
-                  <a className="link" target="blank" href="https://mern.io/"> <h2> Tecnology Stack </h2></a>
+                  <Btnprincipal
+                    buttontext='Hotel'
+                    cardtext='¿Ya sabes a donde quieres ir?'
+                    link="/SearchHotel"
+                  />
+                </div>
+                <div className="col" />
+                <div className="col">
+                  <Btnprincipal
+                    buttontext='Actividad'
+                    cardtext='¿Quieres hacer algo, pero no sabes donde?'
+                    link="/SearchActivities"
+                  />
+                </div>
               </div>
             </div>
-            
           </header>
         </div>
-        <footer>
-          
-        </footer>
       </div>
     );
   }

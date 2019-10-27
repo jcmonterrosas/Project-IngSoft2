@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './SearchActivities.css';
 import Card from './componentes/SAct_Card';
-import Pagination from './componentes/SAct_Pagination'
-import data from './data/data'
+import Pagination from './componentes/SAct_Pagination';
+import data from './data/data';
 
-// class component
 class SearchActivities extends Component {
 
     constructor(props) {
@@ -45,7 +44,6 @@ class SearchActivities extends Component {
                     date = "/SearchActivities/Dias"
                     done = "/SearchActivity"
                 />
-
             </div>
         );
     }

@@ -1,6 +1,6 @@
-.page {
+.Personas {
     display: grid;
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: 1fr 60vh 1fr;
     row-gap: 2em;
     text-align: center; 
     font-family: 'Roboto Slab', serif;
@@ -9,26 +9,25 @@
     overflow: hidden;
 }
 
-.page h1{
+.Personas h1 {
   color: #000000;
 }
 
-.page .all_cards{
+.Personas .all_cards {
     padding: 1em;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    grid-template-rows: 170px 170px;
+    grid-template-columns: repeat(4, 1fr); 
     gap: 1em;
-    padding-left: 25vh;
-    padding-right: 25vh;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
-.page .all_cards div{
+.Personas .all_cards div {
   justify-content: center;
   display: inline-flex;
 }
   
-.page .card__img--hover {
+.Personas .card__img--hover {
   transition: 0.2s all ease-out;
   background-size: cover;
   background-position: center;
@@ -37,37 +36,65 @@
   height: 100%;
 }
 
-.page .card_act {
-  display: flex;
+.Personas .card_act {
+  /* display: flex; */
   flex-direction: column;
   cursor: pointer;
   transition: all 2.4s cubic-bezier(0.175, 0.885, 0, 1);
   background-color: #f0ad4e;
   width: 100%;
+  height: 100%;
   position: relative;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: -5px 7px 0px 0px rgba(0, 0, 0,0.1);
 }
 
-.page .card_act:hover {
+.Personas .card_act:hover {
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0,0.1);
   transform: scale(0.80, 0.80);
 }
 
-.page .card_toggle {
-  display: flex;
+.Personas .card_toggle {
+  /* display: flex; */
   flex-direction: column;
   cursor: pointer;
   transition: all 2.4s cubic-bezier(0.175, 0.885, 0, 1);
   background-color: green;
   width: 100%;
+  height: 100%;
   position: relative;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: -5px 7px 0px 0px rgba(0, 0, 0,0.1);
 }
 
-.page #card-1:checked{
-  transform: scale(0.80, 0.80);
+.Personas .card_menu {
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 2.4s cubic-bezier(0.175, 0.885, 0, 1);
+    background-color: green;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: -5px 7px 0px 0px rgba(0, 0, 0,0.1);
+}
+
+.Personas .content_card {
+  display: block !important;
+}
+
+.Personas .hide_menu {
+  display: none !important;
+}
+
+.Personas .drop_menu {
+  flex-direction: column;
+  background-color: green;
+  height: 80%;
+}
+
+.Personas .drop_menu form {
+  justify-content: center;
 }
