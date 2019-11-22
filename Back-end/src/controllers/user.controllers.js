@@ -132,7 +132,7 @@ userCtrl.login = async (req, res) => {
           Error : true,
           ErrorMsg : "Ya tienes una sesión abierta.",
           User: user,
-          Token: null
+          Token: localUserSession.id
         });
       }
       else
@@ -186,11 +186,8 @@ userCtrl.login = async (req, res) => {
 
 userCtrl.logout = async (req, res) => {
 
-  await UserSession.findOneAndUpdate(
-    { _id: req.params.token },
-    {
-      isDeleted : true
-    }
+  await UserSession.findOneAndDelete(
+    { _id: req.params.token }
   );
   res.json({ message: "User logout" });
 };
