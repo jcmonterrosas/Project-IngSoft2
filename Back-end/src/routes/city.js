@@ -2,13 +2,16 @@ const { Router } = require("express");
 const router = Router();
 
 const {
-  getCity,
+  getCities,
   createCity,
   deleteCity,
-  updateCity
+  updateCity,
+  getCity
 } = require("../controllers/city.controller");
 
-router.route("/").post(createCity);
+router.route("/")
+  .get(getCities)
+  .post(createCity);
 
 router
   .route("/:id")

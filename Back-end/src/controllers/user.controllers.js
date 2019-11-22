@@ -7,10 +7,7 @@ const UserSession = require("../models/UserSession");
 
 
 userCtrl.getUsers = async (req, res) => {
-  console.log("si");
-
   const user = await User.find(); 
-  console.log(user);
   res.json(user);
 };
 
@@ -49,13 +46,16 @@ userCtrl.register = async (req, res) => {
   {
     await newUser.save();
     console.log(newUser);
-    res.json({ message: "User Saved" });
+    res.json( { 
+      Error : false,
+      ErrorMsg : 'Usuario registrado satisfactoriamente.',
+      RegisteredUser: newUser,
+    });
   }
 };
 
 userCtrl.getUser = async (req, res) => {
   const user = await User.findById(req.params.id);
-  console.log(user);
   res.json({ user });
 };
 
@@ -88,13 +88,31 @@ userCtrl.updateUser = async (req, res) => {
 };
 
 userCtrl.deleteUser = async (req, res) => {
-  const user = await User.findOneAndDelete(req.params.id);
+  const user = await User.findOneAndDelete({_id: req.params.id});
   res.json({ message: "User deleted", user });
 };
 
 userCtrl.getUserByEmail = async (req, res) => {
   const user = await User.find({ usr_correo: req.body.usr_correo });
   res.json( user);
+};
+
+userCtrl.closeAllSession = async (req, res) => {
+  var localUserSession = await UserSession.findOneAndDelete({ usr_id: req.params.usr_id });
+  if(localUserSession)
+  {
+    res.json( { 
+      Error : false,
+      ErrorMsg : "Se cerró sesión satisfactoriamente.",
+      session: localUserSession
+    });
+  }
+  res.json( { 
+    Error : true,
+    ErrorMsg : "No se encontro sesión abierta para este usuario.",
+    session: null
+  });
+  
 };
 
 userCtrl.login = async (req, res) => {
@@ -104,29 +122,45 @@ userCtrl.login = async (req, res) => {
   {
     if(user[0].usr_pass === passwordHash)
     {
-      const newSession = new UserSession(
-        {
-          usr_id : user[0]._id
-        }
-      );
-      newSession.save((err, doc) => {
-        if (err) {
-          res.json( { 
-            Error : true,
-            ErrorMsg : err.message,
-            User: user,
-            Token: null
-          });
-        }
 
+      // validar que solo tenga una sesion activa, buscar usuario en usersession
+      var localUserSession = await UserSession.findOne({ usr_id: user[0]._id });
+
+      if(localUserSession)
+      {
         res.json( { 
-          Error : false,
-          ErrorMsg : '',
+          Error : true,
+          ErrorMsg : "Ya tienes una sesión abierta.",
           User: user,
-          Token: doc._id
+          Token: null
         });
-
-      });
+      }
+      else
+      {
+        const newSession = new UserSession(
+          {
+            usr_id : user[0]._id
+          }
+        );
+        newSession.save((err, doc) => {
+          if (err) {
+            res.json( { 
+              Error : true,
+              ErrorMsg : err.message,
+              User: user,
+              Token: null
+            });
+          }
+  
+          res.json( { 
+            Error : false,
+            ErrorMsg : '',
+            User: user,
+            Token: doc._id
+          });
+  
+        });
+      }
     }
     else
     {

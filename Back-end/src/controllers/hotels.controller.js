@@ -2,6 +2,38 @@ const hotelsCtrl = {};
 
 const Hotel = require("../models/Hotel");
 
+/*
+
+methods:
+getHotels,
+  createHotel,
+  getHotel,
+  deleteHotel,
+  updateHotel,
+  getByCity
+
+fields:
+name: { type: String, required: true },
+  usr_id: { type: String, required: true },
+  ciudad_id: { type: String, required: true },
+  address: { type: String, required: true },
+  phone: { type: String, required: true },
+  price_per_person: { type: String, required: true },
+  acommodation: { type: String, required: true },
+  date: { type: Date, default: Date.now }
+*/
+
+hotelsCtrl.getByCity = async (req, res) => {
+  const hotels = await Hotel.find({ciudad_id : req.params.city_id}); //Devuelve un arreglo [{}, {}]
+  res.json(hotels);
+};
+
+hotelsCtrl.getMyHotels = async (req, res) => {
+  const hotels = await Hotel.find({usr_id : req.params.usr_id}); //Devuelve un arreglo [{}, {}]
+  res.json(hotels);
+};
+
+
 hotelsCtrl.getHotels = async (req, res) => {
   const hotels = await Hotel.find(); //Devuelve un arreglo [{}, {}]
   res.json(hotels);
@@ -10,19 +42,21 @@ hotelsCtrl.getHotels = async (req, res) => {
 hotelsCtrl.createHotel = async (req, res) => {
   const {
     name,
-    city,
-    address,
-    phone,
-    price_per_person,
-    acommodation
+  usr_id,
+  ciudad_id,
+  address,
+  phone,
+  price_per_person,
+  acommodation // doble, etc
   } = req.body;
   const newHotel = new Hotel({
     name,
-    city,
-    address,
-    phone,
-    price_per_person,
-    acommodation
+  usr_id,
+  ciudad_id,
+  address,
+  phone,
+  price_per_person,
+  acommodation // doble, etc
   });
   await newHotel.save();
   console.log(newHotel);
@@ -39,46 +73,32 @@ hotelsCtrl.getHotel = async (req, res) => {
 hotelsCtrl.updateHotel = async (req, res) => {
   const {
     name,
-    city,
-    address,
-    phone,
-    price_per_person,
-    acommodation
+  usr_id,
+  ciudad_id,
+  address,
+  phone,
+  price_per_person,
+  acommodation // doble, etc
   } = req.body;
   await Hotel.findOneAndUpdate(
     { _id: req.params.id },
     {
       name,
-      city,
-      address,
-      phone,
-      price_per_person,
-      acommodation
+  usr_id,
+  ciudad_id,
+  address,
+  phone,
+  price_per_person,
+  acommodation // doble, etc
     }
   );
   res.json({ message: "Hotel Updated" });
 };
 
 hotelsCtrl.deleteHotel = async (req, res) => {
-  const hotel = await Hotel.findOneAndDelete(req.params.id);
+  const hotel = await Hotel.findByIdAndDelete(req.params.id);
   res.json({ message: "Hotel deleted", hotel });
 };
 
-hotelsCtrl.getHotelByName = async (req, res) => {
-  const hotels = await Hotel.find({ name: req.params.name });
-  res.json(hotels);
-};
-
-hotelsCtrl.getHotelByCity = async (req, res) => {
-  const hotels = await Hotel.find({ city: req.params.ciudad });
-  res.json(hotels);
-};
-
-hotelsCtrl.getActivityByPriceInRange = async (req, res) => {
-  const hotels = await Hotel.find({
-    price_per_person: { $gt: req.params.mayorque, $lt: req.params.menorque }
-  });
-  res.json(hotels);
-};
 
 module.exports = hotelsCtrl;

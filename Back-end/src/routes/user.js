@@ -9,7 +9,8 @@ const {
   deleteUser,
   login,
   logout,
-  verify
+  verify,
+  closeAllSession
 } = require("../controllers/user.controllers");
 
 router
@@ -31,5 +32,8 @@ router.route("/logout/:token")
 
 router.route("/verify/:token")
     .get(verify);
+
+router.route("/closeSession/:usr_id")
+    .delete(closeAllSession);
 
 module.exports = router;

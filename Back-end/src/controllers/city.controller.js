@@ -2,9 +2,15 @@ const cityCtrl = {};
 
 const City = require("../models/City");
 
-cityCtrl.getCity = async (req, res) => {
+cityCtrl.getCities = async (req, res) => {
   const cities = await City.find(); //Devuelve un arreglo [{}, {}]
   res.json(cities);
+};
+
+
+cityCtrl.getCity = async (req, res) => {
+  const city = await City.findById(req.params.id); 
+  res.json(city);
 };
 
 cityCtrl.createCity = async (req, res) => {
@@ -13,7 +19,6 @@ cityCtrl.createCity = async (req, res) => {
     name
   });
   await newCity.save();
-  console.log(newCity);
   res.json({ message: "City Saved" });
 };
 

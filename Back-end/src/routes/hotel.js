@@ -7,7 +7,8 @@ const {
   getHotel,
   deleteHotel,
   updateHotel,
-  getHotelByName
+  getByCity,
+  getMyHotels
 } = require("../controllers/hotels.controller");
 
 router
@@ -16,9 +17,17 @@ router
   .post(createHotel);
 
 router
-  .route("/:name")
-  .get(getHotelByName)
+  .route("/:id")
+  .get(getHotel)
   .put(updateHotel)
   .delete(deleteHotel);
+
+router
+  .route("/getbycity/:city_id")
+  .get(getByCity);
+
+router
+  .route("/getmyhotels/:usr_id")
+  .get(getMyHotels);
 
 module.exports = router;
