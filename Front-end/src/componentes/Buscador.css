@@ -23,10 +23,17 @@
     margin-top: -45px;
   }
   
-  .Buscador {
+  .Buscador2 {
     width: 100%;
     align-items: center;
     justify-content: center;
     display: table-cell;
-	  vertical-align: middle;
+    vertical-align: middle;
+    position: absolute;
+    z-index: 1;
+    transition: top 0.5s ease-out;
+  }
+
+  .Buscar{
+    margin-right:15px ;
   }
