@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
+/*const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const ActSchema = require("./Activities");
 
 const ResSchema = new Schema({
-  activity: {
+  service: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Activities"
   },
@@ -24,7 +24,7 @@ const ResSchema = new Schema({
   adultos: { type: String, required: true },
   ninos: { type: String, required: true },
   estado: { type: String, required: true },
-  date: { type: Date, default: Date.now }*/
-});
+  date: { type: Date, default: Date.now }
+}); 
 
-module.exports = mongoose.model("Reserva", ResSchema);
+module.exports = mongoose.model("Reserva", ResSchema); */

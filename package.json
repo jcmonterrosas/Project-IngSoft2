@@ -1,0 +1,19 @@
+{
+  "name": "project-ingsoft2",
+  "version": "1.0.0",
+  "description": "* Juan Monterrosa Sanchez\r * Tom Erick Perez Alvarez \r * Jhonatan Sandoval Velasco\r * Andres Giovanny Aldana Wilches\r * Cristian David Martinez Collazos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcmonterrosas/Project-IngSoft2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcmonterrosas/Project-IngSoft2/issues"
+  },
+  "homepage": "https://github.com/jcmonterrosas/Project-IngSoft2#readme"
+}
