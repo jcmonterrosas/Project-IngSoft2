@@ -40,8 +40,8 @@ class SearchActivities extends Component {
 
                 <Pagination 
                     type =  "/SearchActivities"
-                    persons = "/SearchActivities/Personas"
-                    date = "/SearchActivities/Dias"
+                    persons = "/SearchActivities/People"
+                    date = "/SearchActivities/Date"
                     done = "/SearchActivity"
                 />
             </div>
