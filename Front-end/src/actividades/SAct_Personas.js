@@ -43,7 +43,7 @@ class SAct_Personas extends Component {
         return (
             <div className="Personas">
                 <div>
-                    <h1>Cuentanos con quién viajas</h1>
+                    <h1>Cuéntanos con quién viajas</h1>
                 </div>
                 <div className="all_cards">
                     {

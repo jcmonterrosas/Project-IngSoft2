@@ -90,12 +90,12 @@ class Register extends Component {
               <div className="col-6" align="center">
                 <label for="inp" className="inp">
                   <input
-                    type="tel"
-                    id="Telefono"
+                    type="password"
+                    id="Contraseña"
                     placeholder="&nbsp;"
                     onChange={event => this.valueToState(event.target)}
                   />
-                  <span className="label">Telefono</span>
+                  <span className="label">Contraseña</span>
                   <span className="border"></span>
                 </label>
               </div>
@@ -114,33 +114,21 @@ class Register extends Component {
                   <span className="border"></span>
                 </label>
               </div>
-              <div className="col-6" align="center">
-                <label for="inp" className="inp">
-                  <input
-                    type="password"
-                    id="Contraseña"
-                    placeholder="&nbsp;"
-                    onChange={event => this.valueToState(event.target)}
-                  />
-                  <span className="label">Contraseña</span>
-                  <span className="border"></span>
-                </label>
-              </div>
+                <div className="col-6" align="center">
+                  <label for="inp" className="inp">
+                    <input
+                      type="tel"
+                      id="Telefono"
+                      placeholder="&nbsp;"
+                      onChange={event => this.valueToState(event.target)}
+                    />
+                    <span className="label">Teléfono</span>
+                    <span className="border"></span>
+                  </label>
+                </div>
               <div />
             </div>
             <div className="row campos">
-              <div className="input-group mb-3 col-6">
-                <label for="inp" className="inp">
-                  <input
-                    type="number"
-                    id="Identificacion"
-                    placeholder="&nbsp;"
-                    onChange={event => this.valueToState(event.target)}
-                  />
-                  <span className="label">Identificación</span>
-                  <span className="border"></span>
-                </label>
-              </div>
               <div className="input-group mb-3 col-6">
                 <select
                   className="custom-select inp"
@@ -154,19 +142,20 @@ class Register extends Component {
                   <option value="P.S">P.S</option>
                 </select>
               </div>
+              <div className="input-group mb-3 col-6">
+                <label for="inp" className="inp">
+                  <input
+                    type="number"
+                    id="Identificacion"
+                    placeholder="&nbsp;"
+                    onChange={event => this.valueToState(event.target)}
+                  />
+                  <span className="label">Identificación</span>
+                  <span className="border"></span>
+                </label>
+              </div>
             </div>
             <div className="row campos">
-              <div className="input-group mb-3 col-6">
-                <select
-                  className="custom-select inp"
-                  id="Rol"
-                  onChange={event => this.valueToState(event.target)}
-                >
-                  <option selected>Rol</option>
-                  <option value="Cliente">Cliente</option>
-                  <option value="Proveedor">Proveedor</option>
-                </select>
-              </div>
               <div className="input-group mb-3 col-6">
                 <label for="inp" className="inp">
                   <input
@@ -178,6 +167,17 @@ class Register extends Component {
                   <span className="label">Fecha de Nacimiento</span>
                   <span className="border"></span>
                 </label>
+              </div>
+              <div className="input-group mb-3 col-6">
+                <select
+                  className="custom-select inp"
+                  id="Rol"
+                  onChange={event => this.valueToState(event.target)}
+                >
+                  <option selected>Rol</option>
+                  <option value="Cliente">Cliente</option>
+                  <option value="Proveedor">Proveedor</option>
+                </select>
               </div>
               <div />
             </div>

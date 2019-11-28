@@ -13,19 +13,19 @@ class SAct_Date extends Component {
                 {
                     "_id": "123",
                     "index": 0,
-                    "picture": "https://ihatetomatoes.net/demos/_rw/01-real-estate/tn_property02.jpg",
+                    "picture": "https://www.aviatur.com/source/contenidos/viajes-carretera-caribe-colombia.jpg",
                     "activity": "Sé la cantidad de días"
                 },
                 {
                     "_id": "1234",
                     "index": 1,
-                    "picture": "https://ihatetomatoes.net/demos/_rw/01-real-estate/tn_property02.jpg",
+                    "picture": "http://blog.redbus.co/wp-content/uploads/2019/05/Viajar-a-Colombia-por-motivos-turi%CC%81sticos.jpg",
                     "activity": "Tengo una fecha especifica"
                 },
                 {
                     "_id": "12345",
                     "index": 2,
-                    "picture": "https://ihatetomatoes.net/demos/_rw/01-real-estate/tn_property02.jpg",
+                    "picture": "https://i.pinimg.com/originals/7a/95/b6/7a95b6ec58ee56465c8d83cd0eb28c8e.jpg",
                     "activity": "No tengo una fecha"
                 }
                 ],
