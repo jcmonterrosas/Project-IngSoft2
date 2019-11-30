@@ -19,6 +19,7 @@ import BuscarActividad from './BuscarActividad';
 import Login from './Login';
 import Register from './Register';
 import Perfil from './componentes/Perfil';
+import PerfilProveedor from './PerfilProveedor';
 
 class App extends Component {
   render() {
@@ -42,6 +43,7 @@ class App extends Component {
                   <Route path="/Login" component={Login} />
                   <Route path="/Register" component={Register} />
                   <Route path="/Perfil" component={Perfil} />
+                  <Route path="/PerfilProveedor" component={PerfilProveedor}/>
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

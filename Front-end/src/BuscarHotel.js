@@ -3,11 +3,11 @@ import "./BuscarHotel.css";
 
 import Buscador from "./componentes/Buscador";
 import Resultado from "./componentes/Resultado";
-import Btncambio from "./componentes/btn-cambio"
+import Btncambio from "./componentes/btn-cambio";
 import axios from "axios";
-import logo from "./img/Logo.svg"
+import logo from "./img/Logo.svg";
 
-class App extends Component {
+class BuscarHotel extends Component {
     state = {
         termino: "",
         resultados: [],
@@ -125,4 +125,4 @@ class App extends Component {
       }
     }
     
-    export default App;
+    export default BuscarHotel;

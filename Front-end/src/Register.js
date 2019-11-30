@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Register.css";
-import Btnprincipal from "./componentes/btn-cambio";
 import axios from "axios";
 
 class Register extends Component {
