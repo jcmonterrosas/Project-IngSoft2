@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './SAct_Pagination.css';
 import { withRouter } from 'react-router-dom';
 
-class SAct_Pagination extends Component {
+class SAct_Pagination2 extends Component {
 
     constructor(props) {
         super(props);
@@ -34,10 +34,10 @@ class SAct_Pagination extends Component {
         return (
             <div className="act-paginacion">
                 <div className="container">
-                    <input type="radio" onClick={this.onNavigateType} className="radio" name="progress" value="twentyfive" id="twentyfive"  defaultChecked/>
+                    <input type="radio" onClick={this.onNavigateType} className="radio" name="progress" value="twentyfive" id="twentyfive"  />
                     <label htmlFor="twentyfive" className="label">Actividades</label>
 
-                    <input type="radio" onClick={this.onNavigatePersons}  className="radio" name="progress" value="fifty" id="fifty" />
+                    <input type="radio" onClick={this.onNavigatePersons}  className="radio" name="progress" value="fifty" id="fifty" defaultChecked/>
                     <label htmlFor="fifty" className="label">Personas</label>
 
                     <input type="radio" onClick={this.onNavigateDate}  className="radio" name="progress" value="seventyfive" id="seventyfive"/>
@@ -55,4 +55,4 @@ class SAct_Pagination extends Component {
     }
 }
 
-export default withRouter(SAct_Pagination);
+export default withRouter(SAct_Pagination2);

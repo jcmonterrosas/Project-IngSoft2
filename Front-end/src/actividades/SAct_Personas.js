@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './SAct_Personas.css';
 import Card from './componentes/SAct_Card-Per';
-import Pagination from './componentes/SAct_Pagination'
+import Pagination from './componentes/SAct_Pagination2'
 import data from './data/dataPersonas'
 
 // class component

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './SAct_Date.css';
 import Card from './componentes/SAct_Card-Date';
-import Pagination from './componentes/SAct_Pagination'
+import Pagination from './componentes/SAct_Pagination3'
 
 // class component
 class SAct_Date extends Component {

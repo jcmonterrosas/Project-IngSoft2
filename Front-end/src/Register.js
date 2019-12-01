@@ -82,6 +82,7 @@ class Register extends Component {
                     id="Nombre"
                     placeholder="&nbsp;"
                     onChange={event => this.valueToState(event.target)}
+                    autoComplete ="off"
                   />
                   <span className="label">Nombre</span>
                   <span className="border"></span>
