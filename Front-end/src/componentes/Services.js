@@ -1,7 +1,7 @@
 import React from "react";
 
 const Imagen = props => {
-  const { act_nombre, act_descripcion, images } = props.imagen;
+  const { act_nombre, act_descripcion, precio, images } = props.imagen;
 
   return (
     <div className="container card containerHotel">
@@ -15,7 +15,7 @@ const Imagen = props => {
               <bold>Descripcion</bold>
             </p>
             <p className="row">{act_descripcion}</p>
-            <p className="row">Vistas</p>
+            <p className="row">$ {precio}</p>
             <p className="row">Muñequitos</p>
           </div>
         </div>
