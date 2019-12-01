@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./tarjeta-perfil.css";
 import foto from '../img/Octocat.png';
+import person from '../img/person.png';
+import tel from '../img/tel.png';
+import mail from '../img/mail.png'
 
 class TPerfil extends Component {
     
@@ -27,26 +30,26 @@ class TPerfil extends Component {
                     <div className="row linea1">
                         <div className="col-6">
                             <div className="LogoInfo">
-                            <img src={foto} width="100%" height="auto"/>
+                            <img src={person} width="100%" height="auto"/>
                             </div>
                             <p className="Aller">DATOS PERSONALES</p>
                             <p className="Aller sub">Pepito Perez</p>
                         </div>
                         <div className="col-6">
                             <div className="LogoInfo">
-                            <img src={foto} width="100%" height="auto"/>
+                            <img src={mail} width="100%" height="auto"/>
                             </div>
-                            <p className="Aller">DATOS PERSONALES</p>
-                            <p className="Aller sub">Pepito Perez</p>
+                            <p className="Aller">EMAIL</p>
+                            <p className="Aller sub">Pepito@gmail.com</p>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
                             <div className="LogoInfo">
-                            <img src={foto} width="100%" height="auto"/>
+                            <img src={tel} width="100%" height="auto"/>
                             </div>
-                            <p className="Aller">DATOS PERSONALES</p>
-                            <p className="Aller sub">Pepito Perez</p>
+                            <p className="Aller">TELEFONOS</p>
+                            <p className="Aller sub">+57 314 568 9878</p>
                         </div>
                         <div className="col"></div>
                     </div>
