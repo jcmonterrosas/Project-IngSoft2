@@ -15,10 +15,12 @@ import Home from './Home';
 import BuscarHotel from './BuscarHotel';
 import FiltrarActividades from './actividades/SearchActivities';
 import FilActPersonas from './actividades/SAct_Personas';
+import FilActDate from './actividades/SAct_Date';
 import BuscarActividad from './BuscarActividad';
 import Login from './Login';
 import Register from './Register';
 import Perfil from './componentes/Perfil';
+import ProviderActivities from "./componentes/Provider-LoadData/ProviderActivities";
 
 class App extends Component {
   render() {
@@ -37,11 +39,13 @@ class App extends Component {
                   <Route exact path="/" component={Home} />
                   <Route path="/SearchHotel" component={BuscarHotel} />
                   <Route exact path="/SearchActivities" component={FiltrarActividades} />
-                  <Route path="/SearchActivities/Personas" component={FilActPersonas} />
+                  <Route path="/SearchActivities/People" component={FilActPersonas} />
+                  <Route path="/SearchActivities/Date" component={FilActDate} />
                   <Route path="/SearchActivity" component={BuscarActividad} />
                   <Route path="/Login" component={Login} />
                   <Route path="/Register" component={Register} />
-                  <Route path="/Perfil" component={Perfil} />
+                  <Route path="/User" component={Perfil} />
+                  <Route path="/ProviderActivities" component={ProviderActivities} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

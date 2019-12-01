@@ -67,7 +67,7 @@
   }
   .inp input:not(:placeholder-shown) + span {
     color: #5a667f;
-    transform: translateY(-26px) scale(0.75);
+    transform: translateY(-10px) scale(0.8);
   }
   .inp input:focus {
     background: none;
@@ -75,7 +75,7 @@
   }
   .inp input:focus + span {
     color: #f0ad4e;
-    transform: translateY(-26px) scale(0.75);
+    transform: translateY(-10px) scale(0.8);
   }
   .inp input:focus + span + .border {
     transform: scaleX(1);

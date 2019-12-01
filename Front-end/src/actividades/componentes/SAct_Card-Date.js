@@ -2,17 +2,29 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import './SAct_Card.css';
 
-const Dropmenu = ({ classCard }) => (
+const Dropmenu1 = ({ classCard }) => (
     <div className={classCard}>
         <form action="#" method="POST">
-            <label>Adultos:  &nbsp;&nbsp;</label>
-            <input type="number" name="adultos" min="1" max="4" isRequired/>
+            <label>Cantidad de días: &nbsp;&nbsp;</label>
+            <input type="number" name="dias" min="1" max="100" isRequired/>
             <br/>
-            <label>Niños:  &nbsp;&nbsp;</label>
-            <input type="number" name="niños" min="1" max="4" isRequired/>
+            <label>Mes: &nbsp;&nbsp;</label>
+            <input type="month" name="mes" isRequired/>
         </form>
     </div>
    );
+
+const Dropmenu2 = ({ classCard }) => (
+    <div className={classCard}>
+        <form action="#" method="POST">
+            <label>Fecha inicial:  &nbsp;&nbsp;</label>
+            <input type="date" name="fecha" isRequired/>
+            <br/>
+            <label>Fecha final:  &nbsp;&nbsp;</label>
+            <input type="date" name="fecha" isRequired/>
+        </form>
+    </div>
+);
 
 class Act_Card extends Component {
     constructor(props) {
@@ -34,12 +46,19 @@ class Act_Card extends Component {
 
     render() {
         let name = "";
-        let cardName = "";
-        if (this.props.property.activity === "Con niños" || this.props.property.activity === "En grupo") {
+        let cardName1 = "";
+        let cardName2 = "";
+        if (this.props.property.activity === "Sé la cantidad de días") {
             name = this.state.isToggleOn ? 'card_act' : 'card_menu'
-            cardName = this.state.isToggleOn ? 'hide_menu' : 'drop_menu'
-        } else {
-            cardName = 'hide_menu'
+            cardName1 = this.state.isToggleOn ? 'hide_menu' : 'drop_menu'
+            cardName2 = 'hide_menu'
+        }else if(this.props.property.activity === "Tengo una fecha especifica"){
+            name = this.state.isToggleOn ? 'card_act' : 'card_menu'
+            cardName2 = this.state.isToggleOn ? 'hide_menu' : 'drop_menu'
+            cardName1 = 'hide_menu'
+        }else {
+            cardName1 = 'hide_menu'
+            cardName2 = 'hide_menu'
             name = this.state.isToggleOn ? 'card_act' : 'card_toggle'
         }
 
@@ -51,7 +70,8 @@ class Act_Card extends Component {
                 <div>
                     <h3 onClick={this.handleClick}  className="card__title">{this.props.property.activity}</h3>
                 </div>
-                <Dropmenu classCard = {cardName}/>
+                <Dropmenu1 classCard = {cardName1}/>
+                <Dropmenu2 classCard = {cardName2}/>
             </div>
         );
     }
