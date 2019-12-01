@@ -23,8 +23,10 @@ name: { type: String, required: true },
   date: { type: Date, default: Date.now }
 */
 
-hotelsCtrl.getByCity = async (req, res) => {
-  const hotels = await Hotel.find({ciudad_id : req.params.city_id}); //Devuelve un arreglo [{}, {}]
+hotelsCtrl.getByCity = async (req, res) => { 
+  var queryParameter = ".*" + req.params.ciudad.substring(0, 4) + ".*";
+  console.log(queryParameter)
+  const hotels = await Hotel.find({ciudad : {$regex:queryParameter}}); //Devuelve un arreglo [{}, {}]
   res.json(hotels);
 };
 
@@ -43,7 +45,7 @@ hotelsCtrl.createHotel = async (req, res) => {
   const {
     name,
   usr_id,
-  ciudad_id,
+  ciudad,
   address,
   phone,
   price_per_person,
@@ -52,7 +54,7 @@ hotelsCtrl.createHotel = async (req, res) => {
   const newHotel = new Hotel({
     name,
   usr_id,
-  ciudad_id,
+  ciudad,
   address,
   phone,
   price_per_person,
@@ -74,7 +76,7 @@ hotelsCtrl.updateHotel = async (req, res) => {
   const {
     name,
   usr_id,
-  ciudad_id,
+  ciudad,
   address,
   phone,
   price_per_person,
@@ -85,7 +87,7 @@ hotelsCtrl.updateHotel = async (req, res) => {
     {
       name,
   usr_id,
-  ciudad_id,
+  ciudad,
   address,
   phone,
   price_per_person,
