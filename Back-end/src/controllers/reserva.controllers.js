@@ -15,6 +15,8 @@ const User = require("../models/User");
 // metodo para borrar reserva, deleteReserva
 // cancelar reserva, cancelReserva
 // obtener mis reservas, getMyReservas
+// obtener item temporales, getTemporalItems
+
 
 resCtrl.addItemTemporal = async (req, res) => {
 
@@ -270,6 +272,16 @@ resCtrl.getReserva = async (req, res) => {
       DetalleReserva : null
     });
   }
+  
+};
+
+resCtrl.getTemporalItems = async (req, res) => {
+  const items = await ItemReservaTemporal.find({usr_id:req.params.usr_id});
+  res.json( { 
+    Error : false,
+    ErrorMsg : '',
+    Items: items
+  });
   
 };
 

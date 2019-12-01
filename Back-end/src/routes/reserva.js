@@ -16,7 +16,8 @@ const {
   deleteReserva,
   cancelReserva,
   getMyReservas,
-  getReserva
+  getReserva,
+  getTemporalItems
 } = require("../controllers/reserva.controllers");
 
 router
@@ -43,5 +44,9 @@ router
 router
   .route("/reserva/:id")
   .get(getReserva);
+
+router
+  .route("/servicios/:usr_id")
+  .get(getTemporalItems);
 
 module.exports = router;
