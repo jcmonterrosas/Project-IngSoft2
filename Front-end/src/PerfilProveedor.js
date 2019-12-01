@@ -8,7 +8,7 @@ export default class PerfilProveedor extends Component {
 
   render() {
     return (
-      <div className=" jumbotron">
+      <div className="">
         <div>
         <TPerfil/>
         </div>

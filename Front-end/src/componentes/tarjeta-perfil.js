@@ -8,17 +8,49 @@ class TPerfil extends Component {
     render() {
         return (
             <div className="TarjetaPerfil container">
-                <div className="HeaderTarjeta row">
-                    <div className="col">
+                <div className="HeaderTarjeta row align-items-center">
+                    <div className="col-3">
                     <div className="ImagenPerfil ">
                         <img src={foto} width="100%" height="auto"/>
                     </div>
                     </div>
                     <div className="DatosPerfil col">
-                        <p>Pepito Perez</p>
-                        <p>Pepito@gmail.com</p>
+                        <br></br>
+                        <p className="Amerika">Pepito Perez</p>
+                        <p className="Aller mail">Pepito@gmail.com &#10004;</p>
                     </div>
-                    <button className="col">sadsad</button>
+                    <div className="col align-self-center">
+                    <button className="EditarB " type="button">Editar</button>
+                    </div>
+                </div>
+                <div className="InfoTarjeta row align-items-center container">
+                    <div className="row linea1">
+                        <div className="col-6">
+                            <div className="LogoInfo">
+                            <img src={foto} width="100%" height="auto"/>
+                            </div>
+                            <p className="Aller">DATOS PERSONALES</p>
+                            <p className="Aller sub">Pepito Perez</p>
+                        </div>
+                        <div className="col-6">
+                            <div className="LogoInfo">
+                            <img src={foto} width="100%" height="auto"/>
+                            </div>
+                            <p className="Aller">DATOS PERSONALES</p>
+                            <p className="Aller sub">Pepito Perez</p>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <div className="LogoInfo">
+                            <img src={foto} width="100%" height="auto"/>
+                            </div>
+                            <p className="Aller">DATOS PERSONALES</p>
+                            <p className="Aller sub">Pepito Perez</p>
+                        </div>
+                        <div className="col"></div>
+                    </div>
+
                 </div>
                 
             </div>
