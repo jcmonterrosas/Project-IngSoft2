@@ -1,8 +1,6 @@
 const servicesCtrl = {};
 
 const Services = require("../models/Services");
-const City = require("../models/City");
-
 
 servicesCtrl.getServices = async (req, res) => {
   const services = await Services.find(); //Devuelve un arreglo [{}, {}]
@@ -17,7 +15,7 @@ servicesCtrl.createService = async (req, res) => {
   usr_id,
   act_lugar,
   telefono_contacto,
-  ciudad_id
+  ciudad
   } = req.body;
   const newService = new Services({
     act_nombre,
@@ -26,7 +24,7 @@ servicesCtrl.createService = async (req, res) => {
     usr_id,
     act_lugar,
     telefono_contacto,
-    ciudad_id,
+    ciudad
   });
   await newService.save();
   console.log(newService);
@@ -48,7 +46,7 @@ servicesCtrl.updateService = async (req, res) => {
     usr_id,
     act_lugar,
     telefono_contacto,
-    ciudad_id
+    ciudad
   } = req.body;
   await Services.findOneAndUpdate(
     { _id: req.params.id },
@@ -59,7 +57,7 @@ servicesCtrl.updateService = async (req, res) => {
       usr_id,
       act_lugar,
       telefono_contacto,
-      ciudad_id
+      ciudad
     }
   );
   res.json({ message: "service Updated" });
@@ -71,15 +69,9 @@ servicesCtrl.deleteService = async (req, res) => {
 };
 
 servicesCtrl.getServicesByCity = async (req, res) => {
-  console.log(req.params)
-  const ciudad = await City.findOne({_id:req.params.city_id});
-  console.log(ciudad)
-  if(ciudad)
-  {
-    const services = await Services.find({ ciudad_id: ciudad._id });
+  var queryParameter = ".*" + req.params.ciudad.substring(0, 4) + ".*";
+  const services = await Services.find({ ciudad: {$regex:queryParameter}} );
     res.json(services);
-  }
-  res.json(new Array(0));
 };
 
 servicesCtrl.getServiceByPriceInRange = async (req, res) => {

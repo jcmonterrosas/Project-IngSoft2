@@ -12,7 +12,6 @@ app.use(express.json());
 //routes
 app.use("/hotels", require("./routes/hotel"));
 app.use("/services", require("./routes/services"));
-app.use("/city", require("./routes/city"));
 app.use("/user", require("./routes/user"));
 
 module.exports = app;
