@@ -13,5 +13,7 @@ app.use(express.json());
 app.use("/hotels", require("./routes/hotel"));
 app.use("/services", require("./routes/services"));
 app.use("/user", require("./routes/user"));
+app.use("/reserva", require("./routes/reserva"));
+
 
 module.exports = app;

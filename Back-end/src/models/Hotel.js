@@ -8,7 +8,6 @@ const HotelSchema = new Schema({
   address: { type: String, required: true },
   phone: { type: String, required: true },
   price_per_person: { type: String, required: true },
-  telefono_contacto: { type: String, required: true },
   acommodation: { type: String, required: true },
   date: { type: Date, default: Date.now }
 });
