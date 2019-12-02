@@ -20,6 +20,12 @@ export default function Header() {
             setInStorage("id", "")
             setInStorage("rol", "")
             setInStorage("token", "")
+            
+            setInStorage("telefono", "")
+            setInStorage("correo", "")
+            setInStorage("tipo_doc", "")
+            setInStorage("identificacion", "")
+    
             document.location = "/";
 
 
@@ -50,12 +56,7 @@ export default function Header() {
         setIsNavVisible(!isNavVisible);
     }
  
-    /*
-    setInStorage("telefono", response.data.User.usr_telefono)
-          setInStorage("correo", response.data.User.usr_correo)
-          setInStorage("tipo_doc", response.data.User.usr_tipo_doc)
-          setInStorage("identificacion", response.data.User.usr_identificacion)
-    */
+    
     var nombreUser = getFromStorage("nombre");
     var idUser = getFromStorage("id");
     var rolUser = getFromStorage("rol");

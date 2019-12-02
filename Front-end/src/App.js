@@ -45,17 +45,6 @@ class App extends Component {
         console.log(response.data)
         if(response.data.UserLogon)
         {
-          /*
-          usr_nombre: { type: String, required: true },
-  usr_telefono: { type: String, required: true },
-  usr_correo: { type: String, required: true },
-  usr_pass: { type: String, required: true },
-  usr_tipo_doc: { type: String, required: true },
-  usr_identificacion: {type: String, required: true},
-  usr_rol: { type: String, required: true },
-  date: { type: Date, default: Date.now }
-          
-          */
           setInStorage("nombre", response.data.User.usr_nombre)
           setInStorage("id", response.data.User._id)
           setInStorage("rol", response.data.User.usr_rol)
