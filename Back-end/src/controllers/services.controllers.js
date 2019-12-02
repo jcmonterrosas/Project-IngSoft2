@@ -10,12 +10,13 @@ servicesCtrl.getServices = async (req, res) => {
 servicesCtrl.createService = async (req, res) => {
   const {
     act_nombre,
-  act_descripcion,
-  precio,
-  usr_id,
-  act_lugar,
-  telefono_contacto,
-  ciudad
+    act_descripcion,
+    precio,
+    usr_id,
+    act_lugar,
+    telefono_contacto,
+    ciudad,
+    images
   } = req.body;
   const newService = new Services({
     act_nombre,
@@ -24,7 +25,8 @@ servicesCtrl.createService = async (req, res) => {
     usr_id,
     act_lugar,
     telefono_contacto,
-    ciudad
+    ciudad,
+    images
   });
   await newService.save();
   console.log(newService);
@@ -46,7 +48,8 @@ servicesCtrl.updateService = async (req, res) => {
     usr_id,
     act_lugar,
     telefono_contacto,
-    ciudad
+    ciudad,
+    images
   } = req.body;
   await Services.findOneAndUpdate(
     { _id: req.params.id },
@@ -57,7 +60,8 @@ servicesCtrl.updateService = async (req, res) => {
       usr_id,
       act_lugar,
       telefono_contacto,
-      ciudad
+      ciudad,
+      images
     }
   );
   res.json({ message: "service Updated" });
@@ -70,8 +74,8 @@ servicesCtrl.deleteService = async (req, res) => {
 
 servicesCtrl.getServicesByCity = async (req, res) => {
   var queryParameter = ".*" + req.params.ciudad.substring(0, 4) + ".*";
-  const services = await Services.find({ ciudad: {$regex:queryParameter}} );
-    res.json(services);
+  const services = await Services.find({ ciudad: { $regex: queryParameter } });
+  res.json(services);
 };
 
 servicesCtrl.getServiceByPriceInRange = async (req, res) => {
