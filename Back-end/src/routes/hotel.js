@@ -23,7 +23,7 @@ router
   .delete(deleteHotel);
 
 router
-  .route("/getbycity/:city_id")
+  .route("/getbycity/:ciudad")
   .get(getByCity);
 
 router

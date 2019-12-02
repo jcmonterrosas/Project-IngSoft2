@@ -24,7 +24,7 @@ router
   .delete(deleteService);
 
 router
-  .route("/filterByCity/:city_id")
+  .route("/filterByCity/:ciudad")
   .get(getServicesByCity);
 
   router

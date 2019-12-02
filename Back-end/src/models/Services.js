@@ -8,7 +8,8 @@ const ActSchema = new Schema({
   usr_id: { type: String, required: true },
   act_lugar: { type: String, required: true },
   telefono_contacto: { type: String, required: true },
-  ciudad_id: { type: String, required: true },
+  ciudad: { type: String, required: true },
+  images: { type: [String], required: false },
   date: { type: Date, default: Date.now }
 });
 

@@ -12,7 +12,7 @@ export default class Resultado extends Component {
       <React.Fragment>
         <div className="col-12 p-5 row">
           {resultados.map(resultado => (
-            <Imagen key={resultado._id} imagen={resultado} />
+            <Services key={resultado._id} imagen={resultado} />
           ))}
         </div>
         <Paginacion

@@ -1,4 +1,4 @@
-.page {
+.Actividades {
     display: grid;
     grid-template-rows: repeat(3, auto);
     row-gap: 2em;
@@ -9,11 +9,12 @@
     overflow: hidden;
 }
 
-.page h1{
+
+.Actividades h1{
   color: #000000;
 }
 
-.page .all_cards{
+.Actividades .all_cards{
     padding: 1em;
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
@@ -23,12 +24,12 @@
     padding-right: 25vh;
 }
 
-.page .all_cards div{
+.Actividades .all_cards div{
   justify-content: center;
   display: inline-flex;
 }
   
-.page .card__img--hover {
+.Actividades .card__img--hover {
   transition: 0.2s all ease-out;
   background-size: cover;
   background-position: center;
@@ -37,7 +38,7 @@
   height: 100%;
 }
 
-.page .card_act {
+.Actividades .card_act {
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -50,12 +51,12 @@
   box-shadow: -5px 7px 0px 0px rgba(0, 0, 0,0.1);
 }
 
-.page .card_act:hover {
+.Actividades .card_act:hover {
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0,0.1);
   transform: scale(0.80, 0.80);
 }
 
-.page .card_toggle {
+.Actividades .card_toggle {
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -68,6 +69,6 @@
   box-shadow: -5px 7px 0px 0px rgba(0, 0, 0,0.1);
 }
 
-.page #card-1:checked{
+.Actividades #card-1:checked{
   transform: scale(0.80, 0.80);
 }
