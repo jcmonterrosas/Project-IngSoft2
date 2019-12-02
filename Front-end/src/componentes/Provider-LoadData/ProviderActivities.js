@@ -75,26 +75,20 @@ class ProviderActivities extends Component {
   }
 
   consultarApi = async () => {
-    const config = {
-      headers: {
-        "Access-Control-Allow-Origin": "http://localhost:3000"
-      }
-    };
     axios
-      .post(
-        `https://api-aventurate.herokuapp.com/services/`,
-        {
-          act_nombre: this.state.nombre,
-          act_descripcion: this.state.descripcion,
-          precio: this.state.precio,
-          usr_id: "5dd86e3a5b15d827a07635eb",
-          act_lugar: this.state.direccion,
-          telefono_contacto: this.state.guia,
-          ciudad: this.state.ciudad,
-          images: [this.state.imagen]
-        },
-        config
-      )
+      .post(`https://api-aventurate.herokuapp.com/services/`, {
+        act_nombre: this.state.nombre,
+        act_descripcion: this.state.descripcion,
+        precio: this.state.precio,
+        categoria: this.state.tipo,
+        usr_id: "5dd86e3a5b15d827a07635eb",
+        act_lugar: this.state.niños,
+        telefono_contacto: this.state.guia,
+        ciudad: this.state.ciudad,
+        departamento: this.state.departamento,
+        direccion: this.state.direccion,
+        images: [this.state.imagen]
+      })
       .then(response => {
         console.log(response.data);
       })
