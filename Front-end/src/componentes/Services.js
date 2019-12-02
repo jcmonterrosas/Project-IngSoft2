@@ -1,6 +1,7 @@
 import React from "react";
 
 const Imagen = props => {
+
   const {
     act_nombre,
     act_descripcion,
@@ -12,6 +13,7 @@ const Imagen = props => {
     departamento
   } = props.imagen;
 
+
   return (
     <div className="container card containerHotel">
       <div className="row align-items-center">
@@ -20,11 +22,13 @@ const Imagen = props => {
             <p className="row titleHotel">
               <bold>{act_nombre}</bold>
             </p>
+
             <p className="row">Descripcion: {act_descripcion}</p>
             <p className="row">Precio: $ {precio}</p>
             <p className="row">Tipo: {categoria}</p>
             <p className="row">Departamento: {departamento}</p>
             <p className="row">Ciudad: {ciudad}</p>
+
           </div>
         </div>
 
