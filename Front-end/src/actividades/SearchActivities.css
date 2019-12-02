@@ -1,6 +1,6 @@
 .Actividades {
     display: grid;
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: 1fr 60vh 1fr;
     row-gap: 2em;
     text-align: center; 
     font-family: 'Roboto Slab', serif;

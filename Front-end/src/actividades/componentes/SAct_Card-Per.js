@@ -6,10 +6,10 @@ const Dropmenu = ({ classCard }) => (
     <div className={classCard}>
         <form action="#" method="POST">
             <label>Adultos:  &nbsp;&nbsp;</label>
-            <input type="number" name="adultos" min="1" max="4" isRequired/>
+            <input type="number" name="adultos" min="1" max="4" required/>
             <br/>
             <label>Niños:  &nbsp;&nbsp;</label>
-            <input type="number" name="niños" min="1" max="4" isRequired/>
+            <input type="number" name="niños" min="1" max="4" required/>
         </form>
     </div>
    );
