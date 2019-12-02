@@ -7,7 +7,7 @@ const ReservaSchema = new Schema({
   name: { type: String, required: true },
   price_total: { type: String, required: true },
   price_exclude_iva: { type: String, required: true },
-  state_pay: { type: String, required: true }
+  state: { type: String, default: "Confirmando"} // confirmado, paga, cancelada, finalizada
 });
 
 module.exports = mongoose.model("Reserva", ReservaSchema);
