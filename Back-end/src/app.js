@@ -18,11 +18,7 @@ app.use(express.json());
 app.use("/hotels", require("./routes/hotel"));
 app.use("/services", require("./routes/services"));
 app.use("/user", require("./routes/user"));
-app.use("/upload", require("./routes/image"));
+app.use("/reserva", require("./routes/reserva"));
 
-// app.post("/upload", upload.single("serImg"), (req, res) => {
-//   console.log(req.file);
-//   res.send("uploaded");
-// });
 
 module.exports = app;
