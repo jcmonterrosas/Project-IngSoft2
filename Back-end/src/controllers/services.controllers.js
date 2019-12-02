@@ -12,20 +12,26 @@ servicesCtrl.createService = async (req, res) => {
     act_nombre,
     act_descripcion,
     precio,
+    categoria,
     usr_id,
     act_lugar,
+    departamento,
     telefono_contacto,
     ciudad,
+    direccion,
     images
   } = req.body;
   const newService = new Services({
     act_nombre,
     act_descripcion,
     precio,
+    categoria,
     usr_id,
     act_lugar,
+    departamento,
     telefono_contacto,
     ciudad,
+    direccion,
     images
   });
   await newService.save();
@@ -45,10 +51,13 @@ servicesCtrl.updateService = async (req, res) => {
     act_nombre,
     act_descripcion,
     precio,
+    categoria,
     usr_id,
     act_lugar,
+    departamento,
     telefono_contacto,
     ciudad,
+    direccion,
     images
   } = req.body;
   await Services.findOneAndUpdate(
@@ -57,10 +66,13 @@ servicesCtrl.updateService = async (req, res) => {
       act_nombre,
       act_descripcion,
       precio,
+      categoria,
       usr_id,
       act_lugar,
+      departamento,
       telefono_contacto,
       ciudad,
+      direccion,
       images
     }
   );
