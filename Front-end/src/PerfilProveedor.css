@@ -1,3 +1,86 @@
-.bodyPerfil{
- height: 100%;
+.PerfilProveedor{
+    justify-content: center;
+    margin: auto;
+}
+
+.tarjetaIFinanciera{
+    height: 300px;
+    margin: auto;
+    width: 97%;
+    margin-bottom: 70px;
+}
+
+.tituloTarjeta{
+    background: #fcc438;
+    width: 100%;
+    height: 15%;
+    border: 2px solid #000000;
+    justify-content: center;
+}
+
+.tituloTarjeta p{
+    margin-top: 6px;
+}
+
+.bodyIFinanciera{
+    width: 100%;
+    height: 85%;
+    background: #e5e5e5;
+    border: 2px solid #000000;
+    margin-top: -4px;
+}
+
+.tarjetaServicios{
+    height: 300px;
+    margin: auto;
+    width: 97%;
+    margin-bottom: 70px;
+}
+
+.bodyServicios{
+    width: 100%;
+    height: 85%;
+    background: #e5e5e5;
+    border: 2px solid #000000;
+    margin-top: -4px;
+    
+}
+
+.Josefin{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size:20px;
+}
+
+.titulos{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.InfoFinanciera{
+    width: 100%;
+    height: 70%;
+    border-radius: 34px 34px 34px 34px;
+    -moz-border-radius: 34px 34px 34px 34px;
+    -webkit-border-radius: 34px 34px 34px 34px;
+    border: 2px dotted #000000;
+}
+
+.LogoS{
+    height: 120px;
+    width: 120px;
+    overflow: hidden;
+    margin: auto;
+}
+
+.LogoS img{
+    width: 100%;
+    height: auto;
+}
+
+@supports(object-fit: cover){
+    .LogoS img{
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    }
 }
