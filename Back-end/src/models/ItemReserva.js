@@ -12,12 +12,11 @@ const ItemReservaSchema = new Schema({
   address: { type: String, required: true },
   contact_phone: { type: String, required: true },
   city: { type: String, required: true },
-  child_quantity : { type: String, required: true },
-  adult_quantity : { type: String, required: true },
+  child_quantity : { type: Number, required: true },
+  adult_quantity : { type: Number, required: true },
   accommodation : { type: String, required: false },
-  state : { type: String, required: false },
-  DateBegin : {type: Date, default: Date.now },
-  DateEnd : {type: Date, default: Date.now }
+  DateBegin : {type: Date, required: true },
+  DateEnd : {type: Date, required: true }
 });
 
 module.exports = mongoose.model("ItemReserva", ItemReservaSchema);
