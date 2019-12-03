@@ -6,14 +6,12 @@
     align-content: center;
 }
 
-.Login .row{
-    margin: 0; 
-}
-
-.Login .campos{
-    padding: 4vh 0;
-}
-
-.jumbotron{
+.LoginForm{
+    padding: 6vh;
     box-shadow: 0 4px 8px 0 rgba(0.5, 0.5, 0.5, 0.5);
+    display: grid;
+    grid-template-rows: repeat(3,auto);
+    row-gap: 2em;
+    align-items: center;
+    justify-items: center;
 }

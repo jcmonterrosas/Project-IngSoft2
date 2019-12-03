@@ -1,31 +1,34 @@
 import React, { Component } from "react";
 import "./Login.css";
-import Btnprincipal from "./componentes/btn-cambio";
 import axios from "axios";
-
-import {
-  setInStorage,
-  getFromStorage,
-} from './storage';
+import { setInStorage } from "./storage";
 
 class Login extends Component {
-  state = {
-    User: String,
-    Password: String
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      User: String,
+      Password: String,
+      ErrorMsg: String
+    };
 
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  valueToState = ({ value, id }) => {
-    switch (id) {
-      case "User":
-        this.setState({ User: value });
+  handleChange(event) {
+    const target = event.target;
+    switch (target.id) {
+      case "Usuario":
+        this.setState({ User: target.value });
         break;
-      case "Password":
-        this.setState({ Password: value });
+      case "Contraseña":
+        this.setState({ Password: target.value });
+        break;
+      default:
         break;
     }
-    console.log(this.state);
-  };
+  }
 
   consultarApi = async () => {
     axios
@@ -40,41 +43,46 @@ class Login extends Component {
           );
           var str = response.data.ErrorMsg.toString();
           console.log("str: " + str);
-          
+          this.setState({ ErrorMsg: str });
 
-          if(str.includes("abierta"))
-          {
-            if( window.confirm(response.data.ErrorMsg + "¿Deseas cerrar sesión en todos los demás dispositivos?"))
-            {
+          if (str.includes("abierta")) {
+            if (
+              window.confirm(
+                response.data.ErrorMsg +
+                  "¿Deseas cerrar sesión en todos los demás dispositivos?"
+              )
+            ) {
               var idUser = response.data.User[0]._id;
               axios
-              .delete(`https://api-aventurate.herokuapp.com/user/closeSession/` + idUser)
-              .then(response2 => {
-                console.log(response2)
-                if (response2.data.Error === true) {
-                  console.log(
-                    "ocurrio un error"
-                  );
-                  alert(response2.data.ErrorMsg)
-                } else {
-                  console.log("cerradas");
-                  alert("Se cerraron con éxito todas tus sesiones. Ahora puedes iniciar sesión.")
-                }
-              })
-              .catch(error => {
-                console.log("this is error: ", error);
-              });
+                .delete(
+                  `https://api-aventurate.herokuapp.com/user/closeSession/` +
+                    idUser
+                )
+                .then(response2 => {
+                  console.log(response2);
+                  if (response2.data.Error === true) {
+                    console.log("ocurrio un error");
+                    alert(response2.data.ErrorMsg);
+                  } else {
+                    console.log("cerradas");
+                    alert(
+                      "Se cerraron con éxito todas tus sesiones. Ahora puedes iniciar sesión."
+                    );
+                  }
+                })
+                .catch(error => {
+                  console.log("this is error: ", error);
+                });
             }
+          } else {
+            // alert(response.data.ErrorMsg);
           }
-          else
-          {
-            alert(response.data.ErrorMsg);
-          }
-
         } else {
+          console.log("Usuario existe");
           console.log("Usuario existe" + response.data.Token);
           setInStorage("token", response.data.Token);
           document.location = "/";
+          //this.props.history.push("/PerfilProveedor");
         }
       })
       .catch(error => {
@@ -82,70 +90,45 @@ class Login extends Component {
       });
   };
 
+  handleSubmit(event) {
+    this.consultarApi();
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div className="Login">
-        <div className="row">
-          <div className="jumbotron" align="center">
-            <div className="row">
-              <div className="col-12" align="center">
-                <h1>Bienvenido</h1>
-              </div>
-            </div>
-            <div className="row campos">
-              <div className="col-2" />
-              <div className="col-8" align="center">
-                <label for="inp" class="inp">
-                  <input
-                    type="text"
-                    id="User"
-                    placeholder="&nbsp;"
-                    onChange={event => this.valueToState(event.target)}
-                  />
-                  <span class="label">Correo electrónico</span>
-                  <span class="border"></span>
-                </label>
-              </div>
-              <div className="col-2" />
-            </div>
-            <div className="row campos">
-              <div className="col-2" />
-              <div className="col-8" align="center">
-                <label for="inp" class="inp">
-                  <input
-                    type="password"
-                    id="Password"
-                    placeholder="&nbsp;"
-                    onChange={event => this.valueToState(event.target)}
-                  />
-                  <span class="label">Contraseña</span>
-                  <span class="border"></span>
-                </label>
-              </div>
-              <div className="col-2" />
-            </div>
-            <br />
-            <div className="row" align="center">
-              <div className="col-12" >
-                <span className="errorMsg">{this.state.ErrorMsg}</span>
-              </div>
-            </div>
-            <div className="row" align="center">
-              <div className="col-2" >
-              </div>
-              <div className="col-8">
-                <button
-                  type="button"
-                  className="botonInicial1 btn btn-warning btn-lg btn-block"
-                  onClick={this.consultarApi}
-                >
-                  Iniciar Sesión
-                </button>
-                <div className="col-2" />
-              </div>
-            </div>
-          </div>
-        </div>
+        <form className="LoginForm" onSubmit={this.handleSubmit}>
+          <h1>Bienvenido</h1>
+          <label htmlFor="inp" className="inp">
+            <input
+              type="email"
+              id="Usuario"
+              placeholder="&nbsp;"
+              onChange={this.handleChange}
+              required
+            />
+            <span className="label">Correo electrónico</span>
+            <span className="border"></span>
+          </label>
+          <label htmlFor="inp" className="inp">
+            <input
+              type="password"
+              id="Contraseña"
+              placeholder="&nbsp;"
+              onChange={this.handleChange}
+              required
+            />
+            <span className="label">Contraseña</span>
+            <span className="border"></span>
+          </label>
+          <span className="errorMsg">{this.state.ErrorMsg}</span>
+          <input
+            type="submit"
+            value="Iniciar Sesión"
+            className="btn btn-warning btn-lg btn-block"
+          />
+        </form>
       </div>
     );
   }

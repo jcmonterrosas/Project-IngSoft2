@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./ProviderActivities.css";
+import "./ProviderLoadData.css";
 import axios from "axios";
 
 import FileBase64 from "react-file-base64";
@@ -20,6 +20,7 @@ class ProviderActivities extends Component {
       comida: false,
       niños: false,
       guia: false,
+      tel_contacto: String,
       imagen: []
     };
 
@@ -56,6 +57,9 @@ class ProviderActivities extends Component {
       case "Precio":
         this.setState({ precio: target.value });
         break;
+      case "Personas":
+        this.setState({ personas: target.value });
+        break;
       case "Transporte":
         this.setState({ transporte: target.checked });
         break;
@@ -71,32 +75,32 @@ class ProviderActivities extends Component {
       case "Imagen":
         this.setState({ imagen: target.files[0] });
         break;
+      case "Telefono":
+        this.setState({ tel_contacto: target.value });
+        break;
+      default:
+        break;
     }
   }
 
   consultarApi = async () => {
-    const config = {
-      headers: {
-        "Access-Control-Allow-Origin": "http://localhost:3000"
-      }
-    };
     axios
-      .post(
-        `https://api-aventurate.herokuapp.com/services/`,
-        {
-          act_nombre: this.state.nombre,
-          act_descripcion: this.state.descripcion,
-          precio: this.state.precio,
-          usr_id: "5dd86e3a5b15d827a07635eb",
-          act_lugar: this.state.direccion,
-          telefono_contacto: this.state.guia,
-          ciudad: this.state.ciudad,
-          images: [this.state.imagen]
-        },
-        config
-      )
+      .post(`https://api-aventurate.herokuapp.com/services/`, {
+        act_nombre: this.state.nombre,
+        act_descripcion: this.state.descripcion,
+        precio: this.state.precio,
+        categoria: this.state.tipo,
+        usr_id: "5dd86e3a5b15d827a07635eb",
+        act_lugar: this.state.niños,
+        telefono_contacto: this.state.tel_contacto,
+        ciudad: this.state.ciudad,
+        departamento: this.state.departamento,
+        direccion: this.state.direccion,
+        images: [this.state.imagen]
+      })
       .then(response => {
         console.log(response.data);
+        this.props.history.push("/PerfilProveedor");
       })
       .catch(error => {
         console.log("this is error", error);
@@ -129,52 +133,52 @@ class ProviderActivities extends Component {
         this.state.niños +
         "\nGuia: " +
         this.state.guia +
+        "\nTelefono: " +
+        this.state.tel_contacto +
         "\nImagen: " +
         this.state.imagen
     );
 
     this.consultarApi();
-
     event.preventDefault();
   }
 
   render() {
     return (
       <div className="container-ActivitiesData">
-        <form className="activitieForm">
+        <form className="activitieForm" onSubmit={this.handleSubmit}>
           <h1>Ingresa tu actividad</h1>
-          <label for="inp" className="inp">
+          <label htmlFor="inp" className="inp">
             <input
               type="text"
               id="Nombre"
               placeholder="&nbsp;"
-              value={this.state.nombre}
               onChange={this.handleChange}
               autoComplete="off"
+              required
             />
             <span className="label">Nombre</span>
             <span className="border"></span>
           </label>
-          <label for="inp" className="inp">
+          <label htmlFor="inp" className="inp">
             <input
               type="number"
               id="Precio"
               placeholder="&nbsp;"
-              value={this.state.precio}
               onChange={this.handleChange}
               min="0"
               max="20000000"
               step="50"
+              required
             />
             <span className="label">Precio</span>
             <span className="border"></span>
           </label>
-          <label for="inp" className="inp">
+          <label htmlFor="inp" className="inp">
             <input
               type="number"
               id="Personas"
               placeholder="&nbsp;"
-              value={this.state.personas}
               onChange={this.handleChange}
               min="1"
               max="30"
@@ -187,109 +191,104 @@ class ProviderActivities extends Component {
             <select
               className="custom-select"
               id="Tipo"
-              value={this.state.tipo}
               onChange={this.handleChange}
+              required
             >
-              <option value="excursiones">Excursiones</option>
-              <option value="comida">Comida</option>
-              <option value="deportes extremos">Deportes extremos</option>
-              <option value="descanso">Descanso</option>
-              <option value="parques naturales">Parques naturales</option>
-              <option value="parques de diversion">Parques de diversión</option>
+              <option value="" selected disabled hidden>
+                Escoger Tipo
+              </option>
+              <option value="Excursiones">Excursiones</option>
+              <option value="Comida">Comida</option>
+              <option value="Deportes extremos">Deportes extremos</option>
+              <option value="Descanso">Descanso</option>
+              <option value="Parques naturales">Parques naturales</option>
+              <option value="Parques de diversion">Parques de diversión</option>
             </select>
           </label>
-          <label for="inp" className="inp">
+          <label htmlFor="inp" className="inp">
             <textarea
               id="Descripcion"
               placeholder="&nbsp;"
               rows="3"
               maxLength="200"
-              value={this.state.descripcion}
               onChange={this.handleChange}
             />
             <span className="label">Descripción</span>
           </label>
           <label>
-            <input
-              type="radio"
-              id="Niños"
-              value={this.state.niños}
-              onChange={this.handleChange}
-            />
+            <input type="checkbox" id="Niños" onChange={this.handleChange} />
             &nbsp;Niños
             <br />
             <input
-              type="radio"
+              type="checkbox"
               id="Transporte"
-              value={this.state.transporte}
               onChange={this.handleChange}
             />
             &nbsp;Transporte
             <br />
-            <input
-              type="radio"
-              id="Comida"
-              value={this.state.comida}
-              onChange={this.handleChange}
-            />
+            <input type="checkbox" id="Comida" onChange={this.handleChange} />
             &nbsp;Comida
             <br />
-            <input
-              type="radio"
-              id="Guia"
-              value={this.state.guia}
-              onChange={this.handleChange}
-            />
+            <input type="checkbox" id="Guia" onChange={this.handleChange} />
             &nbsp;Guía turistico
           </label>
-          <label for="inp" className="inp">
+          <label htmlFor="inp" className="inp">
             <input
               type="text"
               id="Departamento"
               placeholder="&nbsp;"
-              value={this.state.departamento}
               onChange={this.handleChange}
             />
             <span className="label">Departamento</span>
             <span className="border"></span>
           </label>
-          <label for="inp" className="inp">
+          <label htmlFor="inp" className="inp">
             <input
               type="text"
               id="Ciudad"
               placeholder="&nbsp;"
-              value={this.state.ciudad}
               onChange={this.handleChange}
+              required
             />
             <span className="label">Ciudad</span>
             <span className="border"></span>
           </label>
-          <label for="inp" className="inp">
+          <label htmlFor="inp" className="inp">
             <input
               type="text"
               id="Direccion"
               placeholder="&nbsp;"
-              value={this.state.direccion}
               onChange={this.handleChange}
               autoComplete="off"
+              required
             />
             <span className="label">Dirección</span>
             <span className="border"></span>
           </label>
-          <FileBase64 multiple={false} onDone={this.getFiles.bind(this)} />
+          <label htmlFor="inp" className="inp">
+            <input
+              type="tel"
+              id="Telefono"
+              placeholder="&nbsp;"
+              pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
+              title="Se espera diez numeros, ejemplo: 301 123 4568"
+              onChange={this.handleChange}
+            />
+            <span className="label">Teléfono celular</span>
+            <span className="border"></span>
+          </label>
+          <div className="selectedImage">
+            <FileBase64 multiple={false} onDone={this.getFiles.bind(this)} />
+            <br />
+            <span style={{ color: "red" }} className="label">
+              Solo son válidas imágenes que pesen 100kb o menos
+            </span>
+          </div>
           <div className="input-group">
-            <button type="reset" className="btn btn-warning btn-lg btn-block">
-              Restablecer
-            </button>
+            <input type="reset" className="btn btn-warning btn-lg btn-block" />
           </div>
           <div className="input-group guardar">
-            <button
-              type="button"
-              className="btn btn-warning btn-lg btn-block"
-              onClick={this.handleSubmit}
-            >
-              Guardar
-            </button>
+            <input type="submit" className="btn btn-warning btn-lg btn-block" />
           </div>
         </form>
       </div>
