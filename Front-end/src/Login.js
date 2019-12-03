@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "./Login.css";
 import Btnprincipal from "./componentes/btn-cambio";
 import axios from "axios";
+import { Route, Switch } from 'react-router-dom';
+import ReactDOM from 'react-dom';
+import { Redirect } from 'react-router-dom'
 
 class Login extends Component {
   state = {
@@ -35,6 +38,7 @@ class Login extends Component {
           );
         } else {
           console.log("Usuario existe");
+          return <Redirect to='/PerfilProveedor'/>
         }
       })
       .catch(error => {

@@ -41,7 +41,7 @@ export default function Header() {
             >
                 <nav className="Nav">
                     <a href="/Login">Iniciar sesión</a>
-                    <a href="/ProviderActivities">Mis viajes</a>
+                    <a href="/PerfilProveedor">Mis viajes</a>
                     <a href="/Register">Registrarse</a>
                 </nav>
             </CSSTransition>
