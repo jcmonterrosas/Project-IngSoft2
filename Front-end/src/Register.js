@@ -75,7 +75,7 @@ class Register extends Component {
             </div>
             <div className="row campos">
               <div className="col-6" align="center">
-                <label htmlFor="inp" className="inp">
+                <label for="inp" className="inp">
                   <input
                     type="text"
                     id="Nombre"
@@ -88,7 +88,7 @@ class Register extends Component {
                 </label>
               </div>
               <div className="col-6" align="center">
-                <label htmlFor="inp" className="inp">
+                <label for="inp" className="inp">
                   <input
                     type="password"
                     id="Contraseña"
@@ -103,7 +103,7 @@ class Register extends Component {
             </div>
             <div className="row campos">
               <div className="col-6" align="center">
-                <label htmlFor="inp" className="inp">
+                <label for="inp" className="inp">
                   <input
                     type="email"
                     id="Correo"
@@ -115,7 +115,7 @@ class Register extends Component {
                 </label>
               </div>
                 <div className="col-6" align="center">
-                  <label htmlFor="inp" className="inp">
+                  <label for="inp" className="inp">
                     <input
                       type="tel"
                       id="Telefono"
@@ -143,7 +143,7 @@ class Register extends Component {
                 </select>
               </div>
               <div className="input-group mb-3 col-6">
-                <label htmlFor="inp" className="inp">
+                <label for="inp" className="inp">
                   <input
                     type="number"
                     id="Identificacion"
@@ -157,7 +157,7 @@ class Register extends Component {
             </div>
             <div className="row campos">
               <div className="input-group mb-3 col-6">
-                <label htmlFor="inp" className="inp">
+                <label for="inp" className="inp">
                   <input
                     type="date"
                     id="FechaNacimiento"

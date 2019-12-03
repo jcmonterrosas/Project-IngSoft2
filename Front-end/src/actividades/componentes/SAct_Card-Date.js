@@ -6,10 +6,10 @@ const Dropmenu1 = ({ classCard }) => (
     <div className={classCard}>
         <form action="#" method="POST">
             <label>Cantidad de días: &nbsp;&nbsp;</label>
-            <input type="number" name="dias" min="1" max="100" required/>
+            <input type="number" name="dias" min="1" max="100" isRequired/>
             <br/>
             <label>Mes: &nbsp;&nbsp;</label>
-            <input type="month" name="mes" required/>
+            <input type="month" name="mes" isRequired/>
         </form>
     </div>
    );
@@ -18,10 +18,10 @@ const Dropmenu2 = ({ classCard }) => (
     <div className={classCard}>
         <form action="#" method="POST">
             <label>Fecha inicial:  &nbsp;&nbsp;</label>
-            <input type="date" name="fecha" required/>
+            <input type="date" name="fecha" isRequired/>
             <br/>
             <label>Fecha final:  &nbsp;&nbsp;</label>
-            <input type="date" name="fecha" required/>
+            <input type="date" name="fecha" isRequired/>
         </form>
     </div>
 );

@@ -27,20 +27,7 @@ export default class PerfilProveedor extends Component {
               <div className="titulos col ">
                 <p className="Josefin"><strong>Historial</strong></p>
                 <div className="InfoFinanciera">
-                  <div className="Historial row">
-                    <div className="col">
-                      <p className="Josefin"><strong>Historial</strong></p>
-                      <p className="Josefin"><strong>Historial</strong></p>
-                      <p className="Josefin"><strong>Historial</strong></p>
-                      <p className="Josefin"><strong>Historial</strong></p>
-                      <p className="Josefin"><strong>Historial</strong></p>
-                      <p className="Josefin"><strong>Historial</strong></p>
-                      <p className="Josefin"><strong>Historial</strong></p>
-                    </div>
-                    <div className="col">
-                     <button type="button" className="AgregarB">Agregar</button>
-                    </div>
-                  </div>
+
                 </div>
               </div>
             </div>
