@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import "./Login.css";
 import axios from "axios";
-import {
-  setInStorage
-} from './storage';
+import { setInStorage } from "./storage";
 
 class Login extends Component {
   constructor(props) {
@@ -12,12 +10,11 @@ class Login extends Component {
       User: String,
       Password: String,
       ErrorMsg: String
-    }
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  };
-
+  }
 
   handleChange(event) {
     const target = event.target;
@@ -31,7 +28,6 @@ class Login extends Component {
       default:
         break;
     }
-    console.log(this.state)
   }
 
   consultarApi = async () => {
@@ -47,31 +43,38 @@ class Login extends Component {
           );
           var str = response.data.ErrorMsg.toString();
           console.log("str: " + str);
-          this.setState({ ErrorMsg: str });          
+          this.setState({ ErrorMsg: str });
 
           if (str.includes("abierta")) {
-            if (window.confirm(response.data.ErrorMsg + "¿Deseas cerrar sesión en todos los demás dispositivos?")) {
+            if (
+              window.confirm(
+                response.data.ErrorMsg +
+                  "¿Deseas cerrar sesión en todos los demás dispositivos?"
+              )
+            ) {
               var idUser = response.data.User[0]._id;
               axios
-                .delete(`https://api-aventurate.herokuapp.com/user/closeSession/` + idUser)
+                .delete(
+                  `https://api-aventurate.herokuapp.com/user/closeSession/` +
+                    idUser
+                )
                 .then(response2 => {
-                  console.log(response2)
+                  console.log(response2);
                   if (response2.data.Error === true) {
-                    console.log(
-                      "ocurrio un error"
-                    );
-                    alert(response2.data.ErrorMsg)
+                    console.log("ocurrio un error");
+                    alert(response2.data.ErrorMsg);
                   } else {
                     console.log("cerradas");
-                    alert("Se cerraron con éxito todas tus sesiones. Ahora puedes iniciar sesión.")
+                    alert(
+                      "Se cerraron con éxito todas tus sesiones. Ahora puedes iniciar sesión."
+                    );
                   }
                 })
                 .catch(error => {
                   console.log("this is error: ", error);
                 });
             }
-          }
-          else {
+          } else {
             // alert(response.data.ErrorMsg);
           }
         } else {
@@ -120,7 +123,11 @@ class Login extends Component {
             <span className="border"></span>
           </label>
           <span className="errorMsg">{this.state.ErrorMsg}</span>
-          <input type="submit" value="Iniciar Sesión" className="btn btn-warning btn-lg btn-block" />
+          <input
+            type="submit"
+            value="Iniciar Sesión"
+            className="btn btn-warning btn-lg btn-block"
+          />
         </form>
       </div>
     );
