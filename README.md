@@ -51,7 +51,7 @@
 
 > Para la segunda iteración, el Sprint BackLog se ubica actualmente en el tablero Trello, tanto en la lista **Done - Segunda Iteración** como en la lista **CODE REVIEW**.
 
-> En esta iteracion, los mayores avances, se presentan principalmente en la barra de navegacion, los filtros de actividades, el registro de usuarios y el inicio de sesión, aparte de diferentes mejoras al funcionamiento y experiencia de usuario; como complemento un footer con los links que se solicitan recurrentemente en cada iteracion. Ademas de los frameworks que se estaban utilizando, se agrega a la lista el uso de Boostrap y Reactstrap.
+> En esta iteracion, los mayores avances, se presentan principalmente en la barra de navegacion, los filtros de actividades, el registro de usuarios y el inicio de sesión, aparte de diferentes mejoras al funcionamiento y experiencia de usuario; como complemento un footer con los links que se solicitan recurrentemente en cada iteracion. Ademas de los frameworks que se estaban utilizando, se agrega a la lista el uso de Bootstrap y Reactstrap.
 
 > En cuanto a la implementacion de **Patrones de software**, en el desarrollo de la aplicacion se implementó, entre otros, el patron **" chain of responsability"** el cual se define como un patron de comportamiento. Dicho patron se implementa puesto que la gestión de una petición asíncrona tiene que ir pasando por una serie de estados: inicio de la petición, respuesta de la petición; que a su vez se divide en: petición resuelta con éxito y petición fallida, , describiendo así como los objetos distribuyen responsabilidades e interactúan entre ellos.
 
@@ -72,4 +72,10 @@
 ## Puede verificar dichos resultados mediante el siguiente enlace: 
 
 >### [Prueba de rendimiento](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Faventurate.herokuapp.com%2F&tab=desktop)
+
+# Tercera Iteracion:
+
+> Para la tercera iteración, el Sprint BackLog se ubica actualmente en el tablero Trello, tanto en la lista **Done - Tercera Iteración** como en la lista **CODE REVIEW**.
+
+> En esta iteracion se hicieron avances en los perfiles definidos anteriormente(usuario y proveedor), tambien para acceder a estos perfiles se completo correctamente el registro y login de estos usuarios, una vez haya ingresado el usuario con sus datos, podra ingresar a su perfil y ver los datos importantes respectivamente al tipo de usuario que haya ingresado, estos perfiles aportan una experiencia de usuario en la cual dispone siempre de toda su informacion en nuestra pagina, adicionalmente se agrego el formulario para agregar una actividad por parte de los proveedores en sus servicios para el publico o los clientes de tipo usuario.
 
