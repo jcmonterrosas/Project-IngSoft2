@@ -4,28 +4,46 @@ import axios from "axios";
 
 import FileBase64 from "react-file-base64";
 
-class ProviderActivities extends Component {
+function Cantidad(id, e) {
+    return (<label htmlFor="inp" className="inp">
+        <input
+            type="number"
+            id={id}
+            placeholder="&nbsp;"
+            onChange={e}
+            min="1"
+            max="20"
+            step="1"
+        />
+        <span className="label">{id}</span>
+        <span className="border"></span>
+    </label>);
+}
+
+class ProviderHotels extends Component {
     constructor(props) {
         super(props);
         this.state = {
             nombre: String,
-            descripcion: String,
-            tipo: String,
             departamento: String,
             ciudad: String,
             direccion: String,
             precio: Number,
-            personas: Number,
-            transporte: false,
-            comida: false,
-            niños: false,
-            guia: false,
             tel_contacto: String,
-            imagen: []
+            imagen: [],
+            individual: false,
+            doble: false,
+            familiar: false,
+            multiple: false,
+            habitaciones_individuales: 0,
+            habitaciones_dobles: 0,
+            habitaciones_familiares: 0,
+            habitaciones_multiples: 0,
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleReset = this.handleReset.bind(this);
     }
 
     getFiles(files) {
@@ -39,12 +57,6 @@ class ProviderActivities extends Component {
             case "Nombre":
                 this.setState({ nombre: target.value });
                 break;
-            case "Tipo":
-                this.setState({ tipo: target.value });
-                break;
-            case "Descripcion":
-                this.setState({ descripcion: target.value });
-                break;
             case "Departamento":
                 this.setState({ departamento: target.value });
                 break;
@@ -57,63 +69,85 @@ class ProviderActivities extends Component {
             case "Precio":
                 this.setState({ precio: target.value });
                 break;
-            case "Personas":
-                    this.setState({ personas: target.value });
-                break;
-            case "Transporte":
-                this.setState({ transporte: target.checked });
-                break;
-            case "Comida":
-                this.setState({ comida: target.checked });
-                break;
-            case "Niños":
-                this.setState({ niños: target.checked });
-                break;
-            case "Guia":
-                this.setState({ guia: target.checked });
-                break;
             case "Imagen":
                 this.setState({ imagen: target.files[0] });
                 break;
             case "Telefono":
                 this.setState({ telefono_contacto: target.value });
                 break;
+            case "Individual":
+                this.setState({ individual: target.checked });
+                break;
+            case "Doble":
+                this.setState({ doble: target.checked });
+                break;
+            case "Familiar":
+                this.setState({ familiar: target.checked });
+                break;
+            case "Multiple":
+                this.setState({ multiple: target.checked });
+                break;
+            case "Habitaciones individuales":
+                this.setState({ habitaciones_individuales: target.value });
+            break;
+            case "Habitaciones dobles":
+                this.setState({ habitaciones_dobles: target.value });
+            break;
+            case "Habitaciones familiares":
+                this.setState({ habitaciones_familiares: target.value });
+            break;
+            case "Habitaciones multiples":
+                this.setState({ habitaciones_multiples: target.value });
+            break;
             default:
                 break;
         }
     }
 
-  consultarApi = async () => {
-    axios
-      .post(`https://api-aventurate.herokuapp.com/services/`, {
-        act_nombre: this.state.nombre,
-        act_descripcion: this.state.descripcion,
-        precio: this.state.precio,
-        categoria: this.state.tipo,
-        usr_id: "5dd86e3a5b15d827a07635eb",
-        act_lugar: this.state.niños,
-        telefono_contacto: this.state.tel_contacto,
-        ciudad: this.state.ciudad,
-        departamento: this.state.departamento,
-        direccion: this.state.direccion,
-        images: [this.state.imagen]
-      })
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.log("this is error", error);
-      });
-  };
+    consultarApi = async () => {
+        const config = {
+            headers: {
+                "Access-Control-Allow-Origin": "http://localhost:3000"
+            }
+        };
+        axios
+            .post(
+                `https://api-aventurate.herokuapp.com/services/`,
+                {
+                    act_nombre: this.state.nombre,
+                    act_descripcion: this.state.descripcion,
+                    precio: this.state.precio,
+                    usr_id: "5dd86e3a5b15d827a07635eb",
+                    act_lugar: this.state.direccion,
+                    telefono_contacto: this.state.tel_contacto,
+                    ciudad: this.state.ciudad,
+                    images: [this.state.imagen]
+                },
+                config
+            )
+            .then(response => {
+                console.log("Done: ", response.data);
+            })
+            .catch(error => {
+                console.log("this is error", error);
+            });
+    };
+
+    // Esto hace un bug que no entiendo donde hay que hacer check dos veces para que sirva
+    handleReset(event){
+        this.setState({
+            individual: false,
+            doble: false,
+            familiar: false,
+            multiple: false,
+            reset: true
+        });
+    }
 
     handleSubmit(event) {
         alert(
             "Nombre: " +
             this.state.nombre +
-            "\nDescripcion: " +
-            this.state.descripcion +
-            "\nTipo de actividad: " +
-            this.state.tipo +
             "\nDepartamento: " +
             this.state.departamento +
             "\nCiudad: " +
@@ -122,32 +156,59 @@ class ProviderActivities extends Component {
             this.state.direccion +
             "\nPrecio: " +
             this.state.precio +
-            "\nPersonas: " +
-            this.state.personas +
-            "\nTransporte: " +
-            this.state.transporte +
-            "\nComida: " +
-            this.state.comida +
-            "\nNiños: " +
-            this.state.niños +
-            "\nGuia: " +
-            this.state.guia +
             "\nTelefono: " +
             this.state.tel_contacto +
             "\nImagen: " +
-            this.state.imagen
+            this.state.imagen +
+            "\nIndividual: " +
+            this.state.individual +
+            "\nDoble: " +
+            this.state.doble +
+            "\nFamiliar: " +
+            this.state.familiar +
+            "\nMultiple: " +
+            this.state.multiple +
+            "\nHabitaciones Individuales: " +
+            this.state.habitaciones_individuales +
+            "\nHabitaciones Dobles: " +
+            this.state.habitaciones_dobles +
+            "\nHabitaciones Familiares: " +
+            this.state.habitaciones_familiares +
+            "\nHabitaciones Multiples: " +
+            this.state.habitaciones_multiples 
         );
 
-        this.consultarApi();
+        // this.consultarApi();
 
         event.preventDefault();
     }
 
     render() {
+        let CantidadIndividuales, CantidadDobles, CantidadFamiliares, CantidadMultiples
+        if(this.state.individual){
+            CantidadIndividuales = Cantidad("Habitaciones individuales", this.handleChange) 
+        }else{
+            CantidadIndividuales = null
+        }
+        if(this.state.doble){
+            CantidadDobles = Cantidad("Habitaciones dobles", this.handleChange) 
+        }else{
+            CantidadDobles = null
+        }
+        if(this.state.familiar){
+            CantidadFamiliares = Cantidad("Habitaciones familiares", this.handleChange) 
+        }else{
+            CantidadFamiliares = null
+        }
+        if(this.state.multiple){
+            CantidadMultiples = Cantidad("Habitaciones multiples", this.handleChange) 
+        }else{
+            CantidadMultiples = null
+        }
         return (
             <div className="container-ActivitiesData">
-                <form className="activitieForm" onSubmit={this.handleSubmit}>
-                    <h1>Ingresa tu actividad</h1>
+                <form className="activitieForm" onSubmit={this.handleSubmit} onReset={this.handleReset}>
+                    <h1>Ingresa tu hotel</h1>
                     <label htmlFor="inp" className="inp">
                         <input
                             type="text"
@@ -174,73 +235,40 @@ class ProviderActivities extends Component {
                         <span className="label">Precio</span>
                         <span className="border"></span>
                     </label>
-                    <label htmlFor="inp" className="inp">
-                        <input
-                            type="number"
-                            id="Personas"
-                            placeholder="&nbsp;"
-                            onChange={this.handleChange}
-                            min="1"
-                            max="30"
-                            step="1"
-                        />
-                        <span className="label">Cantidad de personas</span>
-                        <span className="border"></span>
-                    </label>
                     <label>
-                        <select
-                            className="custom-select"
-                            id="Tipo"
-                            onChange={this.handleChange}
-                            required
-                        >
-                            <option value="excursiones">Excursiones</option>
-                            <option value="comida">Comida</option>
-                            <option value="deportes extremos">Deportes extremos</option>
-                            <option value="descanso">Descanso</option>
-                            <option value="parques naturales">Parques naturales</option>
-                            <option value="parques de diversion">Parques de diversión</option>
-                        </select>
-                    </label>
-                    <label htmlFor="inp" className="inp">
-                        <textarea
-                            id="Descripcion"
-                            placeholder="&nbsp;"
-                            rows="3"
-                            maxLength="200"
-                            onChange={this.handleChange}
-                        />
-                        <span className="label">Descripción</span>
-                    </label>
-                    <label>
+                        <h6>Habitaciones</h6>
                         <input
                             type="checkbox"
-                            id="Niños"
+                            id="Individual"
                             onChange={this.handleChange}
                         />
-                        &nbsp;Niños
+                        &nbsp;Individual
                         <br />
                         <input
                             type="checkbox"
-                            id="Transporte"
+                            id="Doble"
                             onChange={this.handleChange}
                         />
-                        &nbsp;Transporte
+                        &nbsp;Doble
                          <br />
                         <input
                             type="checkbox"
-                            id="Comida"
+                            id="Familiar"
                             onChange={this.handleChange}
                         />
-                        &nbsp;Comida
+                        &nbsp;Familiar
                         <br />
                         <input
                             type="checkbox"
-                            id="Guia"
+                            id="Multiple"
                             onChange={this.handleChange}
                         />
-                        &nbsp;Guía turistico
+                        &nbsp;Múltiple
                     </label>
+                    {CantidadIndividuales}
+                    {CantidadDobles}
+                    {CantidadFamiliares}
+                    {CantidadMultiples}
                     <label htmlFor="inp" className="inp">
                         <input
                             type="text"
@@ -306,4 +334,4 @@ class ProviderActivities extends Component {
     }
 }
 
-export default ProviderActivities;
+export default ProviderHotels;
