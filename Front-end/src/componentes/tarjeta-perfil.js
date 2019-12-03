@@ -4,20 +4,22 @@ import foto from '../img/Octocat.png';
 import person from '../img/person.png';
 import tel from '../img/tel.png';
 import mail from '../img/mail.png'
+import {getFromStorage, setInStorage} from '../storage';
+
 
 class TPerfil extends Component {
     
     constructor(props) {
         super(props);
-        
+      
         this.state = {
-          nombre:"Pepito Perez",
-          email:"pepito@gmail.com",
-          tel:"+57 314 589 6589",
-          tnombre:"Pepito Perez",
-          temail:"pepito@gmail.com",
-          ttel:"+57 314 589 6589",
-          id:"1052489754",
+          nombre:getFromStorage("nombre"),
+          email:getFromStorage("correo"),
+          tel:getFromStorage("telefono"),
+          tnombre:getFromStorage("nombre"),
+          temail:getFromStorage("correo"),
+          ttel:getFromStorage("telefono"),
+          id:getFromStorage("id"),
           fecha:"1998-05-21",
           editar:false
         };

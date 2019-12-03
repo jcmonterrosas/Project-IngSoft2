@@ -22,9 +22,76 @@ import Register from './Register';
 import Perfil from './componentes/Perfil';
 import PerfilProveedor from './PerfilProveedor';
 import ProviderActivities from "./componentes/Provider-LoadData/ProviderActivities";
+import {setInStorage, getFromStorage} from './storage';
+import axios from "axios";
+
+
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true
+    };
+  }
+
+  async componentDidMount() {
+    var token = getFromStorage("token");
+    console.log(token)
+    if(token != null && token.length > 0 )
+    {
+      axios.get('https://api-aventurate.herokuapp.com/user/verify/' + token).then( response =>
+      {
+        console.log(response.data)
+        if(response.data.UserLogon)
+        {
+          setInStorage("nombre", response.data.User.usr_nombre)
+          setInStorage("id", response.data.User._id)
+          setInStorage("rol", response.data.User.usr_rol)
+          setInStorage("telefono", response.data.User.usr_telefono)
+          setInStorage("correo", response.data.User.usr_correo)
+          setInStorage("tipo_doc", response.data.User.usr_tipo_doc)
+          setInStorage("identificacion", response.data.User.usr_identificacion)
+          setInStorage("token", token)
+        }
+        else
+        {
+          setInStorage("nombre", "")
+          setInStorage("id", "")
+          setInStorage("rol", "")
+          setInStorage("token", "")
+          setInStorage("telefono", "")
+          setInStorage("correo", "")
+          setInStorage("tipo_doc", "")
+          setInStorage("identificacion", "")
+        }
+
+        this.setState({
+          isLoading: false
+        });
+      }).catch(err => {
+        alert("Un error ocurrio, intenta nuevamente.")
+      });
+    }
+    else
+    {
+      this.setState({
+        isLoading: false
+      });
+    }
+    
+  }
+
   render() {
+    const {
+      isLoading
+    } = this.state;
+
+    if (isLoading) {
+      return (<div><p>Loading...</p></div>);
+    }
+
     return (
       <div className="App">
         <Header/>

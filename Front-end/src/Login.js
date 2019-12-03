@@ -5,6 +5,11 @@ import axios from "axios";
 import { browserHistory } from 'react-router'; 
 
 
+import {
+  setInStorage,
+  getFromStorage,
+} from './storage';
+
 class Login extends Component {
   state = {
     User: String,
@@ -35,9 +40,45 @@ class Login extends Component {
           console.log(
             "Ususario no existe o contraseña incorrecta, crear uno nuevo"
           );
+          var str = response.data.ErrorMsg.toString();
+          console.log("str: " + str);
+          var idUser = response.data.User[0]._id;
+
+          if(str.includes("abierta"))
+          {
+            if( window.confirm(response.data.ErrorMsg + "¿Deseas cerrar sesión en todos los demás dispositivos?"))
+            {
+
+              axios
+              .delete(`https://api-aventurate.herokuapp.com/user/closeSession/` + idUser)
+              .then(response2 => {
+                console.log(response2)
+                if (response2.data.Error === true) {
+                  console.log(
+                    "ocurrio un error"
+                  );
+                  alert(response2.data.ErrorMsg)
+                } else {
+                  console.log("cerradas");
+                  alert("Se cerraron con éxito todas tus sesiones. Ahora puedes iniciar sesión.")
+                }
+              })
+              .catch(error => {
+                console.log("this is error: ", error);
+              });
+            }
+          }
+          else
+          {
+            alert(response.data.ErrorMsg);
+          }
+
         } else {
-          console.log("Usuario existe");
-          this.props.history.push("/PerfilProveedor");
+          console.log("Usuario existe");        
+          console.log("Usuario existe" + response.data.Token);
+          setInStorage("token", response.data.Token);
+          document.location = "/";
+          //this.props.history.push("/PerfilProveedor");
         }
       })
       .catch(error => {
@@ -65,7 +106,7 @@ class Login extends Component {
                     placeholder="&nbsp;"
                     onChange={event => this.valueToState(event.target)}
                   />
-                  <span class="label">Nombre de usuario</span>
+                  <span class="label">Correo electrónico</span>
                   <span class="border"></span>
                 </label>
               </div>
@@ -89,7 +130,13 @@ class Login extends Component {
             </div>
             <br />
             <div className="row" align="center">
-              <div className="col-2" />
+              <div className="col-12" >
+                <span className="errorMsg">{this.state.ErrorMsg}</span>
+              </div>
+            </div>
+            <div className="row" align="center">
+              <div className="col-2" >
+              </div>
               <div className="col-8">
                 <button
                   type="button"
