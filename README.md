@@ -79,6 +79,10 @@
 
 > En esta iteracion se hicieron avances en los perfiles definidos anteriormente(usuario y proveedor), tambien para acceder a estos perfiles se completo correctamente el registro y login de estos usuarios, una vez haya ingresado el usuario con sus datos, podra ingresar a su perfil y ver los datos importantes respectivamente al tipo de usuario que haya ingresado, estos perfiles aportan una experiencia de usuario en la cual dispone siempre de toda su informacion en nuestra pagina, adicionalmente se agrego el formulario para agregar una actividad por parte de los proveedores en sus servicios para el publico o los clientes de tipo usuario.
 
+## Para acceder a la aplicacion, puede seguir el siguiente enlace: 
+
+>### [Aventurate](https://aventurate.herokuapp.com/)
+
 ## DEV OPS Cycle: 
 >Después de cada iteración, empezamos desde este punto para tener presente a lo largo del siguiente Sprint cuales serán las metas que vamos a tener. Lo principal es que el equipo conoce que se va a realizar, quien está encargado de qué y podamos cumplir las fechas.
 
