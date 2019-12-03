@@ -73,3 +73,15 @@
 
 >### [Prueba de rendimiento](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Faventurate.herokuapp.com%2F&tab=desktop)
 
+# Tercera Iteracion:
+
+> Para la tercera iteración, el Sprint BackLog se ubica actualmente en el tablero Trello, tanto en la lista **Done - Tercera Iteración** como en la lista **CODE REVIEW**.
+
+> En esta iteracion se hicieron avances en los perfiles definidos anteriormente(usuario y proveedor), tambien para acceder a estos perfiles se completo correctamente el registro y login de estos usuarios, una vez haya ingresado el usuario con sus datos, podra ingresar a su perfil y ver los datos importantes respectivamente al tipo de usuario que haya ingresado, estos perfiles aportan una experiencia de usuario en la cual dispone siempre de toda su informacion en nuestra pagina, adicionalmente se agrego el formulario para agregar una actividad por parte de los proveedores en sus servicios para el publico o los clientes de tipo usuario.
+
+## DEV OPS Cycle: 
+>Después de cada iteración, empezamos desde este punto para tener presente a lo largo del siguiente Sprint cuales serán las metas que vamos a tener. Lo principal es que el equipo conoce que se va a realizar, quien está encargado de qué y podamos cumplir las fechas.
+
+## Para observar completamente nuestro ciclo dev ops, puede hacerlo en el siguiente enlace:
+
+https://docs.google.com/document/d/1l1wqxZYcWfuOqERox4zbYnKpDPayoNsCmoc3GDScmf8/edit#heading=h.ptufuee13vw
