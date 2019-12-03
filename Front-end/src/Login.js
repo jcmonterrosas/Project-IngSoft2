@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./Login.css";
 import Btnprincipal from "./componentes/btn-cambio";
 import axios from "axios";
+import { browserHistory } from 'react-router'; 
+
 
 import {
   setInStorage,
@@ -72,9 +74,11 @@ class Login extends Component {
           }
 
         } else {
+          console.log("Usuario existe");        
           console.log("Usuario existe" + response.data.Token);
           setInStorage("token", response.data.Token);
           document.location = "/";
+          //this.props.history.push("/PerfilProveedor");
         }
       })
       .catch(error => {
