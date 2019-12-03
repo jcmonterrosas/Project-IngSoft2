@@ -83,7 +83,7 @@ export default function Header() {
                 >
                     <nav className="Nav">
                         
-                        <a href="/">{nombreUser}</a>
+                        <a href="/PerfilProveedor">{nombreUser}</a>
                         <a href="/ProviderActivities">Mis viajes</a>
                         <button type="button"
                                 className="botonInicial1 btn btn-warning"

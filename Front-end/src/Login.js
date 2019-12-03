@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./Login.css";
 import Btnprincipal from "./componentes/btn-cambio";
 import axios from "axios";
+import { browserHistory } from 'react-router'; 
+
 
 import {
   setInStorage,
@@ -40,13 +42,13 @@ class Login extends Component {
           );
           var str = response.data.ErrorMsg.toString();
           console.log("str: " + str);
-          var idUser = response.data.User[0]._id;
+          
 
           if(str.includes("abierta"))
           {
             if( window.confirm(response.data.ErrorMsg + "¿Deseas cerrar sesión en todos los demás dispositivos?"))
             {
-
+              var idUser = response.data.User[0]._id;
               axios
               .delete(`https://api-aventurate.herokuapp.com/user/closeSession/` + idUser)
               .then(response2 => {
@@ -72,9 +74,11 @@ class Login extends Component {
           }
 
         } else {
+          console.log("Usuario existe");        
           console.log("Usuario existe" + response.data.Token);
           setInStorage("token", response.data.Token);
           document.location = "/";
+          //this.props.history.push("/PerfilProveedor");
         }
       })
       .catch(error => {
