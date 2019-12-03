@@ -72,7 +72,13 @@ class Register extends Component {
       .then(response => {
         console.log("Usuario Registrado");
         console.log(response.data);
-        this.props.history.push("/Login");
+
+        alert(response.data.ErrorMsg);
+        if(!response.data.Error)
+        {
+          this.props.history.push("/Login");
+
+        }
       })
       .catch(error => {
         console.log("this is error", error);
