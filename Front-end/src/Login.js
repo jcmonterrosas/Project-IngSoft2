@@ -40,13 +40,13 @@ class Login extends Component {
           );
           var str = response.data.ErrorMsg.toString();
           console.log("str: " + str);
-          var idUser = response.data.User[0]._id;
+          
 
           if(str.includes("abierta"))
           {
             if( window.confirm(response.data.ErrorMsg + "¿Deseas cerrar sesión en todos los demás dispositivos?"))
             {
-
+              var idUser = response.data.User[0]._id;
               axios
               .delete(`https://api-aventurate.herokuapp.com/user/closeSession/` + idUser)
               .then(response2 => {
