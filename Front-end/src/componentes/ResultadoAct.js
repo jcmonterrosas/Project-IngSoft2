@@ -15,6 +15,9 @@ export default class Resultado extends Component {
             <Services key={resultado._id} imagen={resultado} />
           ))}
         </div>
+        <div >
+
+        </div>
         <Paginacion
           paginaAnterior={this.props.paginaAnterior}
           paginaSiguiente={this.props.paginaSiguiente}
