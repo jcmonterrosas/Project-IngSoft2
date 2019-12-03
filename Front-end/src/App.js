@@ -38,6 +38,7 @@ class App extends Component {
           console.log(response.data);
           if (response.data.UserLogon) {
             setInStorage("nombre", response.data.User.usr_nombre);
+            setInStorage("img", response.data.User.images);
             setInStorage("id", response.data.User._id);
             setInStorage("pass", response.data.User.usr_pass);
             setInStorage("rol", response.data.User.usr_rol);

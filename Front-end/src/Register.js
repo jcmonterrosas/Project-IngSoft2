@@ -15,12 +15,12 @@ class Register extends Component {
       TipoDocumento: String,
       Rol: String,
       FechaNacimiento: Date,
-      FotoPerfil: []
-    }
+      imagen: []
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  };
+  }
 
   handleChange(event) {
     const target = event.target;
@@ -50,12 +50,11 @@ class Register extends Component {
         this.setState({ FechaNacimiento: target.value });
         break;
       case "Foto":
-        this.setState({ FotoPerfil: target.files[0] });
+        this.setState({ imagen: target.files[0] });
         break;
       default:
         break;
     }
-    console.log(this.state)
   }
 
   consultarApi = async () => {
@@ -67,12 +66,13 @@ class Register extends Component {
         usr_pass: this.state.Contraseña,
         usr_tipo_doc: this.state.TipoDocumento,
         usr_identificacion: this.state.Identificacion,
-        usr_rol: this.state.Rol
+        usr_rol: this.state.Rol,
+        images: this.state.imagen
       })
       .then(response => {
         console.log("Usuario Registrado");
         console.log(response.data);
-        document.location = "/Login";
+        this.props.history.push("/Login");
       })
       .catch(error => {
         console.log("this is error", error);
@@ -108,7 +108,7 @@ class Register extends Component {
           </label>
           <label htmlFor="inp" className="inp">
             <input
-              type="text"
+              type="password"
               id="Contraseña"
               placeholder="&nbsp;"
               onChange={this.handleChange}
@@ -191,16 +191,12 @@ class Register extends Component {
             <h6>Foto de Perfil</h6>
             <FileBase64 multiple={false} onDone={this.getFiles.bind(this)} />
             <br />
-            <span style={{ color: "red" }} className="label">Solo son válidas imágenes que pesen 100kb o menos</span>
+            <span style={{ color: "red" }} className="label">
+              Solo son válidas imágenes que pesen 100kb o menos
+            </span>
           </div>
-          <input
-            type="reset"
-            className="btn btn-warning btn-lg btn-block"
-          />
-          <input
-            type="submit"
-            className="btn btn-warning btn-lg btn-block"
-          />
+          <input type="reset" className="btn btn-warning btn-lg btn-block" />
+          <input type="submit" className="btn btn-warning btn-lg btn-block" />
           {/* <div className="jumbotron-fluid Registerbody" align="center">
             <div className="row">
               <div className="col-12" align="center">
