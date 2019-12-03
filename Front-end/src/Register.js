@@ -58,6 +58,8 @@ class Register extends Component {
       })
       .then(response => {
         console.log(response.data);
+        alert(response.data.ErrorMsg);
+        document.location = "/";
       })
       .catch(error => {
         console.log("this is error", error);
