@@ -71,7 +71,6 @@ export default class Buscador extends Component {
               className="form-control "
               placeholder="Ej: Santa Marta"
               onClick={this.hideCalendar}
-              readonly
             />
           </div>
           <div className="col-4">
@@ -80,7 +79,6 @@ export default class Buscador extends Component {
               onClick={this.showCalendar}
               className="form-control"
               placeholder={this.state.date}
-              readonly
             />
             <div style={style1}>
               <Calendar
@@ -96,7 +94,6 @@ export default class Buscador extends Component {
               onClick={this.hideCalendar}
               className="form-control"
               placeholder="# personas"
-              readonly
             />
           </div>
         </div>

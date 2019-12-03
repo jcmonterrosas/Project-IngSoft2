@@ -41,11 +41,35 @@ export default function Header() {
     };
   }, []);
 
-  const handleMediaQueryChange = mediaQuery => {
-    if (mediaQuery.matches) {
-      setIsSmallScreen(true);
-    } else {
-      setIsSmallScreen(false);
+
+
+    if(token != null && token.length > 0 )
+    {
+        return (
+            <div className="Header">
+                <div className="LogoHeader" alt="logo">
+                    <a href="/">Aventurate</a>
+                </div>
+                <CSSTransition
+                    in={!isSmallScreen || isNavVisible}
+                    timeout={350}
+                    classNames="NavAnimation"
+                    unmountOnExit
+                >
+                    <nav className="Nav">
+                        
+                        <a href="/PerfilProveedor">{nombreUser}</a>
+                        <a href="/ProviderActivities">Mis viajes</a>
+                        <button type="button"
+                                className="botonInicial1 btn btn-warning"
+                                onClick={logout}>Cerrar Sesión</button>
+                    </nav>
+                </CSSTransition>
+                <button onClick={toggleNav} className="Burger">
+                    🍔 {/*  &#9776; */}
+                </button>
+            </div>
+        );
     }
   };
 

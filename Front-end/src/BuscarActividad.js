@@ -99,8 +99,6 @@ class App extends Component {
         };
     const style3 = this.state.click ? { height: "0" } : { height: "200px" };
 
-    const style4 = { top: "400px" };
-
     const classN = this.state.click ? "jumbotron " : "jumbotron-fluid ";
     return (
       <div style={style2} className="Actividad container">
