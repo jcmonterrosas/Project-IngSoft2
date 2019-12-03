@@ -76,10 +76,10 @@ class TPerfil extends Component {
           usr_nombre: this.state.tnombre,
           usr_telefono: this.state.ttel,
           usr_correo: this.state.temail,
-          usr_pass: pass,
           usr_tipo_doc: tipo_doc,
           usr_identificacion: identificacion,
-          usr_rol: rolUser
+          usr_rol: rolUser,
+          images: fotoPerfil
         },
         config
       )
