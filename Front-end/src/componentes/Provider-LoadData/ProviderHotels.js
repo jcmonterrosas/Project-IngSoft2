@@ -155,6 +155,7 @@ class ProviderHotels extends Component {
       )
       .then(response => {
         console.log("Done: ", response.data);
+        this.props.history.push("/PerfilProveedor");
       })
       .catch(error => {
         console.log("this is error", error);

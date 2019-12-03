@@ -8,6 +8,7 @@ import axios from "axios";
 import { getFromStorage, setInStorage } from "../storage";
 
 var pass = getFromStorage("pass");
+var fotoPerfil = getFromStorage("img");
 var rolUser = getFromStorage("rol");
 var tipo_doc = getFromStorage("tipo_doc");
 var identificacion = getFromStorage("identificacion");
@@ -110,7 +111,7 @@ class TPerfil extends Component {
         <div className="HeaderTarjeta row align-items-center" style={style2}>
           <div className="col-3">
             <div className="ImagenPerfil ">
-              <img src={foto} width="100%" height="auto" />
+              <img src={fotoPerfil} width="100%" height="auto" />
             </div>
           </div>
           <div className="DatosPerfil col">
