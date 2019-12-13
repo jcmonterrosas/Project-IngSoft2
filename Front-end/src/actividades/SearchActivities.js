@@ -28,7 +28,7 @@ class SearchActivities extends Component {
     render() {
         const { properties } = this.state;
         return (
-            <div className ="page">
+            <div className ="Actividades">
                 <div>
                     <h1>Dinos lo que te gustaría hacer</h1>
                 </div>
@@ -40,8 +40,8 @@ class SearchActivities extends Component {
 
                 <Pagination 
                     type =  "/SearchActivities"
-                    persons = "/SearchActivities/Personas"
-                    date = "/SearchActivities/Dias"
+                    persons = "/SearchActivities/People"
+                    date = "/SearchActivities/Date"
                     done = "/SearchActivity"
                 />
             </div>

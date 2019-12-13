@@ -3,19 +3,6 @@
   padding: 0;
 }
 
-.containerHotel{
-  border:2px solid rgba(0,0,0,.5);
-  background-color: #e9ecef;
-  margin-top:10px;
-  margin-bottom: 10px;
-}
-
-.colPrices{
-  border-left: 1px solid rgba(0,0,0,.5);
-  padding-top: 5%;
-  padding-bottom: 5%;
-}
-
 .priceInformation{
   height: 100%;
 }
@@ -40,4 +27,6 @@
   overflow: hidden;
   transition: all 0.5s ease-in;
   height: 100%;
+  position: relative;
+  z-index: 0;
 }

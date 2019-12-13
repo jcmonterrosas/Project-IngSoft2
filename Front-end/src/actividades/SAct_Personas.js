@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './SAct_Personas.css';
 import Card from './componentes/SAct_Card-Per';
-import Pagination from './componentes/SAct_Pagination'
+import Pagination from './componentes/SAct_Pagination2'
 import data from './data/dataPersonas'
 
 // class component
@@ -43,7 +43,7 @@ class SAct_Personas extends Component {
         return (
             <div className="Personas">
                 <div>
-                    <h1>Cuentanos con quien viajas</h1>
+                    <h1>Cuéntanos con quién viajas</h1>
                 </div>
                 <div className="all_cards">
                     {
@@ -54,8 +54,8 @@ class SAct_Personas extends Component {
                 </div>
                 <Pagination
                     type="/SearchActivities"
-                    persons="/SearchActivities/Personas"
-                    date="/SearchActivities/Dias"
+                    persons="/SearchActivities/People"
+                    date="/SearchActivities/Date"
                     done="/SearchActivity"
                 />
             </div>

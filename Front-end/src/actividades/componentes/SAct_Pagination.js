@@ -34,13 +34,13 @@ class SAct_Pagination extends Component {
         return (
             <div className="act-paginacion">
                 <div className="container">
-                    <input type="radio" onClick={this.onNavigateType} className="radio" name="progress" value="twentyfive" id="twentyfive" defaultChecked />
+                    <input type="radio" onClick={this.onNavigateType} className="radio" name="progress" value="twentyfive" id="twentyfive"  defaultChecked/>
                     <label htmlFor="twentyfive" className="label">Actividades</label>
 
                     <input type="radio" onClick={this.onNavigatePersons}  className="radio" name="progress" value="fifty" id="fifty" />
                     <label htmlFor="fifty" className="label">Personas</label>
 
-                    <input type="radio" onClick={this.onNavigateDate}  className="radio" name="progress" value="seventyfive" id="seventyfive" />
+                    <input type="radio" onClick={this.onNavigateDate}  className="radio" name="progress" value="seventyfive" id="seventyfive"/>
                     <label htmlFor="seventyfive" className="label">Fechas</label>
 
                     <input type="radio" onClick={this.onNavigateDone}  className="radio" name="progress" value="onehundred" id="onehundred" />

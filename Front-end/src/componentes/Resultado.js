@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Imagen from "./Imagen";
+import Services from "./Services";
 import Paginacion from "./Paginacion";
 
 export default class Resultado extends Component {

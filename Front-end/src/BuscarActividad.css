@@ -1,18 +1,6 @@
 .Actividad {
   text-align: center;
-  padding: 5vh;
-}
-
-.containerActividad{
-  border:2px solid rgba(0,0,0,.5);
-  margin-top:10px;
-  margin-bottom: 10px;
-}
-
-.colPrices{
-  border-left: 1px solid rgba(0,0,0,.5);
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding: 0;
 }
 
 .priceInformation{
@@ -33,9 +21,12 @@
 }
 
 .Buscador{
+  margin-top: 40px;
   display: table;
   -webkit-appearance: none;
   overflow: hidden;
   transition: all 0.5s ease-in;
   height: 100%;
+  position: relative;
+  z-index: 0;
 }
