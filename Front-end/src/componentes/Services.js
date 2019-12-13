@@ -32,11 +32,11 @@ const Imagen = props => {
         <div className="colItems">
           {tipo}
           <div>
-            <h5>Descripcion: </h5>
+            <h5>Descripción: </h5>
             <label>{act_descripcion}</label>
           </div>
           <div>
-            <h5>Ubicacion: </h5>
+            <h5>Ubicación: </h5>
             <label>{departamento ? departamento + " - " + ciudad : ciudad}</label>
             <br />
             <label>{direccion} </label>
