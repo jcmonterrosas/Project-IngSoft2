@@ -5,6 +5,7 @@ import { getFromStorage, setInStorage } from "../storage";
 import axios from "axios";
 
 export default function Header() {
+
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -62,6 +63,7 @@ export default function Header() {
   var identificacion = getFromStorage("identificacion");
 
   var token = getFromStorage("token");
+  var count = 0;
 
   if (token != null && token.length > 0) {
     return (
@@ -75,9 +77,12 @@ export default function Header() {
           classNames="NavAnimation"
           unmountOnExit
         >
-          <nav className="Nav" style={{ gridTemplateColumns: "repeat(3, auto)" }}>
+          <nav className="Nav" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
             <a href="/PerfilProveedor">{nombreUser}</a>
-            <a href="/">Mi Reserva</a>
+            <div className="carrito">
+              <a href="/">Mi Reserva</a>
+              <span>{count}</span>
+            </div>
             <button
               type="button"
               className="botonInicial1 btn btn-warning"

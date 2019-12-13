@@ -14,6 +14,19 @@
     justify-items: center;
 }
 
+.carrito{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1em;
+    align-items: center;
+}
+
+.carrito > span{
+    background-color: #f0ad4e;
+    border-radius: 50%;
+    padding: 0.8vh 0.8vw;
+}
+
 .LogoHeader {
     grid-area: logo;
     display: grid;
