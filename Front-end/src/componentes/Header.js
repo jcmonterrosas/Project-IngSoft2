@@ -75,9 +75,9 @@ export default function Header() {
           classNames="NavAnimation"
           unmountOnExit
         >
-          <nav className="Nav">
+          <nav className="Nav" style={{ gridTemplateColumns: "repeat(3, auto)" }}>
             <a href="/PerfilProveedor">{nombreUser}</a>
-            <a href="/">Mis viajes</a>
+            <a href="/">Mi Reserva</a>
             <button
               type="button"
               className="botonInicial1 btn btn-warning"
