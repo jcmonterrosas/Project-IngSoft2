@@ -7,7 +7,6 @@ const ItemReservaTemporal = require("../models/ItemReservaTemporal");
 const ItemReserva = require("../models/ItemReserva");
 const User = require("../models/User");
 
-
 // metodos para agregar item temporal, recibe el id del hotel o de la actividad para poder agregar las cosas addItemTemporal
 // metodo para quitar item temporal, solo con id, deleteItemTemporal
 // metodo para actualizar item temporal, borrar y agregar de nuevo
@@ -17,13 +16,12 @@ const User = require("../models/User");
 // obtener mis reservas, getMyReservas
 // obtener item temporales, getTemporalItems
 
-
 resCtrl.addItemTemporal = async (req, res) => {
 
-  
+  var user_id = req.params.usr_id;
   const {
+    hotel_o_servicio,
     ser_id,
-    usr_id,
     hot_id,
     child_quantity,
     adult_quantity,
@@ -31,33 +29,54 @@ resCtrl.addItemTemporal = async (req, res) => {
     DateEnd
   } = req.body;
 
-  if(ser_id)
+  console.log(req.body)
+
+  if(hotel_o_servicio === false)
   {
     var service = await Services.findById(ser_id);
-
+    // no se tienen en cuenta ninos menores de 12, de resto son adultos
     if(service)
     {
+      
       var name = service.act_nombre;
-      var description = service.act_descripcion;
-      var address = service.act_lugar;
-      var contact_phone = service.telefono_contacto;
+      var usr_id_responsable = service.usr_id;
+      var nombre_responsable = '';
+      var user_responsable = await User.findById(usr_id_responsable);
+      if(user_responsable)
+      {
+        nombre_responsable = user_responsable.usr_nombre;
+      }
+      var departamento = service.departamento;
       var city = service.ciudad;
+      var address = service.direccion;
+      var contact_phone = service.telefono_contacto;
+      var address = service.act_lugar;
       var price = adult_quantity * service.precio;
-
+      var images = service.images;
+      var categoria = service.categoria;
+      var description = service.act_descripcion;
+      var act_lugar = service.act_lugar;
 
       const newItemTemporal = new ItemReservaTemporal({
+        user_id,
+        hotel_o_servicio,
+        child_quantity,
+        adult_quantity,
+        name,
+        usr_id_responsable,
+        nombre_responsable,
+        departamento,
+        city,
+        address,
+        contact_phone,
+        price,
+        images,
+        DateBegin,
+        DateEnd,
         ser_id,
-        usr_id,
-      name,
+        categoria,
       description,
-      address,
-      contact_phone,
-      city,
-      child_quantity,
-      price,
-      adult_quantity,
-      DateBegin,
-      DateEnd // doble, etc
+      act_lugar
       });
       await newItemTemporal.save();
       console.log(newItemTemporal);
@@ -70,38 +89,61 @@ resCtrl.addItemTemporal = async (req, res) => {
     {
       res.json( { 
         Error : true,
-        ErrorMsg : 'No se encontró el servicio o la actividad.'
+        ErrorMsg : 'No se encontró el servicio o actividad.'
       });
     }
     
   }
-  else if(hot_id)
+  else if(hotel_o_servicio === true)
   {
     var hotel = await Hotels.findById(hot_id);
+
+    // no se tienen en cuenta ni;os menores de 12 para el precio ni acomodacion
     if(hotel)
     {
 
       var name = hotel.name;
-      var accommodation = hotel.acommodation;
+      var usr_id_responsable = hotel.usr_id;
+      var nombre_responsable = '';
+      var user_responsable = await User.findById(usr_id_responsable);
+      if(user_responsable)
+      {
+        nombre_responsable = user_responsable.usr_nombre;
+      }
+      var departamento = hotel.departamento;
+      var city = hotel.ciudad;
       var address = hotel.address;
       var contact_phone = hotel.phone;
-      var city = hotel.ciudad;
       var price = adult_quantity * hotel.price_per_person;
-
+      var images = hotel.images;
+      var accommodation = hotel.accommodation;
+      var hab_ind = hotel.hab_ind;
+      var hab_dob = hotel.hab_dob;
+      var hab_fam = hotel.hab_fam;
+      var hab_mul = hotel.hab_fam;
 
       const newItemTemporal = new ItemReservaTemporal({
-        hot_id,
-        usr_id,
+        user_id,
+        hotel_o_servicio,
+      child_quantity,
+      adult_quantity,
       name,
-      accommodation,
+      usr_id_responsable,
+      nombre_responsable,
+      departamento,
+      city,
       address,
       contact_phone,
-      city,
-      child_quantity,
       price,
-      adult_quantity,
+      images,
       DateBegin,
-      DateEnd // doble, etc
+      DateEnd,
+      hot_id,
+      accommodation,
+      hab_ind,
+      hab_dob,
+      hab_fam,
+      hab_mul
       });
       await newItemTemporal.save();
       console.log(newItemTemporal);
@@ -126,7 +168,6 @@ resCtrl.addItemTemporal = async (req, res) => {
       ErrorMsg : 'Debe agregar un servicio o un hotel.'
     });
   }
-
   
 };
 
@@ -135,16 +176,19 @@ resCtrl.deleteItemTemporal = async (req, res) => {
   res.json({ message: "item deleted", item });
 };
 
+
 resCtrl.createReserva = async (req, res) => {
   var user = await User.findById(req.params.usr_id);
   if(user)
   {
-    var itemList = await ItemReservaTemporal.find({usr_id: user._id});
+
+    var itemList = await ItemReservaTemporal.find({user_id: user._id});
+
     var priceTotal = 0;
-    for(var itt in itemList)
-    {
-      priceTotal += itt.price;
+    for (var i = 0; i < itemList.length; i++) {
+      priceTotal += parseFloat(itemList[i].price);
     }
+
     var iva = priceTotal * 0.19;
     var pricee = priceTotal - iva;
 
@@ -165,25 +209,38 @@ resCtrl.createReserva = async (req, res) => {
 
     if(itemList)
     {
-      for(var item in itemList)
+      for(var i = 0; i < itemList.length; i++)
       {
+        var item = itemList[i];
+
         var newItem = new ItemReserva(
           {
-            ser_id: item.ser_id,
-            usr_id: user._id,
-            hot_id: item.hot_id,
             res_id: newReserva._id,
-            name: item.name,
-            description: item.description,
-            price: item.price,
-            address: item.address,
-            contact_phone: item.contact_phone,
-            city: item.city,
+            user_id: item.user_id,
+            hotel_o_servicio: item.hotel_o_servicio,
             child_quantity : item.child_quantity,
             adult_quantity : item.adult_quantity,
-            accommodation : item.accommodation,
+            name: item.name,
+            usr_id_responsable: item.usr_id_responsable,
+            nombre_responsable: item.nombre_responsable,
+            departamento: item.departamento,
+            city: item.city,
+            address: item.address,
+            contact_phone: item.contact_phone,
+            price: item.price,
+            images: item.images,
             DateBegin : item.DateBegin,
-            DateEnd : item.DateEnd
+            DateEnd : item.DateEnd,
+            ser_id: item.ser_id,
+            categoria: item.categoria,
+            description: item.description,
+            act_lugar: item.act_lugar,
+            hot_id: item.hot_id,
+            accommodation : item.accommodation,
+            hab_ind: item.hab_ind,
+            hab_dob: item.hab_dob,
+            hab_fam: item.hab_fam,
+            hab_mul: item.hab_mul
           }
         )
         await newItem.save();
@@ -191,7 +248,9 @@ resCtrl.createReserva = async (req, res) => {
       }
       res.json( { 
         Error : false,
-        ErrorMsg : 'Reserva creada correctamente.'
+        ErrorMsg : 'Reserva creada correctamente.',
+        Reserva : newReserva,
+        Items: itemList
       });
     }
     else
@@ -223,7 +282,8 @@ resCtrl.deleteReserva = async (req, res) => {
 };
 
 resCtrl.cancelReserva = async (req, res) => {
-  await Hotel.findOneAndUpdate(
+  console.log("entro")
+  await Reserva.findOneAndUpdate(
     { _id: req.params.id },
     {
       state : "Cancelada"
@@ -276,7 +336,8 @@ resCtrl.getReserva = async (req, res) => {
 };
 
 resCtrl.getTemporalItems = async (req, res) => {
-  const items = await ItemReservaTemporal.find({usr_id:req.params.usr_id});
+
+  const items = await ItemReservaTemporal.find({user_id:req.params.usr_id});
   res.json( { 
     Error : false,
     ErrorMsg : '',
@@ -284,6 +345,5 @@ resCtrl.getTemporalItems = async (req, res) => {
   });
   
 };
-
 
 module.exports = resCtrl;
