@@ -3,7 +3,7 @@ import "./ProviderLoadData.css";
 import axios from "axios";
 
 import FileBase64 from "react-file-base64";
-import { getFromStorage, setInStorage } from "../../storage";
+import { getFromStorage } from "../../storage";
 
 var idUser = getFromStorage("id");
 

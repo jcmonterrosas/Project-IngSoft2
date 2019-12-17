@@ -5,13 +5,13 @@ import actividad from "./img/actividad.png";
 import reserva from "./img/reserva.png";
 import dinero from "./img/dinero.png";
 
-import { getFromStorage, setInStorage } from "./storage";
+import { getFromStorage } from "./storage";
 
 import TPerfil from "./componentes/tarjeta-perfil";
 
 var rolUser = getFromStorage("rol");
 
-var token = getFromStorage("token");
+//var token = getFromStorage("token");
 
 var metodos=[["1234567890123456","T.credito"],["1234567890123456","T.debito"]];
 var Historial= [["Tangamandapio","5 personas","689.000"]];
@@ -27,7 +27,11 @@ var nombreT,numeroT,codigoT,fechaT;
 
 if (rolUser === "Proveedor") {
   var isProv = true;
-} else isProv = false;
+  var isCli = false;
+} else {
+  isProv = false;
+  isCli = true;
+}
 
 export default class PerfilProveedor extends Component {
 
@@ -170,8 +174,10 @@ export default class PerfilProveedor extends Component {
                   <strong>Mis Hoteles</strong>
                 </p>
                 <div className="LogoS ">
+
                   <a href="#popupHoteles">
-                    <img src={hotel} width="100%" height="auto" />
+                    <img src={hotel} width="100%" height="auto" alt="Mis Hoteles"/>
+
                   </a>
                 </div>
               </div>
@@ -180,8 +186,10 @@ export default class PerfilProveedor extends Component {
                   <strong>Mis Actividades</strong>
                 </p>
                 <div className="LogoS ">
+      
                   <a href="#popupActividades">
-                    <img src={actividad} width="100%" height="auto" />
+                    <img src={actividad} width="100%" height="auto" alt="Mis Actividades" />
+
                   </a>
                 </div>
               </div>
@@ -190,6 +198,7 @@ export default class PerfilProveedor extends Component {
                   <strong>Reservas</strong>
                 </p>
                 <div className="LogoS ">
+
                   <a href="#popupReservas">
                   <img src={reserva} width="100%" height="auto" />
                   </a>
@@ -305,6 +314,8 @@ export default class PerfilProveedor extends Component {
             </div>
           </div>
         )}
+
+
       </div>
     );
   }
