@@ -1,0 +1,25 @@
+.Reservation{
+    display: grid;
+    grid-template-areas: "Hotels Activities";
+    padding: 2vh 2vw;
+    text-align: center;
+    gap: 2vw;
+}
+
+.Reservation h1{
+    border-bottom: 1px solid black;
+    padding: 1vh 0;
+}
+
+.HotelsReserve{
+    display: grid;
+    grid-area: "Hotels";
+    box-shadow: 0 4px 8px 0 rgba(0.5, 0.5, 0.5, 0.5);
+}
+
+.ActivitiesReserve{
+    display: grid;
+    grid-area: "Activities";
+    border-color: black;
+    box-shadow: 0 4px 8px 0 rgba(0.5, 0.5, 0.5, 0.5);
+}
