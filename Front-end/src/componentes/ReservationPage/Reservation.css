@@ -4,22 +4,48 @@
     padding: 2vh 2vw;
     text-align: center;
     gap: 2vw;
+    max-width: 100vw;
+    max-height: 100vh;
+    min-height: 50.6vh;
 }
 
 .Reservation h1{
     border-bottom: 1px solid black;
     padding: 1vh 0;
+    grid-column: 1/3;
+}
+
+.Reservation > .btn{
+    max-width: 15vw;
+    justify-self: center;
+    cursor: pointer;
 }
 
 .HotelsReserve{
     display: grid;
     grid-area: "Hotels";
+    grid-template-rows: auto repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     box-shadow: 0 4px 8px 0 rgba(0.5, 0.5, 0.5, 0.5);
 }
 
 .ActivitiesReserve{
     display: grid;
     grid-area: "Activities";
-    border-color: black;
+    grid-template-rows: auto repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     box-shadow: 0 4px 8px 0 rgba(0.5, 0.5, 0.5, 0.5);
+}
+
+.cardReserve{
+    margin: 1vh 4vw;
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+
+.total{
+    grid-column: 1/3;
+    grid-row: 4;
+    align-self: center;
+    font-size: x-large;
 }

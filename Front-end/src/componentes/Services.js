@@ -22,7 +22,7 @@ const Imagen = props => {
   }
   if (telefono_contacto) {
     contacto = <div><h5>Contacto:</h5><label>{telefono_contacto}</label> </div>
-  }else{
+  } else {
     contacto = null
   }
 
@@ -58,7 +58,7 @@ const Imagen = props => {
           </a>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
