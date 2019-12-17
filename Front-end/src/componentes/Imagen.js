@@ -1,8 +1,10 @@
 import React from "react";
-import "./Services.css"
+import "./Services.css";
+import { setInStorage, getFromStorage } from "../storage";
 
 const Imagen = props => {
   const {
+    _id,
     name,
     departamento,
     ciudad,
@@ -17,28 +19,48 @@ const Imagen = props => {
     hab_mul
   } = props.imagen;
 
+  function handleClick(e) {
+    e.preventDefault();
+    setInStorage("hotel_id", _id);
+  }
 
   let contacto, acomodacion;
   let cantHabInd, cantHabDob, cantHabFam, cantHabMul;
   if (phone) {
-    contacto = <div><h5>Contacto:</h5><label>{phone}</label></div>
+    contacto = (
+      <div>
+        <h5>Contacto:</h5>
+        <label>{phone}</label>
+      </div>
+    );
   } else {
-    contacto = null
+    contacto = null;
   }
   if (hab_ind) {
-    cantHabInd = <label>{"Individuales: " + hab_ind}</label>
+    cantHabInd = <label>{"Individuales: " + hab_ind}</label>;
   }
   if (hab_dob) {
-    cantHabDob = <label>{"Dobles: " + hab_dob}</label>
+    cantHabDob = <label>{"Dobles: " + hab_dob}</label>;
   }
   if (hab_fam) {
-    cantHabFam = <label>{"Familiares: " + hab_fam}</label>
+    cantHabFam = <label>{"Familiares: " + hab_fam}</label>;
   }
   if (hab_mul) {
-    cantHabMul = <label>{"Multiples: " + hab_mul}</label>
+    cantHabMul = <label>{"Multiples: " + hab_mul}</label>;
   }
   if (acommodation) {
-    acomodacion = <div><h5>Habitaciones disponibles:</h5>{cantHabInd}<br/>{cantHabDob}<br/>{cantHabFam}<br/>{cantHabMul}</div>
+    acomodacion = (
+      <div>
+        <h5>Habitaciones disponibles:</h5>
+        {cantHabInd}
+        <br />
+        {cantHabDob}
+        <br />
+        {cantHabFam}
+        <br />
+        {cantHabMul}
+      </div>
+    );
   }
 
   return (
@@ -47,7 +69,9 @@ const Imagen = props => {
         <div className="colItems">
           <div>
             <h5>Ubicación: </h5>
-            <label>{departamento ? departamento + " - " + ciudad : ciudad}</label>
+            <label>
+              {departamento ? departamento + " - " + ciudad : ciudad}
+            </label>
             <br />
             <label>{address} </label>
           </div>
@@ -60,13 +84,14 @@ const Imagen = props => {
         </div>
         <div className="colPrices">
           <h2>{name}</h2>
-          <img src={images} ></img>
+          <img src={images}></img>
           <a
             target="_blank"
             className="btn btn-lg btn-warning btn-block"
+            onClick={handleClick}
           >
             Agregar a la reserva
-        </a>
+          </a>
         </div>
       </div>
     </div>
