@@ -48,6 +48,12 @@
 .colPrices > .btn{
     max-width: 15vw;
     justify-self: center;
+    cursor: pointer;
+    margin: none;
+}
+
+.btn-block + .btn-block{
+    margin: 0 !important;
 }
 
 .container {
