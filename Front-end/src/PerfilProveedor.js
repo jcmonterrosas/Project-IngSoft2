@@ -16,11 +16,14 @@ var token = getFromStorage("token");
 var metodos=[["1234567890123456","T.credito"],["1234567890123456","T.debito"]];
 var Historial= [["Tangamandapio","5 personas","689.000"]];
 var Hoteles=[["Hotel Pepito","Melgar","CR13 #12 10","3145029875",
+              "1 Individual","3 Dobles","2 Familiares"],["Hotel Pepito","Melgar","CR13 #12 10","3145029875",
               "1 Individual","3 Dobles","2 Familiares"]];
 var Actividades=[["Rafting","Melgar","CR13 #12 10","3145029875",
               "5 cupos restantes"]];
 var Reservas=[["Hotel Pepito","Juan Chico","3214689521","Familiar","3 Personas"
               ,"356.000"]];
+
+var nombreT,numeroT,codigoT,fechaT;
 
 if (rolUser === "Proveedor") {
   var isProv = true;
@@ -31,9 +34,34 @@ export default class PerfilProveedor extends Component {
   constructor(props) {
     super(props);
 
-
-    //this.agregar = this.agregar.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     
+  }
+
+  handleChange(event) {
+    const target = event.target;
+    switch (target.id) {
+      case "Nombre":
+        nombreT=target.value; 
+        break;
+      case "Numero":
+        numeroT=target.value;
+        break;
+      case "Codigo":
+        codigoT= target.value;
+        break;
+      case "Fecha":
+        fechaT=target.value;
+        break;
+      default:
+        break;
+    }
+  }
+
+  handleSubmit(event) {
+    var nuevo=[numeroT,"T.Credito",nombreT,codigoT,fechaT];
+    metodos.push(nuevo);
   }
 
   render() {
@@ -108,9 +136,11 @@ export default class PerfilProveedor extends Component {
                     {listametodos}
                   </ul>
                   <div className="botonA">
-                    <button type="button" className="AgregarB">
+                  <a href="#popupAgregarT">
+                  <button type="button" className="AgregarB">
                       Agregar
                     </button>
+                  </a>                  
                   </div>
                 </div>
               </div>
@@ -171,7 +201,7 @@ export default class PerfilProveedor extends Component {
                   <a id="cerrar" href="#">&times;</a>
                   <div class="popupContent">
                       <ul>{listahoteles}</ul>
-                      <a href="/ProviderHoteles">
+                      <a href="/ProviderHotels">
                       <div className="botonA">
                         <button type="button" className="AgregarB" href="">
                           Agregar
@@ -206,6 +236,72 @@ export default class PerfilProveedor extends Component {
                   </div>
                 </div>
               </div>
+              <div id="popupAgregarT" className="popupForm popup">
+                <div id="popupBody">
+                  <h2>Reservas</h2>
+                  <a id="cerrar" href="#">&times;</a>
+                  <div class="agregarForm">
+                  <form className="tarjetaForm" onSubmit={this.handleSubmit}>
+                    <h5>Ingresa los datos de tu tarjeta</h5>
+                    <label htmlFor="inp" className="inp">
+                      <input
+                        type="text"
+                        id="Nombre"
+                        placeholder="&nbsp;"
+                        onChange={this.handleChange}
+                        autoComplete="off"
+                        required
+                      />
+                      <span className="label">Nombre</span>
+                      <span className="border"></span>
+                    </label>
+                    <label htmlFor="inp" className="inp">
+                      <input
+                        type="text"
+                        id="Numero"
+                        placeholder="&nbsp;"
+                        onChange={this.handleChange}
+                        autoComplete="off"
+                        required
+                      />
+                      <span className="label">Numero</span>
+                      <span className="border"></span>
+                    </label>
+                    <label htmlFor="inp" className="inp">
+                      <input
+                        type="text"
+                        id="Codigo"
+                        placeholder="&nbsp;"
+                        onChange={this.handleChange}
+                        autoComplete="off"
+                        required
+                      />
+                      <span className="label">Codigo seguridad</span>
+                      <span className="border"></span>
+                    </label>
+                    <label htmlFor="inp" className="inp">
+                      <input
+                        type="date"
+                        id="Fecha"
+                        placeholder="&nbsp;"
+                        onChange={this.handleChange}
+                        required
+                      />
+                      <span className="label">Fecha de Vencimiento</span>
+                      <span className="border"></span>
+                    </label>
+                    <div className="input-group">
+                      <input type="reset" className="btn btn-warning btn-lg btn-block" />
+                    </div>                   
+                    <div className="input-group guardar">
+                    <a id="cerrar" href="#"></a>
+                      <input href="#" type="submit" className="btn btn-warning btn-lg btn-block" />  
+                    </div> 
+                  </form>
+                  </div>
+                </div>
+              </div>
+              
             </div>
           </div>
         )}

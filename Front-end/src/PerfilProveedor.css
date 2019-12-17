@@ -74,6 +74,7 @@
     text-align: left;
     margin: 0;
     overflow: auto;
+    
 }
 
 .Historial::-webkit-scrollbar{
@@ -111,6 +112,9 @@ background: #d4d4d4;
     margin: 0;
 }
 
+.Cobro ul{
+    height: 80%;
+}
 .AgregarB{
     border-radius: 54px 54px 54px 54px;
     -moz-border-radius: 54px 54px 54px 54px;
@@ -255,4 +259,35 @@ margin: 18px;
 #popupBody::-webkit-scrollbar-track:hover, 
 #popupBody::-webkit-scrollbar-track:active {
 background: #d4d4d4;
+}
+
+#popupBody p{
+    margin:0;
+
+}
+
+.popupContent li{
+    border-radius: 15px;
+    box-shadow: 0 0 5px #CCC;
+    background: #FFF;
+    position: relative;
+    margin:5%;
+    padding-left: 10px;
+}
+
+.popupForm #popupBody{
+    width: 80%;
+    height: 300px;
+}
+
+.tarjetaForm{
+    padding: 4vh;
+    box-shadow: 0 4px 8px 0 rgba(0.5, 0.5, 0.5, 0.5);
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(6,auto);
+    row-gap: 2em;
+    column-gap: 3em;
+    align-items: center;
+    justify-items: center;
 }
