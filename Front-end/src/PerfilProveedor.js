@@ -3,21 +3,125 @@ import "./PerfilProveedor.css";
 import hotel from "./img/hotel.png";
 import actividad from "./img/actividad.png";
 import reserva from "./img/reserva.png";
+import dinero from "./img/dinero.png";
 
-import { getFromStorage, setInStorage } from "./storage";
+import { getFromStorage } from "./storage";
 
 import TPerfil from "./componentes/tarjeta-perfil";
 
 var rolUser = getFromStorage("rol");
 
-var token = getFromStorage("token");
+//var token = getFromStorage("token");
+
+var metodos=[["1234567890123456","T.credito"],["1234567890123456","T.debito"]];
+var Historial= [["Tangamandapio","5 personas","689.000"]];
+var Hoteles=[["Hotel Pepito","Melgar","CR13 #12 10","3145029875",
+              "1 Individual","3 Dobles","2 Familiares"],["Hotel Pepito","Melgar","CR13 #12 10","3145029875",
+              "1 Individual","3 Dobles","2 Familiares"]];
+var Actividades=[["Rafting","Melgar","CR13 #12 10","3145029875",
+              "5 cupos restantes"]];
+var Reservas=[["Hotel Pepito","Juan Chico","3214689521","Familiar","3 Personas"
+              ,"356.000"]];
+
+var nombreT,numeroT,codigoT,fechaT;
 
 if (rolUser === "Proveedor") {
   var isProv = true;
-} else isProv = false;
+  var isCli = false;
+} else {
+  isProv = false;
+  isCli = true;
+}
 
 export default class PerfilProveedor extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    
+  }
+
+  handleChange(event) {
+    const target = event.target;
+    switch (target.id) {
+      case "Nombre":
+        nombreT=target.value; 
+        break;
+      case "Numero":
+        numeroT=target.value;
+        break;
+      case "Codigo":
+        codigoT= target.value;
+        break;
+      case "Fecha":
+        fechaT=target.value;
+        break;
+      default:
+        break;
+    }
+  }
+
+  handleSubmit(event) {
+    var nuevo=[numeroT,"T.Credito",nombreT,codigoT,fechaT];
+    metodos.push(nuevo);
+  }
+
   render() {
+    
+    const listametodos = metodos.map((metodo) =>
+      <li className="row">
+          <div className="LogoMetodo">
+            <img src={dinero} width="100%" height="auto" />
+          </div>
+          <p >&nbsp;&nbsp;{"*****"+metodo[0].substring(12,16)}</p>
+          <p className="tipoCobro">
+            {metodo[1]}</p>
+      </li>
+    );
+
+    const listahistorial = Historial.map((historia) =>
+      <li>
+        <p className="historiales">{historia[0]}</p>
+        <p className="historiales">{historia[1]}</p>
+        <p className="historiales">{historia[2]}</p>
+      </li>
+    );
+
+    const listahoteles = Hoteles.map((Hotel) =>
+      <li>
+        <p>{Hotel[0]}</p>
+        <p>{Hotel[1]}</p>
+        <p>{Hotel[2]}</p>
+        <p>{Hotel[3]}</p>
+        <p>{Hotel[4]}</p>
+        <p>{Hotel[5]}</p>
+        <p>{Hotel[6]}</p>
+      </li>
+    );
+
+    const listaactividades = Actividades.map((Actividad) =>
+      <li>
+        <p >{Actividad[0]}</p>
+        <p >{Actividad[1]}</p>
+        <p >{Actividad[2]}</p>
+        <p >{Actividad[3]}</p>
+        <p >{Actividad[4]}</p>
+      </li>
+    );
+
+    const listareservas = Reservas.map((Reserva) =>
+      <li>
+        <p>{Reserva[0]}</p>
+        <p>{Reserva[1]}</p>
+        <p>{Reserva[2]}</p>
+        <p>{Reserva[3]}</p>
+        <p>{Reserva[4]}</p>
+        <p>{Reserva[5]}</p>
+      </li>
+    );
+
     return (
       <div className="PerfilProveedor container">
         <TPerfil className="row" />
@@ -30,7 +134,20 @@ export default class PerfilProveedor extends Component {
               <p className="Josefin">
                 <strong>Métodos de cobro</strong>
               </p>
-              <div className="InfoFinanciera"></div>
+              <div className="InfoFinanciera">
+                <div className="Cobro col">       
+                  <ul>
+                    {listametodos}
+                  </ul>
+                  <div className="botonA">
+                  <a href="#popupAgregarT">
+                  <button type="button" className="AgregarB">
+                      Agregar
+                    </button>
+                  </a>                  
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="titulos col ">
               <p className="Josefin">
@@ -39,32 +156,7 @@ export default class PerfilProveedor extends Component {
               <div className="InfoFinanciera">
                 <div className="Historial row">
                   <div className="col">
-                    <p className="Josefin">
-                      <strong>Historial</strong>
-                    </p>
-                    <p className="Josefin">
-                      <strong>Historial</strong>
-                    </p>
-                    <p className="Josefin">
-                      <strong>Historial</strong>
-                    </p>
-                    <p className="Josefin">
-                      <strong>Historial</strong>
-                    </p>
-                    <p className="Josefin">
-                      <strong>Historial</strong>
-                    </p>
-                    <p className="Josefin">
-                      <strong>Historial</strong>
-                    </p>
-                    <p className="Josefin">
-                      <strong>Historial</strong>
-                    </p>
-                  </div>
-                  <div className="col">
-                    <button type="button" className="AgregarB">
-                      Agregar
-                    </button>
+                    <ul>{listahistorial}</ul>
                   </div>
                 </div>
               </div>
@@ -82,8 +174,10 @@ export default class PerfilProveedor extends Component {
                   <strong>Mis Hoteles</strong>
                 </p>
                 <div className="LogoS ">
-                  <a href="/ProviderHotels">
-                    <img src={hotel} width="100%" height="auto" />
+
+                  <a href="#popupHoteles">
+                    <img src={hotel} width="100%" height="auto" alt="Mis Hoteles"/>
+
                   </a>
                 </div>
               </div>
@@ -92,8 +186,10 @@ export default class PerfilProveedor extends Component {
                   <strong>Mis Actividades</strong>
                 </p>
                 <div className="LogoS ">
-                  <a href="/ProviderActivities">
-                    <img src={actividad} width="100%" height="auto" />
+      
+                  <a href="#popupActividades">
+                    <img src={actividad} width="100%" height="auto" alt="Mis Actividades" />
+
                   </a>
                 </div>
               </div>
@@ -102,12 +198,124 @@ export default class PerfilProveedor extends Component {
                   <strong>Reservas</strong>
                 </p>
                 <div className="LogoS ">
+
+                  <a href="#popupReservas">
                   <img src={reserva} width="100%" height="auto" />
+                  </a>
                 </div>
               </div>
+              <div id="popupHoteles" className="popup">
+                <div id="popupBody">
+                  <h2>Mis Hoteles</h2>
+                  <a id="cerrar" href="#">&times;</a>
+                  <div class="popupContent">
+                      <ul>{listahoteles}</ul>
+                      <a href="/ProviderHotels">
+                      <div className="botonA">
+                        <button type="button" className="AgregarB" href="">
+                          Agregar
+                        </button>
+                      </div>
+                      </a>
+                  </div>
+                </div>
+              </div>
+              <div id="popupActividades" className="popup">
+                <div id="popupBody">
+                  <h2>Mis Actividades</h2>
+                  <a id="cerrar" href="#">&times;</a>
+                  <div class="popupContent">
+                      <ul>{listaactividades}</ul>
+                      <a href="/ProviderActivities">
+                      <div className="botonA">
+                        <button type="button" className="AgregarB" href="">
+                          Agregar
+                        </button>
+                      </div>
+                      </a>
+                  </div>
+                </div>
+              </div>
+              <div id="popupReservas" className="popup">
+                <div id="popupBody">
+                  <h2>Reservas</h2>
+                  <a id="cerrar" href="#">&times;</a>
+                  <div class="popupContent">
+                      <ul>{listareservas}</ul>
+                  </div>
+                </div>
+              </div>
+              <div id="popupAgregarT" className="popupForm popup">
+                <div id="popupBody">
+                  <h2>Reservas</h2>
+                  <a id="cerrar" href="#">&times;</a>
+                  <div class="agregarForm">
+                  <form className="tarjetaForm" onSubmit={this.handleSubmit}>
+                    <h5>Ingresa los datos de tu tarjeta</h5>
+                    <label htmlFor="inp" className="inp">
+                      <input
+                        type="text"
+                        id="Nombre"
+                        placeholder="&nbsp;"
+                        onChange={this.handleChange}
+                        autoComplete="off"
+                        required
+                      />
+                      <span className="label">Nombre</span>
+                      <span className="border"></span>
+                    </label>
+                    <label htmlFor="inp" className="inp">
+                      <input
+                        type="text"
+                        id="Numero"
+                        placeholder="&nbsp;"
+                        onChange={this.handleChange}
+                        autoComplete="off"
+                        required
+                      />
+                      <span className="label">Numero</span>
+                      <span className="border"></span>
+                    </label>
+                    <label htmlFor="inp" className="inp">
+                      <input
+                        type="text"
+                        id="Codigo"
+                        placeholder="&nbsp;"
+                        onChange={this.handleChange}
+                        autoComplete="off"
+                        required
+                      />
+                      <span className="label">Codigo seguridad</span>
+                      <span className="border"></span>
+                    </label>
+                    <label htmlFor="inp" className="inp">
+                      <input
+                        type="date"
+                        id="Fecha"
+                        placeholder="&nbsp;"
+                        onChange={this.handleChange}
+                        required
+                      />
+                      <span className="label">Fecha de Vencimiento</span>
+                      <span className="border"></span>
+                    </label>
+                    <div className="input-group">
+                      <input type="reset" className="btn btn-warning btn-lg btn-block" />
+                    </div>                   
+                    <div className="input-group guardar">
+                    <a id="cerrar" href="#"></a>
+                      <input href="#" type="submit" className="btn btn-warning btn-lg btn-block" />  
+                    </div> 
+                  </form>
+                  </div>
+                </div>
+              </div>
+              
             </div>
           </div>
         )}
+
+
       </div>
     );
   }

@@ -6,7 +6,7 @@ export default function Footer() {
     return (
         <div className="Footer">
             <div className="LogoFooter" alt="logo">
-                <a href="/"><img src={logo}/></a>
+                <a href="/"><img src={logo} alt="logo"/></a>
             </div>
             <footer className="Foo">
                 <a href="https://github.com/jcmonterrosas/Project-IngSoft2">GitHub</a>

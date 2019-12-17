@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import Imagen from "./Imagen";
 import Services from "./Services";
 import Paginacion from "./Paginacion";
 
@@ -15,25 +14,8 @@ export default class Resultado extends Component {
             <Services key={resultado._id} imagen={resultado} />
           ))}
         </div>
-        <Paginacion
-          paginaAnterior={this.props.paginaAnterior}
-          paginaSiguiente={this.props.paginaSiguiente}
-        />
-      </React.Fragment>
-    );
-  };
+        <div >
 
-  mostrarImagenes = () => {
-    const imagenes = this.props.imagenes;
-
-    if (imagenes.length === 0) return null;
-
-    return (
-      <React.Fragment>
-        <div className="col-12 p-5 row">
-          {imagenes.map(imagen => (
-            <Imagen key={imagen.id} imagen={imagen} />
-          ))}
         </div>
         <Paginacion
           paginaAnterior={this.props.paginaAnterior}
