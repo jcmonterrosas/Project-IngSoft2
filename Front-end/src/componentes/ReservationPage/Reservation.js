@@ -32,35 +32,33 @@ export default class Reservation extends Component {
       <div className="Reservation">
         <div className="HotelsReserve">
           <h1>Hoteles</h1>
-
-          <div className="cardReserve">
+          <div className={this.state.resultados.name ? "cardReserve" : ""}>
             {this.state.resultados.name}
             <br />
             {this.state.resultados.ciudad}
             <br />
-            {"$ " + this.state.resultados.price_per_person}
+            {this.state.resultados.price_per_person ? "$ " + this.state.resultados.price_per_person : null}
           </div>
           <div className="total">
-            Total: {"$ " + this.state.resultados.price_per_person}
+            {this.state.resultados.price_per_person ? "Total: $ " + this.state.resultados.price_per_person : null}
           </div>
         </div>
 
         <div className="ActivitiesReserve">
           <h1>Actividades</h1>
-
           <div className="cardReserve">
             PARQUES NATURALES <br />
-            KAYAK <br />$ 100.000
+            KAYAK <br />$ 100000
           </div>
           <div className="cardReserve">
             EXCURSIONES <br />
-            SENDERISMO <br />$ 50.000
+            SENDERISMO <br />$ 50000
           </div>
           <div className="cardReserve">
             DESCANSO <br />
-            MUSEO DEL ORO <br />$ 20.000
+            MUSEO DEL ORO <br />$ 20000
           </div>
-          <div className="total">Total: $ 170.000</div>
+          <div className="total">Total: $ 17.000</div>
         </div>
         <button className="btn btn-warning btn-lg btn-block">Cancelar</button>
         <button className="btn btn-warning btn-lg btn-block">Pagar</button>
