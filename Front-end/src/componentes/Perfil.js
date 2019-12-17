@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Perfil.css";
-import Btnprincipal from "./btn-cambio";
+//import Btnprincipal from "./btn-cambio";
 import axios from "axios";
 import foto from "../img/Octocat.png";
 
@@ -22,6 +22,7 @@ class Perfil extends Component {
             case "Password":
                 this.setState({ Password: value });
                 break;
+            default: break;
         }
         console.log(this.state);
     };
@@ -73,7 +74,7 @@ class Perfil extends Component {
                         </div>
                         <div className="row">
                             <div className="col-12" align="center">
-                                <img src={foto} height='80%' width='25%' />
+                                <img src={foto} height='80%' width='25%' alt="foto"/>
                             </div>
                         </div>
                         <div className="row campos">

@@ -17,6 +17,7 @@ import Perfil from "./componentes/Perfil";
 import PerfilProveedor from "./PerfilProveedor";
 import ProviderActivities from "./componentes/Provider-LoadData/ProviderActivities";
 import ProviderHotels from "./componentes/Provider-LoadData/ProviderHotels";
+import Reservas from "./Reservas";
 import { setInStorage, getFromStorage } from "./storage";
 import axios from "axios";
 
@@ -121,6 +122,9 @@ class App extends Component {
                       component={PerfilProveedor}
                     />
                     <Route path="/User" component={Perfil} />
+                    < Route
+                      path="Reservas"
+                      component={Reservas} />
                     <Route
                       path="/ProviderActivities"
                       component={ProviderActivities}

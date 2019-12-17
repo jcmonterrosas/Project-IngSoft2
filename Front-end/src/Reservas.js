@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import "./tarjeta-perfil.css";
-import foto from "../img/Octocat.png";
-import person from "../img/person.png";
-import tel from "../img/tel.png";
-import mail from "../img/mail.png";
+import "./Reservas.css";
+import foto from "./img/Octocat.png";
+import person from "./img/person.png";
+import tel from "./img/tel.png";
+import mail from "./img/mail.png";
 import axios from "axios";
-import { getFromStorage } from "../storage";
+import { getFromStorage } from "./storage";
 
 var pass = getFromStorage("pass");
 var rolUser = getFromStorage("rol");
 var tipo_doc = getFromStorage("tipo_doc");
 var identificacion = getFromStorage("identificacion");
 
-class TPerfil extends Component {
+class TReservas extends Component {
   constructor(props) {
     super(props);
 
@@ -221,4 +221,4 @@ class TPerfil extends Component {
   }
 }
 
-export default TPerfil;
+export default TReservas;
