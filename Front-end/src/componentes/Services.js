@@ -51,7 +51,6 @@ const Imagen = props => {
           <h2>{act_nombre}</h2>
           <img src={images} ></img>
           <a
-            href="#"
             target="_blank"
             className="btn btn-lg btn-warning btn-block"
           >
