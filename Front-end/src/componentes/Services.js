@@ -22,7 +22,7 @@ const Imagen = props => {
   }
   if (telefono_contacto) {
     contacto = <div><h5>Contacto:</h5><label>{telefono_contacto}</label> </div>
-  }else{
+  } else {
     contacto = null
   }
 
@@ -32,11 +32,11 @@ const Imagen = props => {
         <div className="colItems">
           {tipo}
           <div>
-            <h5>Descripcion: </h5>
+            <h5>Descripción: </h5>
             <label>{act_descripcion}</label>
           </div>
           <div>
-            <h5>Ubicacion: </h5>
+            <h5>Ubicación: </h5>
             <label>{departamento ? departamento + " - " + ciudad : ciudad}</label>
             <br />
             <label>{direccion} </label>
@@ -51,7 +51,6 @@ const Imagen = props => {
           <h2>{act_nombre}</h2>
           <img src={images} ></img>
           <a
-            href="#"
             target="_blank"
             className="btn btn-lg btn-warning btn-block"
           >
@@ -59,7 +58,7 @@ const Imagen = props => {
           </a>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

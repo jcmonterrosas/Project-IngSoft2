@@ -1,19 +1,18 @@
 import React, { Component } from "react";
-import "./tarjeta-perfil.css";
-import foto from "../img/Octocat.png";
-import person from "../img/person.png";
-import tel from "../img/tel.png";
-import mail from "../img/mail.png";
+import "./Reservas.css";
+import foto from "./img/Octocat.png";
+import person from "./img/person.png";
+import tel from "./img/tel.png";
+import mail from "./img/mail.png";
 import axios from "axios";
-import { getFromStorage } from "../storage";
+import { getFromStorage } from "./storage";
 
 var pass = getFromStorage("pass");
-var fotoPerfil = getFromStorage("img");
 var rolUser = getFromStorage("rol");
 var tipo_doc = getFromStorage("tipo_doc");
 var identificacion = getFromStorage("identificacion");
 
-class TPerfil extends Component {
+class TReservas extends Component {
   constructor(props) {
     super(props);
 
@@ -79,10 +78,10 @@ class TPerfil extends Component {
           usr_nombre: this.state.tnombre,
           usr_telefono: this.state.ttel,
           usr_correo: this.state.temail,
+          usr_pass: pass,
           usr_tipo_doc: tipo_doc,
           usr_identificacion: identificacion,
-          usr_rol: rolUser,
-          images: fotoPerfil
+          usr_rol: rolUser
         },
         config
       )
@@ -114,9 +113,7 @@ class TPerfil extends Component {
         <div className="HeaderTarjeta row align-items-center" style={style2}>
           <div className="col-3">
             <div className="ImagenPerfil ">
-
-              <img src={fotoPerfil} width="100%" height="auto" alt="Foto" />
-
+              <img src={foto} width="100%" height="auto" alt="Foto"/>
             </div>
           </div>
           <div className="DatosPerfil col">
@@ -224,4 +221,4 @@ class TPerfil extends Component {
   }
 }
 
-export default TPerfil;
+export default TReservas;

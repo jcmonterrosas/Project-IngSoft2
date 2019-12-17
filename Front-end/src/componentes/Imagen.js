@@ -38,7 +38,7 @@ const Imagen = props => {
     cantHabMul = <label>{"Multiples: " + hab_mul}</label>
   }
   if (acommodation) {
-    acomodacion = <div><h5>Habitaciones Disponibles:</h5>{cantHabInd}<br/>{cantHabDob}<br/>{cantHabFam}<br/>{cantHabMul}</div>
+    acomodacion = <div><h5>Habitaciones disponibles:</h5>{cantHabInd}<br/>{cantHabDob}<br/>{cantHabFam}<br/>{cantHabMul}</div>
   }
 
   return (
@@ -46,7 +46,7 @@ const Imagen = props => {
       <div className="contCard">
         <div className="colItems">
           <div>
-            <h5>Ubicacion: </h5>
+            <h5>Ubicación: </h5>
             <label>{departamento ? departamento + " - " + ciudad : ciudad}</label>
             <br />
             <label>{address} </label>
@@ -62,7 +62,6 @@ const Imagen = props => {
           <h2>{name}</h2>
           <img src={images} ></img>
           <a
-            href="#"
             target="_blank"
             className="btn btn-lg btn-warning btn-block"
           >
