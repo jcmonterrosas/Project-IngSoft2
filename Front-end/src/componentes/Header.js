@@ -4,7 +4,7 @@ import { CSSTransition } from "react-transition-group";
 import { getFromStorage, setInStorage } from "../storage";
 import axios from "axios";
 
-export default function Header() {
+export default function Header(props) {
 
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -63,7 +63,6 @@ export default function Header() {
   var identificacion = getFromStorage("identificacion");
 
   var token = getFromStorage("token");
-  var count = 0;
 
   if (token != null && token.length > 0) {
     return (
@@ -80,8 +79,8 @@ export default function Header() {
           <nav className="Nav" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
             <a href="/PerfilProveedor">{nombreUser}</a>
             <div className="carrito">
-              <a href="/">Mi Reserva</a>
-              <span>{count}</span>
+              <a href="/MyReservation">Mi Reserva</a>
+              <span>{props.count}</span>
             </div>
             <button
               type="button"
