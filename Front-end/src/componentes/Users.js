@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import "./Perfil.css";
-//import Btnprincipal from "./btn-cambio";
+import Btnprincipal from "./btn-cambio";
 import axios from "axios";
 import foto from "../img/Octocat.png";
 
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import filtro from "../img/menu.png";
 
-class Perfil extends Component {
+class Users extends Component {
     state = {
         User: String,
         Password: String
@@ -22,7 +22,6 @@ class Perfil extends Component {
             case "Password":
                 this.setState({ Password: value });
                 break;
-            default: break;
         }
         console.log(this.state);
     };
@@ -74,7 +73,7 @@ class Perfil extends Component {
                         </div>
                         <div className="row">
                             <div className="col-12" align="center">
-                                <img src={foto} height='80%' width='25%' alt="foto"/>
+                                <img src={foto} height='80%' width='25%' />
                             </div>
                         </div>
                         <div className="row campos">
@@ -95,7 +94,7 @@ class Perfil extends Component {
                                 <label for="inp" class="inp">
                                     <span class="label">Correo Electronico</span>
                                     <br />
-                                    <span class="label">PepitoPerez@gmail.com</span>
+                                    <span class="label">crmartinezco@gmail.com</span>
                                 </label>
                             </div>
                             <div className="col-2" />
@@ -108,4 +107,4 @@ class Perfil extends Component {
     }
 }
 
-export default Perfil;
+export default Users;

@@ -4,7 +4,8 @@ import { CSSTransition } from "react-transition-group";
 import { getFromStorage, setInStorage } from "../storage";
 import axios from "axios";
 
-export default function Header() {
+export default function Header(props) {
+
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -75,9 +76,12 @@ export default function Header() {
           classNames="NavAnimation"
           unmountOnExit
         >
-          <nav className="Nav">
+          <nav className="Nav" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
             <a href="/PerfilProveedor">{nombreUser}</a>
-            <a href="/">Mis viajes</a>
+            <div className="carrito">
+              <a href="/MyReservation">Mi Reserva</a>
+              <span>{props.count}</span>
+            </div>
             <button
               type="button"
               className="botonInicial1 btn btn-warning"
@@ -106,7 +110,6 @@ export default function Header() {
         >
           <nav className="Nav">
             <a href="/Login">Iniciar Sesión</a>
-            <a href="/">Mis viajes</a>
             <a href="/Register">Registrarse</a>
           </nav>
         </CSSTransition>

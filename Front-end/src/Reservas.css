@@ -1,0 +1,159 @@
+.TarjetaPerfil{
+    height:315px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.HeaderTarjeta{
+    width: 100%;
+    height: 65%;
+    background: #fcc438;
+    border: 2px solid #000000;
+}
+
+.ImagenPerfil{
+    height: 150px;
+    width: 150px;
+    background: #CCC;
+    overflow: hidden;
+    border-radius: 200px 200px 200px 200px;
+    border: 1.5px solid #000000;
+}
+
+.DatosPerfil{
+    margin-top: -50px;
+}
+
+.ImagenPerfil img{
+width: 100%;
+height: auto;
+}
+
+
+
+@supports(object-fit: cover){
+    .ImagenPerfil img{
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    }
+}
+
+.Amerika{
+    font-family: 'Comfortaa', cursive;
+    font-size: 25px;
+}
+
+.Aller{
+    font-family: 'Dosis', sans-serif;
+    font-size: 15px;
+}
+
+.mail{
+    margin-top: -25px;
+    margin-left: 1px;
+}
+
+.EditarB{
+    border-radius: 54px 54px 54px 54px;
+    -moz-border-radius: 54px 54px 54px 54px;
+    -webkit-border-radius: 54px 54px 54px 54px;
+    border: 2px solid #ffffff;
+    font-family: 'Dosis', sans-serif;
+    font-size: 20px;
+    padding: 15px 38px;
+    float: right;
+    margin-right: 25px;
+    background: #fcc438;
+}
+
+.EditarB:hover{
+    background: #ffffff;
+    border: 2px solid #000000;
+}
+
+.InfoTarjeta{
+    width: 100%;
+    height: 35%;
+    background: #e5e5e5;
+    border: 2px solid #000000;
+    margin-top: -2px;
+}
+
+.LogoInfo{
+    height: 35px;
+    width: 35px;
+    background: #ffffff;
+    overflow: hidden;
+    border-radius: 200px 200px 200px 200px;
+    border: 1px solid #000000;
+    float: left;
+}
+
+.LogoInfo img{
+    width: 100%;
+    height: auto;
+}
+
+@supports(object-fit: cover){
+    .LogoInfo img{
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    }
+}
+
+.InfoTarjeta .row{
+    width: 100%;
+}
+
+.InfoTarjeta p{
+    margin-left: 40px;
+}
+
+.sub{
+    margin-top: -20px;
+    font-size: 12px;
+}
+
+.linea1{
+    margin-top: 8px;
+}
+
+.cambiarDatos{
+   display: none;
+}
+
+.datae{
+    margin-left:0px !important;
+    margin:0;
+    margin-top: 1px;
+}
+
+.formV{
+    margin-top: 2px;
+}
+
+.edit{
+    display: none;
+}
+
+.guardarB{
+    border-radius: 54px 54px 54px 54px;
+    -moz-border-radius: 54px 54px 54px 54px;
+    -webkit-border-radius: 54px 54px 54px 54px;
+    border: 2px solid #ffffff;
+    font-family: 'Dosis', sans-serif;
+    font-size: 20px;
+    padding: 2px 21px;
+    float: right;
+    margin-right: 25px;
+    float: right;
+    background: #fcc438;
+}
+
+.guardarB:hover{
+    background: #ffffff;
+    border: 2px solid #000000;
+}
+

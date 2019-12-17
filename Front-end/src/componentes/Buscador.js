@@ -4,6 +4,7 @@ import "bootstrap-daterangepicker/daterangepicker.css";
 import "./Buscador.css";
 
 export default class Buscador extends Component {
+  busquedaRef = React.createRef();
 
   busquedaRef = React.createRef();
 
@@ -50,7 +51,7 @@ export default class Buscador extends Component {
     e.preventDefault();
     const termino = this.busquedaRef.current.value;
     this.props.datosBusqueda(termino);
-    const tops=this.props.top=="300px"?"143px":"265px";
+    const tops=this.props.top==="300px"?"143px":"265px";
     this.setState({ style2: {top:tops}});
   };
 

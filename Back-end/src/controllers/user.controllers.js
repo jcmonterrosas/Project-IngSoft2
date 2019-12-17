@@ -62,14 +62,11 @@ userCtrl.updateUser = async (req, res) => {
     usr_nombre,
     usr_telefono,
     usr_correo,
-    usr_pass,
     usr_tipo_doc,
     usr_identificacion,
     usr_rol,
     images
   } = req.body;
-
-  const passwordHashed = MD5.md5(usr_pass);
 
   await User.findOneAndUpdate(
     { _id: req.params.id },
@@ -77,7 +74,6 @@ userCtrl.updateUser = async (req, res) => {
       usr_nombre,
       usr_telefono,
       usr_correo,
-      usr_pass: passwordHashed,
       usr_tipo_doc,
       usr_identificacion,
       usr_rol,

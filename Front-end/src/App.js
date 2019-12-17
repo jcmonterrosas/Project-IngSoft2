@@ -17,6 +17,8 @@ import Perfil from "./componentes/Perfil";
 import PerfilProveedor from "./PerfilProveedor";
 import ProviderActivities from "./componentes/Provider-LoadData/ProviderActivities";
 import ProviderHotels from "./componentes/Provider-LoadData/ProviderHotels";
+import Reservas from "./Reservas";
+import Reserva from "./componentes/ReservationPage/Reservation";
 import { setInStorage, getFromStorage } from "./storage";
 import axios from "axios";
 
@@ -24,7 +26,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true
+      isLoading: true,
+      count: 0
     };
   }
 
@@ -38,6 +41,7 @@ class App extends Component {
           console.log(response.data);
           if (response.data.UserLogon) {
             setInStorage("nombre", response.data.User.usr_nombre);
+            setInStorage("img", response.data.User.images);
             setInStorage("id", response.data.User._id);
             setInStorage("pass", response.data.User.usr_pass);
             setInStorage("rol", response.data.User.usr_rol);
@@ -87,7 +91,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header />
+        <Header count={this.state.count}/>
         <div className="AllRoutes">
           <Route
             render={({ location }) => (
@@ -100,32 +104,21 @@ class App extends Component {
                   <Switch location={location}>
                     <Route exact path="/" component={Home} />
                     <Route path="/SearchHotel" component={BuscarHotel} />
-                    <Route
-                      exact
-                      path="/SearchActivities"
-                      component={FiltrarActividades}
-                    />
-                    <Route
-                      path="/SearchActivities/People"
-                      component={FilActPersonas}
-                    />
-                    <Route
-                      path="/SearchActivities/Date"
-                      component={FilActDate}
-                    />
+                    <Route exact path="/SearchActivities" component={FiltrarActividades} />
+                    <Route path="/SearchActivities/People" component={FilActPersonas} />
+                    <Route path="/SearchActivities/Date" component={FilActDate} />
                     <Route path="/SearchActivity" component={BuscarActividad} />
                     <Route path="/Login" component={Login} />
                     <Route path="/Register" component={Register} />
-                    <Route
-                      path="/PerfilProveedor"
-                      component={PerfilProveedor}
-                    />
+                    <Route path="/PerfilProveedor" component={PerfilProveedor} />
                     <Route path="/User" component={Perfil} />
-                    <Route
-                      path="/ProviderActivities"
-                      component={ProviderActivities}
-                    />
+                    < Route
+                      path="Reservas"
+                      component={Reservas} />
+                    <Route path="/ProviderActivities" component={ProviderActivities} />
+
                     <Route path="/ProviderHotels" component={ProviderHotels} />
+                    <Route path="/MyReservation" component={Reserva} />
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
