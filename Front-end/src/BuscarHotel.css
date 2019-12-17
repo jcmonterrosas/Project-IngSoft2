@@ -3,12 +3,6 @@
   padding: 0;
 }
 
-.colPrices{
-  border-left: 1px solid rgba(0,0,0,.5);
-  padding-top: 5%;
-  padding-bottom: 5%;
-}
-
 .priceInformation{
   height: 100%;
 }

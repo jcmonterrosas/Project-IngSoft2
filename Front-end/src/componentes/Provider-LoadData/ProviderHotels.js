@@ -155,6 +155,7 @@ class ProviderHotels extends Component {
       )
       .then(response => {
         console.log("Done: ", response.data);
+        this.props.history.push("/PerfilProveedor");
       })
       .catch(error => {
         console.log("this is error", error);
@@ -273,7 +274,7 @@ class ProviderHotels extends Component {
               step="50"
               required
             />
-            <span className="label">Precio</span>
+            <span className="label">Precio por persona</span>
             <span className="border"></span>
           </label>
           <label>

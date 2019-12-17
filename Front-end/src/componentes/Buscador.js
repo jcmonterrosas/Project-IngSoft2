@@ -4,6 +4,7 @@ import "bootstrap-daterangepicker/daterangepicker.css";
 import "./Buscador.css";
 
 export default class Buscador extends Component {
+  busquedaRef = React.createRef();
 
   busquedaRef = React.createRef();
 

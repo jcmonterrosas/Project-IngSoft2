@@ -171,7 +171,7 @@ class ProviderActivities extends Component {
               step="50"
               required
             />
-            <span className="label">Precio</span>
+            <span className="label">Precio por persona</span>
             <span className="border"></span>
           </label>
           <label htmlFor="inp" className="inp">
@@ -184,7 +184,7 @@ class ProviderActivities extends Component {
               max="30"
               step="1"
             />
-            <span className="label">Cantidad de personas</span>
+            <span className="label">Cupos</span>
             <span className="border"></span>
           </label>
           <label>

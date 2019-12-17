@@ -8,6 +8,7 @@ const multer = require("multer");
 const { storage, gfs } = require("./database");
 
 const upload = multer({ storage });
+
 //settings
 app.set("port", process.env.PORT || 3000);
 
@@ -19,6 +20,7 @@ app.use("/hotels", require("./routes/hotel"));
 app.use("/services", require("./routes/services"));
 app.use("/user", require("./routes/user"));
 app.use("/reserva", require("./routes/reserva"));
+app.use("/user", require("./routes/user"));
 
 
 module.exports = app;
