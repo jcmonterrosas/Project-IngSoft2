@@ -1,5 +1,6 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import "./Reservation.css";
+import Reserve from "./cardReserve";
 import axios from "axios";
 import { setInStorage, getFromStorage } from "../../storage";
 
@@ -9,7 +10,9 @@ export default class Reservation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      resultados: []
+      resultados: [],
+      totalHoteles: 0,
+      totalActividades: 0
     };
   }
 
@@ -18,29 +21,47 @@ export default class Reservation extends Component {
       `https://api-aventurate.herokuapp.com/hotels/${hotel_id}`
     );
     this.setState({ resultados: res.data.hotel });
-    console.log(this.state.resultados);
+    // console.log(this.state.resultados);
   };
 
   componentDidMount = async () => {
     await this.consultarApi();
-    console.log(this.state.resultados);
+    // console.log(this.state.resultados);
+  };
+
+  totalHoteles = (res) => {
+    let counter = 0
+    if(res){
+      // this.state.resultados.map(resultado => (
+      //   counter += resultado.price_per_person
+      // ))
+      counter += parseInt(res.price_per_person)
+    }
+    return (counter);
+  };
+
+  mostrarresultados = () => {
+    return (
+      <React.Fragment>
+        {this.state.resultados.map(resultado => (
+          <Reserve key={resultado._id} info={resultado} />
+        ))}
+      </React.Fragment>
+    );
   };
 
   render() {
-    console.log(this.state.resultados);
+    const { resultados } = this.state;
     return (
       <div className="Reservation">
         <div className="HotelsReserve">
           <h1>Hoteles</h1>
-          <div className={this.state.resultados.name ? "cardReserve" : ""}>
-            {this.state.resultados.name}
-            <br />
-            {this.state.resultados.ciudad}
-            <br />
-            {this.state.resultados.price_per_person ? "$ " + this.state.resultados.price_per_person : null}
-          </div>
+          {/* <React.Fragment>{this.mostrarresultados()}</React.Fragment> */}
+          <Reserve
+            info={resultados}
+          />
           <div className="total">
-            {this.state.resultados.price_per_person ? "Total: $ " + this.state.resultados.price_per_person : null}
+            {resultados ? "Total: $ " +  this.totalHoteles(resultados) : null}
           </div>
         </div>
 
