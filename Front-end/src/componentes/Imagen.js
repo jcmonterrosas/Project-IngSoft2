@@ -1,6 +1,9 @@
 import React from "react";
 import "./Services.css";
 import { setInStorage, getFromStorage } from "../storage";
+import axios from "axios";
+
+var usr_id = getFromStorage("id");
 
 const Imagen = props => {
   const {
@@ -19,9 +22,38 @@ const Imagen = props => {
     hab_mul
   } = props.imagen;
 
+  async function consultarApi() {
+    const config = {
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:3000"
+      }
+    };
+
+    axios
+      .post(
+        `https://api-aventurate.herokuapp.com/reserva/additem/${usr_id}`,
+        {
+          hotel_o_servicio: true,
+          ser_id: "",
+          hot_id: _id,
+          child_quantity: 1,
+          adult_quantity: 1,
+          DateBegin: "2019-12-01T23:09:28.048+00:00",
+          DateEnd: "2019-12-05T23:09:28.048+00:00"
+        },
+        config
+      )
+      .then(response => {
+        console.log("Done: ", response.data);
+      })
+      .catch(error => {
+        console.log("this is error", error);
+      });
+  }
+
   function handleClick(e) {
     e.preventDefault();
-    setInStorage("hotel_id", _id);
+    consultarApi();
   }
 
   let contacto, acomodacion;
@@ -73,7 +105,7 @@ const Imagen = props => {
               {departamento ? departamento + " - " + ciudad : ciudad}
             </label>
             <br />
-            <label>{address} </label>
+            <label>{address}</label>
           </div>
           {contacto}
           {acomodacion}

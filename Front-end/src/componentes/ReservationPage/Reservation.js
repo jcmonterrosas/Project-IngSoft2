@@ -4,13 +4,15 @@ import Reserve from "./cardReserve";
 import axios from "axios";
 import { setInStorage, getFromStorage } from "../../storage";
 
-var hotel_id = getFromStorage("hotel_id");
+var usr_id = getFromStorage("id");
 
 export default class Reservation extends Component {
   constructor(props) {
     super(props);
     this.state = {
       resultados: [],
+      reserva: [],
+      id_reserva: "",
       totalHoteles: 0,
       totalActividades: 0
     };
@@ -18,10 +20,41 @@ export default class Reservation extends Component {
 
   consultarApi = async () => {
     const res = await axios.get(
-      `https://api-aventurate.herokuapp.com/hotels/${hotel_id}`
+      `https://api-aventurate.herokuapp.com/reserva/shopingcart/${usr_id}`
     );
-    this.setState({ resultados: res.data.hotel });
-    // console.log(this.state.resultados);
+    this.setState({ resultados: res.data.Items });
+    console.log(parseInt(this.state.resultados.length));
+  };
+
+  consultarApiReservar = async () => {
+    await axios
+      .post(`https://api-aventurate.herokuapp.com/reserva/${usr_id}`, {
+        name: "default"
+      })
+      .then(response => {
+        this.setState({ id_reserva: response.data.Reserva._id });
+        console.log(this.state.id_reserva);
+        console.log("Done: ", response.data);
+      })
+      .catch(error => {
+        console.log("this is error", error);
+      });
+  };
+
+  consultarApiGetReserva = async () => {
+    const res = await axios.get(
+      `https://api-aventurate.herokuapp.com/reserva/getreserva/${this.state.id_reserva}`
+    );
+    this.setState({ reserva: res.data.Reserva });
+    console.log(this.state.reserva);
+  };
+
+  handlePagar = async e => {
+    e.preventDefault();
+    await this.consultarApiReservar();
+    await this.consultarApiGetReserva();
+    alert("precio total: " + this.state.reserva.price_total);
+    window.location.reload(true);
   };
 
   componentDidMount = async () => {
@@ -29,23 +62,54 @@ export default class Reservation extends Component {
     // console.log(this.state.resultados);
   };
 
-  totalHoteles = (res) => {
-    let counter = 0
-    if(res){
-      // this.state.resultados.map(resultado => (
-      //   counter += resultado.price_per_person
-      // ))
-      counter += parseInt(res.price_per_person)
+  totalHoteles = res => {
+    let counter = 0;
+    if (res) {
+      this.state.resultados.map(resultado => {
+        if (resultado.hotel_o_servicio) {
+          counter += parseInt(resultado.price);
+        }
+      });
+      //counter += parseInt(res.price);
     }
-    return (counter);
+    return counter;
+  };
+
+  totalActividades = res => {
+    let counter = 0;
+    if (res) {
+      this.state.resultados.map(resultado => {
+        if (!resultado.hotel_o_servicio) {
+          counter += parseInt(resultado.price);
+        }
+      });
+      //counter += parseInt(res.price);
+    }
+    return counter;
   };
 
   mostrarresultados = () => {
     return (
       <React.Fragment>
-        {this.state.resultados.map(resultado => (
-          <Reserve key={resultado._id} info={resultado} />
-        ))}
+        {this.state.resultados.map(
+          resultado =>
+            resultado.hotel_o_servicio && (
+              <Reserve key={resultado._id} info={resultado}></Reserve>
+            )
+        )}
+      </React.Fragment>
+    );
+  };
+
+  mostrarresultadosAct = () => {
+    return (
+      <React.Fragment>
+        {this.state.resultados.map(
+          resultado =>
+            !resultado.hotel_o_servicio && (
+              <Reserve key={resultado._id} info={resultado}></Reserve>
+            )
+        )}
       </React.Fragment>
     );
   };
@@ -56,33 +120,30 @@ export default class Reservation extends Component {
       <div className="Reservation">
         <div className="HotelsReserve">
           <h1>Hoteles</h1>
-          {/* <React.Fragment>{this.mostrarresultados()}</React.Fragment> */}
-          <Reserve
-            info={resultados}
-          />
+          <React.Fragment>{this.mostrarresultados()}</React.Fragment>
+          {/* <Reserve info={resultados} /> */}
           <div className="total">
-            {resultados ? "Total: $ " +  this.totalHoteles(resultados) : null}
+            {resultados ? "Total: $ " + this.totalHoteles(resultados) : null}
           </div>
         </div>
 
         <div className="ActivitiesReserve">
           <h1>Actividades</h1>
-          <div className="cardReserve">
-            PARQUES NATURALES <br />
-            KAYAK <br />$ 100000
+          <React.Fragment>{this.mostrarresultadosAct()}</React.Fragment>
+          <div className="total">
+            {resultados
+              ? "Total: $ " + this.totalActividades(resultados)
+              : null}
           </div>
-          <div className="cardReserve">
-            EXCURSIONES <br />
-            SENDERISMO <br />$ 50000
-          </div>
-          <div className="cardReserve">
-            DESCANSO <br />
-            MUSEO DEL ORO <br />$ 20000
-          </div>
-          <div className="total">Total: $ 17.000</div>
         </div>
+
         <button className="btn btn-warning btn-lg btn-block">Cancelar</button>
-        <button className="btn btn-warning btn-lg btn-block">Pagar</button>
+        <button
+          className="btn btn-warning btn-lg btn-block"
+          onClick={this.handlePagar}
+        >
+          Pagar
+        </button>
       </div>
     );
   }
