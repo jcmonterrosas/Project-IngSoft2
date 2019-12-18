@@ -2,21 +2,18 @@ import React from "react";
 import "./Reservation.css";
 
 const CardReserve = props => {
+  const { name, city, address, price, hotel_o_servicio } = props.info;
 
-    const {
-        name,
-        ciudad,
-        price_per_person
-    } = props.info;
-
-    return (
-        <div className={name ? "cardReserve" : ""}>
-            {name}
-            <br />
-            {ciudad}
-            <br />
-            {price_per_person ? "$ " + price_per_person : null}
-        </div>
+  return (
+    <div className={name ? "cardReserve" : ""}>
+      {name}
+      <br />
+      {city}
+      <br />
+      {address}
+      <br />
+      {price ? "$ " + price : null}
+    </div>
   );
 };
 
