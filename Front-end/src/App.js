@@ -91,7 +91,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header count={this.state.count}/>
+        <Header count={this.state.count} />
         <div className="AllRoutes">
           <Route
             render={({ location }) => (
@@ -104,18 +104,32 @@ class App extends Component {
                   <Switch location={location}>
                     <Route exact path="/" component={Home} />
                     <Route path="/SearchHotel" component={BuscarHotel} />
-                    <Route exact path="/SearchActivities" component={FiltrarActividades} />
-                    <Route path="/SearchActivities/People" component={FilActPersonas} />
-                    <Route path="/SearchActivities/Date" component={FilActDate} />
+                    <Route
+                      exact
+                      path="/SearchActivities"
+                      component={FiltrarActividades}
+                    />
+                    <Route
+                      path="/SearchActivities/People"
+                      component={FilActPersonas}
+                    />
+                    <Route
+                      path="/SearchActivities/Date"
+                      component={FilActDate}
+                    />
                     <Route path="/SearchActivity" component={BuscarActividad} />
                     <Route path="/Login" component={Login} />
                     <Route path="/Register" component={Register} />
-                    <Route path="/PerfilProveedor" component={PerfilProveedor} />
+                    <Route
+                      path="/PerfilProveedor"
+                      component={PerfilProveedor}
+                    />
                     <Route path="/User" component={Perfil} />
-                    < Route
-                      path="Reservas"
-                      component={Reservas} />
-                    <Route path="/ProviderActivities" component={ProviderActivities} />
+                    <Route path="Reservas" component={Reservas} />
+                    <Route
+                      path="/ProviderActivities"
+                      component={ProviderActivities}
+                    />
 
                     <Route path="/ProviderHotels" component={ProviderHotels} />
                     <Route path="/MyReservation" component={Reserva} />
