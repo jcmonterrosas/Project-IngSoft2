@@ -6,12 +6,12 @@ const CardReserve = props => {
 
   return (
     <div className={name ? "cardReserve" : ""}>
-      {name}
-      <br />
-      {city}
-      <br />
-      {address}
-      <br />
+      <div>
+        <h5 style={{margin: "0"}}>{name}</h5>
+        {city}
+        <br />
+        {address}
+      </div>
       {price ? "$ " + price : null}
     </div>
   );

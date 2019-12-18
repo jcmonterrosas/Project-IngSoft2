@@ -1,4 +1,4 @@
-.Reservation{
+.Reservation {
     display: grid;
     grid-template-areas: "Hotels Activities";
     padding: 2vh 2vw;
@@ -13,49 +13,88 @@
     align-content: center;
 }
 
-.Reservation h1{
+.Reservation h1 {
     border-bottom: 1px solid black;
     padding: 1vh 0;
     grid-column: 1/3;
 }
 
-.Reservation > .btn{
+.Reservation>.btn {
     max-width: 15vw;
     max-height: 8vh;
     justify-self: center;
     cursor: pointer;
 }
 
-.HotelsReserve{
+.HotelsReserve {
     display: grid;
     grid-area: "Hotels";
     min-width: 40vw;
-    gap: 1vh;
-    grid-template-rows: auto repeat(3, 1fr);
+    row-gap: 3.5vh;
+    /* grid-template-rows: auto repeat(3, 1fr); */
     grid-template-columns: repeat(2, 1fr);
     box-shadow: 0 4px 8px 0 rgba(0.5, 0.5, 0.5, 0.5);
 }
 
-.ActivitiesReserve{
+.ActivitiesReserve {
     display: grid;
     grid-area: "Activities";
     min-width: 40vw;
-    gap: 1vh;
-    grid-template-rows: auto repeat(3, 1fr);
+    row-gap: 3.5vh;
+    /* grid-template-rows: auto repeat(3, 1fr); */
     grid-template-columns: repeat(2, 1fr);
     box-shadow: 0 4px 8px 0 rgba(0.5, 0.5, 0.5, 0.5);
 }
 
-.cardReserve{
+.cardReserve {
     margin: 0.5vh 4vw;
     text-align: left;
-    border-bottom: 1px solid black;
     max-height: 11vh;
 }
 
-.total{
+.cardReserve>div {
+    border-bottom: 1px solid black;
+}
+
+.total {
     grid-column: 1/3;
-    grid-row: 4;
+    margin-bottom: 3vh;
+    /* grid-row: 4; */
     align-self: center;
     font-size: x-large;
+}
+
+.PopupReserve > h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.PopupReserve > html, body, .app {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.PopupReserve {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup_inner {
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    top: 25%;
+    bottom: 25%;
+    margin: auto;
+    background: white;
 }

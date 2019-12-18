@@ -3,6 +3,7 @@ import "./Reservation.css";
 import Reserve from "./cardReserve";
 import axios from "axios";
 import { setInStorage, getFromStorage } from "../../storage";
+import Popup from './PopupPago';
 
 var usr_id = getFromStorage("id");
 
@@ -13,9 +14,14 @@ export default class Reservation extends Component {
       resultados: [],
       reserva: [],
       id_reserva: "",
-      totalHoteles: 0,
-      totalActividades: 0
+      showPopup: false
     };
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   }
 
   consultarApi = async () => {
@@ -23,7 +29,7 @@ export default class Reservation extends Component {
       `https://api-aventurate.herokuapp.com/reserva/shopingcart/${usr_id}`
     );
     this.setState({ resultados: res.data.Items });
-    console.log(parseInt(this.state.resultados.length));
+    console.log(this.state.resultados);
   };
 
   consultarApiReservar = async () => {
@@ -53,7 +59,10 @@ export default class Reservation extends Component {
     e.preventDefault();
     await this.consultarApiReservar();
     await this.consultarApiGetReserva();
-    alert("precio total: " + this.state.reserva.price_total);
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+    // alert("precio total: " + this.state.reserva.price_total);
     window.location.reload(true);
   };
 
@@ -70,7 +79,6 @@ export default class Reservation extends Component {
           counter += parseInt(resultado.price);
         }
       });
-      //counter += parseInt(res.price);
     }
     return counter;
   };
@@ -83,7 +91,6 @@ export default class Reservation extends Component {
           counter += parseInt(resultado.price);
         }
       });
-      //counter += parseInt(res.price);
     }
     return counter;
   };
@@ -144,6 +151,14 @@ export default class Reservation extends Component {
         >
           Pagar
         </button>
+        {this.state.showPopup ? 
+          <Popup
+            text={"Total: " + this.state.reserva.price_total}
+            closePopup={this.togglePopup.bind(this)}
+            confirmPopup={this.handlePagar}
+          />
+          : null
+        }
       </div>
     );
   }
