@@ -6,7 +6,11 @@
     gap: 2vw;
     max-width: 100vw;
     max-height: 100vh;
-    min-height: 50.6vh;
+    height: 100vh;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 
 .Reservation h1{
@@ -17,6 +21,7 @@
 
 .Reservation > .btn{
     max-width: 15vw;
+    max-height: 8vh;
     justify-self: center;
     cursor: pointer;
 }
@@ -24,6 +29,8 @@
 .HotelsReserve{
     display: grid;
     grid-area: "Hotels";
+    min-width: 40vw;
+    gap: 1vh;
     grid-template-rows: auto repeat(3, 1fr);
     grid-template-columns: repeat(2, 1fr);
     box-shadow: 0 4px 8px 0 rgba(0.5, 0.5, 0.5, 0.5);
@@ -32,15 +39,18 @@
 .ActivitiesReserve{
     display: grid;
     grid-area: "Activities";
+    min-width: 40vw;
+    gap: 1vh;
     grid-template-rows: auto repeat(3, 1fr);
     grid-template-columns: repeat(2, 1fr);
     box-shadow: 0 4px 8px 0 rgba(0.5, 0.5, 0.5, 0.5);
 }
 
 .cardReserve{
-    margin: 1vh 4vw;
+    margin: 0.5vh 4vw;
     text-align: left;
     border-bottom: 1px solid black;
+    max-height: 11vh;
 }
 
 .total{
