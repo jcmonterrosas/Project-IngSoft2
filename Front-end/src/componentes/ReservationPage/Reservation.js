@@ -14,7 +14,9 @@ export default class Reservation extends Component {
       resultados: [],
       reserva: [],
       id_reserva: "",
-      showPopup: false
+      showPopup: false,
+      totalHotels: 0,
+      totalActivities: 0
     };
   }
 
@@ -122,15 +124,18 @@ export default class Reservation extends Component {
   };
 
   render() {
+    let totalCost = 0
     const { resultados } = this.state;
+    this.state.totalHotels = this.totalHoteles(resultados)
+    this.state.totalActivities = this.totalActividades(resultados)
+    totalCost = this.state.totalHotels + this.state.totalActivities
     return (
       <div className="Reservation">
         <div className="HotelsReserve">
           <h1>Hoteles</h1>
           <React.Fragment>{this.mostrarresultados()}</React.Fragment>
-          {/* <Reserve info={resultados} /> */}
           <div className="total">
-            {resultados ? "Total: $ " + this.totalHoteles(resultados) : null}
+            {resultados ? "Total: $ " + this.state.totalHotels : null}
           </div>
         </div>
 
@@ -139,7 +144,7 @@ export default class Reservation extends Component {
           <React.Fragment>{this.mostrarresultadosAct()}</React.Fragment>
           <div className="total">
             {resultados
-              ? "Total: $ " + this.totalActividades(resultados)
+              ? "Total: $ " + this.state.totalActivities
               : null}
           </div>
         </div>
@@ -147,13 +152,15 @@ export default class Reservation extends Component {
         <button className="btn btn-warning btn-lg btn-block">Cancelar</button>
         <button
           className="btn btn-warning btn-lg btn-block"
-          onClick={this.handlePagar}
+          onClick={this.togglePopup.bind(this)}
         >
           Pagar
         </button>
         {this.state.showPopup ? 
           <Popup
-            text={"Total: " + this.state.reserva.price_total}
+            total={totalCost} 
+            hotels={this.state.totalHotels}
+            activities={this.state.totalActivities}
             closePopup={this.togglePopup.bind(this)}
             confirmPopup={this.handlePagar}
           />
