@@ -17,7 +17,8 @@ export default class Reservation extends Component {
       Nombre: String,
       showPopup: false,
       totalHotels: 0,
-      totalActivities: 0
+      totalActivities: 0,
+      cantidad: 0
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -34,6 +35,8 @@ export default class Reservation extends Component {
       `https://api-aventurate.herokuapp.com/reserva/shopingcart/${usr_id}`
     );
     this.setState({ resultados: res.data.Items });
+    this.setState({ cantidad: this.state.resultados.length });
+    console.log(this.state.cantidad);
   };
 
   consultarApiReservar = async () => {
