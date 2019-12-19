@@ -2,12 +2,12 @@ import React from "react";
 import "./Reservation.css";
 
 const CardReserve = props => {
-  const { name, city, address, price, hotel_o_servicio } = props.info;
+  const { name, city, address, price } = props.info;
 
   return (
     <div className={name ? "cardReserve" : ""}>
       <div>
-        <h5 style={{margin: "0"}}>{name}</h5>
+        <h5 style={{ margin: "0" }}>{name}</h5>
         {city}
         <br />
         {address}
