@@ -54,6 +54,7 @@
 
 .cardReserve > div {
     border-bottom: 1px solid black;
+    max-height: 11vh;
 }
 
 .total {
