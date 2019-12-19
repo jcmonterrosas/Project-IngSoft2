@@ -2,10 +2,9 @@ import React from "react";
 import "./Services.css";
 import { setInStorage, getFromStorage } from "../storage";
 import axios from "axios";
-import Popup from './PopupReservaHotel'
+import Popup from './PopupReserva'
 
 var usr_id = getFromStorage("id");
-var showPopup = false
 
 const Imagen = props => {
   const {
@@ -27,7 +26,7 @@ const Imagen = props => {
         "Access-Control-Allow-Origin": "http://localhost:3000"
       }
     };
-
+    console.log(_id)
     axios
       .post(
         `https://api-aventurate.herokuapp.com/reserva/additem/${usr_id}`,
@@ -54,11 +53,6 @@ const Imagen = props => {
     e.preventDefault();
     console.log(_id);
     consultarApi();
-    showPopup = !showPopup
-  }
-
-  function togglePopup() {
-    showPopup = !showPopup
   }
 
   let tipo;
@@ -106,19 +100,12 @@ const Imagen = props => {
           <a
             target="_blank"
             className="btn btn-lg btn-warning btn-block"
-            onClick={togglePopup}
+            onClick={handleClick}
           >
             Agregar a la reserva
           </a>
         </div>
       </div>
-      {showPopup ? 
-          <Popup
-            closePopup={togglePopup}
-            confirmPopup={handleClick}
-          />
-          : null
-      }
     </div>
   );
 };

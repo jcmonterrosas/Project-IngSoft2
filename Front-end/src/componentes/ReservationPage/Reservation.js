@@ -14,7 +14,7 @@ export default class Reservation extends Component {
       resultados: [],
       reserva: [],
       id_reserva: "",
-      Nombre: String,
+      Nombre: null,
       showPopup: false,
       totalHotels: 0,
       totalActivities: 0,
@@ -40,9 +40,10 @@ export default class Reservation extends Component {
   };
 
   consultarApiReservar = async () => {
+    console.log(this.state.Nombre)
     await axios
       .post(`https://api-aventurate.herokuapp.com/reserva/${usr_id}`, {
-        name: this.state.Nombre
+        name: this.state.Nombre 
       })
       .then(response => {
         this.setState({ id_reserva: response.data.Reserva._id });
@@ -146,6 +147,17 @@ export default class Reservation extends Component {
     totalCost = this.state.totalHotels + this.state.totalActivities;
     return (
       <div className="Reservation">
+          <label htmlFor="inp" className="inp">
+            <input
+              type="text"
+              id="Nombre"
+              placeholder="&nbsp;"
+              onChange={this.handleChange}
+              autoComplete="off"
+            />
+            <span className="label">Nombre de la reserva:</span>
+            <span className="border"></span>
+          </label>
         <div className="HotelsReserve">
           <h1>Hoteles</h1>
           <React.Fragment>{this.mostrarresultados()}</React.Fragment>
@@ -161,20 +173,6 @@ export default class Reservation extends Component {
             {resultados ? "Total: $ " + this.state.totalActivities : null}
           </div>
         </div>
-        <center>
-          <label htmlFor="inp" className="inp">
-            <input
-              type="text"
-              id="Nombre"
-              placeholder="&nbsp;"
-              onChange={this.handleChange}
-              autoComplete="off"
-              required
-            />
-            <span className="label">Nombre de la reserva:</span>
-            <span className="border"></span>
-          </label>
-        </center>
         <button className="btn btn-warning btn-lg btn-block">Cancelar</button>
         <button
           className="btn btn-warning btn-lg btn-block"
