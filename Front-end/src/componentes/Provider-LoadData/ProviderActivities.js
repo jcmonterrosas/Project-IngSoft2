@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import "./ProviderLoadData.css";
 import axios from "axios";
-
+import { withRouter } from 'react-router-dom';
 import FileBase64 from "react-file-base64";
+import { getFromStorage } from "../../storage";
+
+var idUser = getFromStorage("id");
 
 class ProviderActivities extends Component {
   constructor(props) {
@@ -90,7 +93,7 @@ class ProviderActivities extends Component {
         act_descripcion: this.state.descripcion,
         precio: this.state.precio,
         categoria: this.state.tipo,
-        usr_id: "5dd86e3a5b15d827a07635eb",
+        usr_id: idUser,
         act_lugar: this.state.niños,
         telefono_contacto: this.state.tel_contacto,
         ciudad: this.state.ciudad,
@@ -108,39 +111,39 @@ class ProviderActivities extends Component {
   };
 
   handleSubmit(event) {
-    alert(
-      "Nombre: " +
-        this.state.nombre +
-        "\nDescripcion: " +
-        this.state.descripcion +
-        "\nTipo de actividad: " +
-        this.state.tipo +
-        "\nDepartamento: " +
-        this.state.departamento +
-        "\nCiudad: " +
-        this.state.ciudad +
-        "\nDireccion: " +
-        this.state.direccion +
-        "\nPrecio: " +
-        this.state.precio +
-        "\nPersonas: " +
-        this.state.personas +
-        "\nTransporte: " +
-        this.state.transporte +
-        "\nComida: " +
-        this.state.comida +
-        "\nNiños: " +
-        this.state.niños +
-        "\nGuia: " +
-        this.state.guia +
-        "\nTelefono: " +
-        this.state.tel_contacto +
-        "\nImagen: " +
-        this.state.imagen
-    );
-
-    this.consultarApi();
+    // alert(
+    //   "Nombre: " +
+    //     this.state.nombre +
+    //     "\nDescripcion: " +
+    //     this.state.descripcion +
+    //     "\nTipo de actividad: " +
+    //     this.state.tipo +
+    //     "\nDepartamento: " +
+    //     this.state.departamento +
+    //     "\nCiudad: " +
+    //     this.state.ciudad +
+    //     "\nDireccion: " +
+    //     this.state.direccion +
+    //     "\nPrecio: " +
+    //     this.state.precio +
+    //     "\nPersonas: " +
+    //     this.state.personas +
+    //     "\nTransporte: " +
+    //     this.state.transporte +
+    //     "\nComida: " +
+    //     this.state.comida +
+    //     "\nNiños: " +
+    //     this.state.niños +
+    //     "\nGuia: " +
+    //     this.state.guia +
+    //     "\nTelefono: " +
+    //     this.state.tel_contacto +
+    //     "\nImagen: " +
+    //     this.state.imagen
+    // );
     event.preventDefault();
+    this.consultarApi();
+    this.props.history.push("/PerfilProveedor");
   }
 
   render() {
@@ -296,4 +299,4 @@ class ProviderActivities extends Component {
   }
 }
 
-export default ProviderActivities;
+export default withRouter(ProviderActivities);

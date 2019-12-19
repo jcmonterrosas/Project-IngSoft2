@@ -26,13 +26,25 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      resultados: [],
       isLoading: true,
       count: 0
     };
   }
 
+  consultarApi = async usr_id => {
+    const res = await axios.get(
+      `https://api-aventurate.herokuapp.com/reserva/shopingcart/${usr_id}`
+    );
+    this.setState({ resultados: res.data.Items });
+    this.setState({ count: this.state.resultados.length });
+    console.log(this.state.count);
+  };
+
   async componentDidMount() {
     var token = getFromStorage("token");
+
+    var id = getFromStorage("id");
     console.log(token);
     if (token != null && token.length > 0) {
       axios
@@ -76,6 +88,7 @@ class App extends Component {
         isLoading: false
       });
     }
+    this.consultarApi(id);
   }
 
   render() {
@@ -91,7 +104,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header count={this.state.count}/>
+        <Header count={this.state.count} />
         <div className="AllRoutes">
           <Route
             render={({ location }) => (
@@ -104,18 +117,32 @@ class App extends Component {
                   <Switch location={location}>
                     <Route exact path="/" component={Home} />
                     <Route path="/SearchHotel" component={BuscarHotel} />
-                    <Route exact path="/SearchActivities" component={FiltrarActividades} />
-                    <Route path="/SearchActivities/People" component={FilActPersonas} />
-                    <Route path="/SearchActivities/Date" component={FilActDate} />
+                    <Route
+                      exact
+                      path="/SearchActivities"
+                      component={FiltrarActividades}
+                    />
+                    <Route
+                      path="/SearchActivities/People"
+                      component={FilActPersonas}
+                    />
+                    <Route
+                      path="/SearchActivities/Date"
+                      component={FilActDate}
+                    />
                     <Route path="/SearchActivity" component={BuscarActividad} />
                     <Route path="/Login" component={Login} />
                     <Route path="/Register" component={Register} />
-                    <Route path="/PerfilProveedor" component={PerfilProveedor} />
+                    <Route
+                      path="/PerfilProveedor"
+                      component={PerfilProveedor}
+                    />
                     <Route path="/User" component={Perfil} />
-                    < Route
-                      path="Reservas"
-                      component={Reservas} />
-                    <Route path="/ProviderActivities" component={ProviderActivities} />
+                    <Route path="Reservas" component={Reservas} />
+                    <Route
+                      path="/ProviderActivities"
+                      component={ProviderActivities}
+                    />
 
                     <Route path="/ProviderHotels" component={ProviderHotels} />
                     <Route path="/MyReservation" component={Reserva} />

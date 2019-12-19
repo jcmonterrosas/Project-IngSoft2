@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./ProviderLoadData.css";
 import axios from "axios";
-
+import { withRouter } from 'react-router-dom';
 import FileBase64 from "react-file-base64";
 import { getFromStorage } from "../../storage";
 
@@ -174,42 +174,41 @@ class ProviderHotels extends Component {
   }
 
   handleSubmit(event) {
-    alert(
-      "Nombre: " +
-        this.state.nombre +
-        "\nDepartamento: " +
-        this.state.departamento +
-        "\nCiudad: " +
-        this.state.ciudad +
-        "\nDireccion: " +
-        this.state.direccion +
-        "\nPrecio: " +
-        this.state.precio +
-        "\nTelefono: " +
-        this.state.tel_contacto +
-        "\nImagen: " +
-        this.state.imagen +
-        "\nIndividual: " +
-        this.state.individual +
-        "\nDoble: " +
-        this.state.doble +
-        "\nFamiliar: " +
-        this.state.familiar +
-        "\nMultiple: " +
-        this.state.multiple +
-        "\nHabitaciones Individuales: " +
-        this.state.habitaciones_individuales +
-        "\nHabitaciones Dobles: " +
-        this.state.habitaciones_dobles +
-        "\nHabitaciones Familiares: " +
-        this.state.habitaciones_familiares +
-        "\nHabitaciones Multiples: " +
-        this.state.habitaciones_multiples
-    );
-
-    this.consultarApi();
-
+    // alert(
+    //   "Nombre: " +
+    //     this.state.nombre +
+    //     "\nDepartamento: " +
+    //     this.state.departamento +
+    //     "\nCiudad: " +
+    //     this.state.ciudad +
+    //     "\nDireccion: " +
+    //     this.state.direccion +
+    //     "\nPrecio: " +
+    //     this.state.precio +
+    //     "\nTelefono: " +
+    //     this.state.tel_contacto +
+    //     "\nImagen: " +
+    //     this.state.imagen +
+    //     "\nIndividual: " +
+    //     this.state.individual +
+    //     "\nDoble: " +
+    //     this.state.doble +
+    //     "\nFamiliar: " +
+    //     this.state.familiar +
+    //     "\nMultiple: " +
+    //     this.state.multiple +
+    //     "\nHabitaciones Individuales: " +
+    //     this.state.habitaciones_individuales +
+    //     "\nHabitaciones Dobles: " +
+    //     this.state.habitaciones_dobles +
+    //     "\nHabitaciones Familiares: " +
+    //     this.state.habitaciones_familiares +
+    //     "\nHabitaciones Multiples: " +
+    //     this.state.habitaciones_multiples
+    // );
     event.preventDefault();
+    this.consultarApi();
+    this.props.history.push("/PerfilProveedor");
   }
 
   render() {
@@ -363,4 +362,4 @@ class ProviderHotels extends Component {
   }
 }
 
-export default ProviderHotels;
+export default withRouter(ProviderHotels);
