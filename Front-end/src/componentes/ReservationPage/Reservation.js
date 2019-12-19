@@ -3,6 +3,7 @@ import "./Reservation.css";
 import Reserve from "./cardReserve";
 import axios from "axios";
 import { setInStorage, getFromStorage } from "../../storage";
+import Popup from './PopupPago';
 
 var usr_id = getFromStorage("id");
 
@@ -13,9 +14,16 @@ export default class Reservation extends Component {
       resultados: [],
       reserva: [],
       id_reserva: "",
-      totalHoteles: 0,
-      totalActividades: 0
+      showPopup: false,
+      totalHotels: 0,
+      totalActivities: 0
     };
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   }
 
   consultarApi = async () => {
@@ -23,7 +31,7 @@ export default class Reservation extends Component {
       `https://api-aventurate.herokuapp.com/reserva/shopingcart/${usr_id}`
     );
     this.setState({ resultados: res.data.Items });
-    console.log(parseInt(this.state.resultados.length));
+    console.log(this.state.resultados);
   };
 
   consultarApiReservar = async () => {
@@ -53,7 +61,10 @@ export default class Reservation extends Component {
     e.preventDefault();
     await this.consultarApiReservar();
     await this.consultarApiGetReserva();
-    alert("precio total: " + this.state.reserva.price_total);
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+    // alert("precio total: " + this.state.reserva.price_total);
     window.location.reload(true);
   };
 
@@ -70,7 +81,6 @@ export default class Reservation extends Component {
           counter += parseInt(resultado.price);
         }
       });
-      //counter += parseInt(res.price);
     }
     return counter;
   };
@@ -83,7 +93,6 @@ export default class Reservation extends Component {
           counter += parseInt(resultado.price);
         }
       });
-      //counter += parseInt(res.price);
     }
     return counter;
   };
@@ -115,15 +124,18 @@ export default class Reservation extends Component {
   };
 
   render() {
+    let totalCost = 0
     const { resultados } = this.state;
+    this.state.totalHotels = this.totalHoteles(resultados)
+    this.state.totalActivities = this.totalActividades(resultados)
+    totalCost = this.state.totalHotels + this.state.totalActivities
     return (
       <div className="Reservation">
         <div className="HotelsReserve">
           <h1>Hoteles</h1>
           <React.Fragment>{this.mostrarresultados()}</React.Fragment>
-          {/* <Reserve info={resultados} /> */}
           <div className="total">
-            {resultados ? "Total: $ " + this.totalHoteles(resultados) : null}
+            {resultados ? "Total: $ " + this.state.totalHotels : null}
           </div>
         </div>
 
@@ -132,7 +144,7 @@ export default class Reservation extends Component {
           <React.Fragment>{this.mostrarresultadosAct()}</React.Fragment>
           <div className="total">
             {resultados
-              ? "Total: $ " + this.totalActividades(resultados)
+              ? "Total: $ " + this.state.totalActivities
               : null}
           </div>
         </div>
@@ -140,10 +152,20 @@ export default class Reservation extends Component {
         <button className="btn btn-warning btn-lg btn-block">Cancelar</button>
         <button
           className="btn btn-warning btn-lg btn-block"
-          onClick={this.handlePagar}
+          onClick={this.togglePopup.bind(this)}
         >
           Pagar
         </button>
+        {this.state.showPopup ? 
+          <Popup
+            total={totalCost} 
+            hotels={this.state.totalHotels}
+            activities={this.state.totalActivities}
+            closePopup={this.togglePopup.bind(this)}
+            confirmPopup={this.handlePagar}
+          />
+          : null
+        }
       </div>
     );
   }

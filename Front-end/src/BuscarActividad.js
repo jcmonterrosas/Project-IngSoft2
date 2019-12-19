@@ -104,7 +104,7 @@ class App extends Component {
       <div style={style2} className="Actividad container">
         <div className="row logo" style={style3}>
           <div className="col" />
-          <img clasName="logo" src={logo} height="200px" alt="Logo" />
+          <img src={logo} height="200px" alt="Logo" />
           <div className="col" />
         </div>
         <div style={style1} className={classN + "col Buscador"}></div>
