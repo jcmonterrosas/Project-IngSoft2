@@ -1,39 +1,32 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Services.css";
 import { setInStorage, getFromStorage } from "../storage";
 import axios from "axios";
-import Popup from './PopupReservaHotel'
+import Popup from './PopupReserva'
 
 var usr_id = getFromStorage("id");
-var showPopup = false
 
-const Imagen = props => {
-  const {
-    _id,
-    act_nombre,
-    act_descripcion,
-    precio,
-    ciudad,
-    images,
-    telefono_contacto,
-    categoria,
-    departamento,
-    direccion
-  } = props.imagen;
+class Service extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showPopup: false,
+      confirmReserve: false
+    }
+  }
 
-  async function consultarApi() {
+  consultarApi = async () => {
     const config = {
       headers: {
         "Access-Control-Allow-Origin": "http://localhost:3000"
       }
     };
-
     axios
       .post(
         `https://api-aventurate.herokuapp.com/reserva/additem/${usr_id}`,
         {
           hotel_o_servicio: false,
-          ser_id: _id,
+          ser_id: this.props.imagen._id,
           hot_id: "",
           child_quantity: 1,
           adult_quantity: 1,
@@ -50,77 +43,93 @@ const Imagen = props => {
       });
   }
 
-  function handleClick(e) {
+  handleClick = async e => {
     e.preventDefault();
-    console.log(_id);
-    consultarApi();
-    showPopup = !showPopup
+    await this.consultarApi();
+    this.setState({
+      showPopup: !this.state.showPopup,
+      confirmReserve: !this.state.confirmReserve
+    });
+    window.location.reload(true);
+    // console.log(this.props.imagen._id)
   }
 
-  function togglePopup() {
-    showPopup = !showPopup
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   }
 
-  let tipo;
-  let contacto;
-  if (categoria) {
-    tipo = <h4>{categoria}</h4>;
+  quitReserve() {
+    this.setState({
+      confirmReserve: !this.state.confirmReserve
+    });
   }
-  if (telefono_contacto) {
-    contacto = (
-      <div>
-        <h5>Contacto:</h5>
-        <label>{telefono_contacto}</label>{" "}
+
+  render() {
+    let tipo;
+    let contacto;
+    if (this.props.imagen.categoria) {
+      tipo = <h4>{this.props.imagen.categoria}</h4>;
+    }
+    if (this.props.imagen.telefono_contacto) {
+      contacto = (
+        <div>
+          <h5>Contacto:</h5>
+          <label>{this.props.imagen.telefono_contacto}</label>{" "}
+        </div>
+      );
+    } else {
+      contacto = null;
+    }
+  
+    return (
+      <div className="card container">
+        <div className="contCard">
+          <div className="colItems">
+            {tipo}
+            <div>
+              <h5>Descripción: </h5>
+              <label>{this.props.imagen.act_descripcion}</label>
+            </div>
+            <div>
+              <h5>Ubicación: </h5>
+              <label>
+                {this.props.imagen.departamento ? this.props.imagen.departamento + " - " + this.props.imagen.ciudad : this.props.imagen.ciudad}
+              </label>
+              <br />
+              <label>{this.props.imagen.direccion} </label>
+            </div>
+            {contacto}
+            <div>
+              <h5>Precio: </h5>
+              <label>{"$ " + this.props.imagen.precio}</label>
+            </div>
+          </div>
+          <div className="colPrices">
+            <h2>{this.props.imagen.act_nombre}</h2>
+            <img src={this.props.imagen.images}></img>
+            <a
+              target="_blank"
+              className={this.state.confirmReserve ? "btn btn-lg btn-info btn-block" : "btn btn-lg btn-warning btn-block"}
+              onClick={this.state.confirmReserve ? this.quitReserve.bind(this) : this.togglePopup.bind(this)}
+            >
+              {this.state.confirmReserve ? "Quitar de la reserva" : "Agregar a la reserva"}
+            </a>
+          </div>
+        </div>
+        {
+          this.state.showPopup ?
+            <Popup
+              closePopup={this.togglePopup.bind(this)}
+              confirmPopup={this.handleClick}
+            />
+            : null
+        }
       </div>
     );
-  } else {
-    contacto = null;
   }
+}
 
-  return (
-    <div className="card container">
-      <div className="contCard">
-        <div className="colItems">
-          {tipo}
-          <div>
-            <h5>Descripción: </h5>
-            <label>{act_descripcion}</label>
-          </div>
-          <div>
-            <h5>Ubicación: </h5>
-            <label>
-              {departamento ? departamento + " - " + ciudad : ciudad}
-            </label>
-            <br />
-            <label>{direccion} </label>
-          </div>
-          {contacto}
-          <div>
-            <h5>Precio: </h5>
-            <label>{"$ " + precio}</label>
-          </div>
-        </div>
-        <div className="colPrices">
-          <h2>{act_nombre}</h2>
-          <img src={images}></img>
-          <a
-            target="_blank"
-            className="btn btn-lg btn-warning btn-block"
-            onClick={togglePopup}
-          >
-            Agregar a la reserva
-          </a>
-        </div>
-      </div>
-      {showPopup ? 
-          <Popup
-            closePopup={togglePopup}
-            confirmPopup={handleClick}
-          />
-          : null
-      }
-    </div>
-  );
-};
+export default Service;
 
-export default Imagen;

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 class PopupPago extends Component {
     constructor(props) {
         super(props)
+        
     }
 
     render() {
@@ -18,7 +19,7 @@ class PopupPago extends Component {
                         <p className="info totalprops">TOTAL: </p>
                         <p className="money totalprops">{"$ " + this.props.total}</p>
                         <button className="btn btn-warning btn-lg btn-block" onClick={this.props.closePopup}>Cerrar</button>
-                        <button className="btn btn-warning btn-lg btn-block" onClick={this.props.confirmPopup}>Confirmar</button>
+                        <button className="btn btn-warning btn-lg btn-block" onClick={this.props.confirmPopup} disabled={this.props.total > 0 ? false : true}>Confirmar</button>
                     </div>
                 </div>
             </div>
