@@ -2,8 +2,10 @@ import React from "react";
 import "./Services.css";
 import { setInStorage, getFromStorage } from "../storage";
 import axios from "axios";
+import Popup from './PopupReservaHotel'
 
 var usr_id = getFromStorage("id");
+var showPopup = false
 
 const Imagen = props => {
   const {
@@ -54,6 +56,12 @@ const Imagen = props => {
   function handleClick(e) {
     e.preventDefault();
     consultarApi();
+    showPopup = !showPopup
+    console.log(showPopup)
+  }
+
+  function togglePopup() {
+    showPopup = !showPopup
   }
 
   let contacto, acomodacion;
@@ -120,12 +128,20 @@ const Imagen = props => {
           <a
             target="_blank"
             className="btn btn-lg btn-warning btn-block"
-            onClick={handleClick}
+            onClick={togglePopup}
           >
             Agregar a la reserva
           </a>
         </div>
       </div>
+      {
+        showPopup ?
+          <Popup
+            closePopup={togglePopup}
+            confirmPopup={handleClick}
+          />
+          : null
+      }
     </div>
   );
 };

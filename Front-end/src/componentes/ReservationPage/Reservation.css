@@ -128,16 +128,8 @@
     margin-right: 1vw;
 }
 
-.popupContainer .moneytotal{
-    text-align: right;
-    font-size: medium;
-    vertical-align: middle;
-    margin-right: 1vw;
-}
-
-.popupContainer .infototal{
-    text-align: left;
-    font-size: medium; 
-    vertical-align: middle;
-    margin-right: 1vw;
+.totalprops{
+    color: black;
+    font-size: large;
+    font-weight: bold;
 }
