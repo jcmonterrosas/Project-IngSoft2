@@ -26,13 +26,25 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      resultados: [],
       isLoading: true,
       count: 0
     };
   }
 
+  consultarApi = async usr_id => {
+    const res = await axios.get(
+      `https://api-aventurate.herokuapp.com/reserva/shopingcart/${usr_id}`
+    );
+    this.setState({ resultados: res.data.Items });
+    this.setState({ count: this.state.resultados.length });
+    console.log(this.state.count);
+  };
+
   async componentDidMount() {
     var token = getFromStorage("token");
+
+    var id = getFromStorage("id");
     console.log(token);
     if (token != null && token.length > 0) {
       axios
@@ -76,6 +88,7 @@ class App extends Component {
         isLoading: false
       });
     }
+    this.consultarApi(id);
   }
 
   render() {
