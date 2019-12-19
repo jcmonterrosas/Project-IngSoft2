@@ -89,3 +89,7 @@
 ## Para observar completamente nuestro ciclo dev ops, puede hacerlo en el siguiente enlace:
 
 >### [Ciclo Dev Ops](https://docs.google.com/document/d/1l1wqxZYcWfuOqERox4zbYnKpDPayoNsCmoc3GDScmf8/edit#heading=h.ptufuee13vw)
+
+# Cuarta Iteracion:
+
+>En esta iteracion se hicieron varias correciones sobre bugs, errores graficos, acomodaciones de tamaños con pantallas y edicion de vistas en cuanto a estetica. Pulimos los perfiles los cuales pueden ver sus metodos de cobro y pago dependiendo del tipo de usuario, asi mismo podran ver el historial de reservas. Para el perfil de proveedor agregamos la vista de hoteles y actividades que actualmente posee. Por otra parte, la cuenta de tipo cliente puede buscar, agregar y reservar hoteles y/o actividades con la vista de reservas del usuario, adicionalmente al pagar, el usuario podra ver el historial de su compra.
