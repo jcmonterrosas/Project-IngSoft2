@@ -154,5 +154,4 @@ class Imagen extends Component {
   }
 }
 
-
 export default Imagen;

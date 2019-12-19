@@ -53,7 +53,7 @@ class PopupReservaHotel extends Component {
         return (
             <div className="PopupReserve">
                 <div className="popup_innerhotels">
-                    <h1>Completa tus datos y confirma tu reserva</h1>
+                    <h4>Completa tus datos y confirma tu reserva</h4>
                     <form className="popupFormHotels" onSubmit={this.props.confirmPopup}>
                         <label htmlFor="inp" className="inp">
                             <input

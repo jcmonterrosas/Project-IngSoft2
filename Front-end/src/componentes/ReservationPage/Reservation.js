@@ -14,7 +14,7 @@ export default class Reservation extends Component {
       resultados: [],
       reserva: [],
       id_reserva: "",
-      Nombre: null,
+      Nombre: "Sin nombre",
       showPopup: false,
       totalHotels: 0,
       totalActivities: 0,
