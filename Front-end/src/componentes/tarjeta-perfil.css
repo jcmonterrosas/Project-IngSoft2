@@ -9,6 +9,8 @@
     height: 65%;
     background: #fcc438;
     border: 2px solid #000000;
+    border-radius: 15px;
+    box-shadow: 0 0 5px #CCC;
 }
 
 .ImagenPerfil{
@@ -79,6 +81,8 @@ height: auto;
     background: #e5e5e5;
     border: 2px solid #000000;
     margin-top: -2px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px #CCC;
 }
 
 .LogoInfo{

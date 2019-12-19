@@ -16,6 +16,8 @@
     height: 15%;
     border: 2px solid #000000;
     justify-content: center;
+    border-radius: 15px;
+    box-shadow: 0 0 5px #CCC;
 }
 
 .tituloTarjeta p{
@@ -28,6 +30,8 @@
     background: #e5e5e5;
     border: 2px solid #000000;
     margin-top: -4px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px #CCC;
 }
 
 .tarjetaServicios{
@@ -43,7 +47,8 @@
     background: #e5e5e5;
     border: 2px solid #000000;
     margin-top: -4px;
-    
+    border-radius: 15px;
+    box-shadow: 0 0 5px #CCC;
 }
 
 .Josefin{
