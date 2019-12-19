@@ -1,43 +1,38 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Services.css";
 import { setInStorage, getFromStorage } from "../storage";
 import axios from "axios";
-import Popup from './PopupReservaHotel'
+import Popup from './PopupReserva'
 
 var usr_id = getFromStorage("id");
-var showPopup = false
 
-const Imagen = props => {
-  const {
-    _id,
-    name,
-    departamento,
-    ciudad,
-    address,
-    price_per_person,
-    acommodation,
-    phone,
-    images,
-    hab_ind,
-    hab_dob,
-    hab_fam,
-    hab_mul
-  } = props.imagen;
+class Imagen extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showPopup: false,
+      // childs: 0,
+      // adults: 0,
+      // Dateinit: "2019-12-01T23:09:28.048+00:00",
+      // DateFinish: "2019-12-05T23:09:28.048+00:00"
+      confirmReserve: false
+    }
+  }
 
-  async function consultarApi() {
+  consultarApi = async () => {
     const config = {
       headers: {
         "Access-Control-Allow-Origin": "http://localhost:3000"
       }
     };
-
-    axios
+    console.log(this.props.imagen._id)
+    await axios
       .post(
         `https://api-aventurate.herokuapp.com/reserva/additem/${usr_id}`,
         {
           hotel_o_servicio: true,
           ser_id: "",
-          hot_id: _id,
+          hot_id: this.props.imagen._id,
           child_quantity: 1,
           adult_quantity: 1,
           DateBegin: "2019-12-01T23:09:28.048+00:00",
@@ -53,97 +48,110 @@ const Imagen = props => {
       });
   }
 
-  function handleClick(e) {
+  handleClick = async e => {
     e.preventDefault();
-    consultarApi();
-    showPopup = !showPopup
-    console.log(showPopup)
+    await this.consultarApi();
+    this.setState({
+      showPopup: !this.state.showPopup,
+      confirmReserve: !this.state.confirmReserve
+    });
+    window.location.reload(true);
+    // console.log(this.props.imagen._id)
   }
 
-  function togglePopup() {
-    showPopup = !showPopup
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   }
 
-  let contacto, acomodacion;
-  let cantHabInd, cantHabDob, cantHabFam, cantHabMul;
-  if (phone) {
-    contacto = (
-      <div>
-        <h5>Contacto:</h5>
-        <label>{phone}</label>
-      </div>
-    );
-  } else {
-    contacto = null;
-  }
-  if (hab_ind) {
-    cantHabInd = <label>{"Individuales: " + hab_ind}</label>;
-  }
-  if (hab_dob) {
-    cantHabDob = <label>{"Dobles: " + hab_dob}</label>;
-  }
-  if (hab_fam) {
-    cantHabFam = <label>{"Familiares: " + hab_fam}</label>;
-  }
-  if (hab_mul) {
-    cantHabMul = <label>{"Multiples: " + hab_mul}</label>;
-  }
-  if (acommodation) {
-    acomodacion = (
-      <div>
-        <h5>Habitaciones disponibles:</h5>
-        {cantHabInd}
-        <br />
-        {cantHabDob}
-        <br />
-        {cantHabFam}
-        <br />
-        {cantHabMul}
-      </div>
-    );
+  quitReserve() {
+    this.setState({
+      confirmReserve: !this.state.confirmReserve
+    });
   }
 
-  return (
-    <div className="card container">
-      <div className="contCard">
-        <div className="colItems">
-          <div>
-            <h5>Ubicación: </h5>
-            <label>
-              {departamento ? departamento + " - " + ciudad : ciudad}
-            </label>
-            <br />
-            <label>{address}</label>
+  render() {
+    let contacto, acomodacion;
+    let cantHabInd, cantHabDob, cantHabFam, cantHabMul;
+    if (this.props.imagen.phone) {
+      contacto = (
+        <div>
+          <h5>Contacto:</h5>
+          <label>{this.props.imagen.phone}</label>
+        </div>
+      );
+    } else {
+      contacto = null;
+    }
+    if (this.props.imagen.hab_ind) {
+      cantHabInd = <label>{"Individuales: " + this.props.imagen.hab_ind}</label>;
+    }
+    if (this.props.imagen.hab_dob) {
+      cantHabDob = <label>{"Dobles: " + this.props.imagen.hab_dob}</label>;
+    }
+    if (this.props.imagen.hab_fam) {
+      cantHabFam = <label>{"Familiares: " + this.props.imagen.hab_fam}</label>;
+    }
+    if (this.props.imagen.hab_mul) {
+      cantHabMul = <label>{"Multiples: " + this.props.imagen.hab_mul}</label>;
+    }
+    if (this.props.imagen.acommodation) {
+      acomodacion = (
+        <div>
+          <h5>Habitaciones disponibles:</h5>
+          {cantHabInd}
+          <br />
+          {cantHabDob}
+          <br />
+          {cantHabFam}
+          <br />
+          {cantHabMul}
+        </div>
+      );
+    }
+    return (
+      <div className="card container">
+        <div className="contCard">
+          <div className="colItems">
+            <div>
+              <h5>Ubicación: </h5>
+              <label>
+                {this.props.imagen.departamento ? this.props.imagen.departamento + " - " + this.props.imagen.ciudad : this.props.imagen.ciudad}
+              </label>
+              <br />
+              <label>{this.props.imagen.address}</label>
+            </div>
+            {contacto}
+            {acomodacion}
+            <div>
+              <h5>Precio: </h5>
+              <label>{"$ " + this.props.imagen.price_per_person}</label>
+            </div>
           </div>
-          {contacto}
-          {acomodacion}
-          <div>
-            <h5>Precio: </h5>
-            <label>{"$ " + price_per_person}</label>
+          <div className="colPrices">
+            <h2>{this.props.imagen.name}</h2>
+            <img src={this.props.imagen.images}></img>
+            <a
+              target="_blank"
+              className={this.state.confirmReserve ? "btn btn-lg btn-info btn-block" : "btn btn-lg btn-warning btn-block"}
+              onClick={this.state.confirmReserve ? this.quitReserve.bind(this) : this.togglePopup.bind(this)}
+            >
+              {this.state.confirmReserve ? "Quitar de la reserva" : "Agregar a la reserva"}
+            </a>
           </div>
         </div>
-        <div className="colPrices">
-          <h2>{name}</h2>
-          <img src={images}></img>
-          <a
-            target="_blank"
-            className="btn btn-lg btn-warning btn-block"
-            onClick={togglePopup}
-          >
-            Agregar a la reserva
-          </a>
-        </div>
+        {
+          this.state.showPopup ?
+            <Popup
+              closePopup={this.togglePopup.bind(this)}
+              confirmPopup={this.handleClick}
+            />
+            : null
+        }
       </div>
-      {
-        showPopup ?
-          <Popup
-            closePopup={togglePopup}
-            confirmPopup={handleClick}
-          />
-          : null
-      }
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Imagen;
