@@ -104,4 +104,4 @@
 
 ## ExpoIdeas:
 
->### [Experiencia de usuario](https://drive.google.com/file/d/1m6MEhyowR-j0ruA7xlTv4w2EYSf0Ltlq/view?usp=sharing)
+>### [Poster](https://drive.google.com/file/d/1m6MEhyowR-j0ruA7xlTv4w2EYSf0Ltlq/view?usp=sharing)
