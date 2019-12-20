@@ -101,3 +101,7 @@
 ## En el siguiente enlace puede encontrar un video que presenta la experiencia de usuario en lo que lleva el desarrollo de la aplicacion:
 
 >### [Experiencia de usuario](https://drive.google.com/drive/folders/1dRbYoYL8HuSf00hf60tURgv2DTBSW-g0?usp=sharing)
+
+## ExpoIdeas:
+
+>### [Experiencia de usuario](https://drive.google.com/file/d/1m6MEhyowR-j0ruA7xlTv4w2EYSf0Ltlq/view?usp=sharing)
